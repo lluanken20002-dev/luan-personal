@@ -61,9 +61,16 @@ button:active{
 @keyframes logoGlow{
  to{ text-shadow:0 0 20px #00eaff,0 0 35px #087cff}
 }
-*{box-sizing:border-box;margin:0;padding:0}
-:root{--neon:#00eaff;--blue:#087cff;--bg:#050811}
 body{
+ background:
+ radial-gradient(ellipse at 20% 20%,#061c39 0%,transparent 45%),
+ radial-gradient(ellipse at 80% 80%,#061b28 0%,transparent 45%),
+ #02040a !important;
+ color:white;
+ font-family:Arial,sans-serif;
+ min-height:100vh;
+ overflow-x:hidden;
+}
  background:
  radial-gradient(ellipse at 20% 20%,#061c39 0%,transparent 45%),
  radial-gradient(ellipse at 80% 80%,#061b28 0%,transparent 45%),
