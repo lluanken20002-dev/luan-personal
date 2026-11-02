@@ -6,343 +6,160 @@
 <meta name="theme-color" content="#02040a">
 <title>LUAN PERSONAL</title>
 <style>
- 
-/* NỀN SAO LẤP LÁNH */
-body {
-  background:
-    radial-gradient(ellipse at 20% 20%, #14234a 0%, transparent 40%),
-    radial-gradient(ellipse at 80% 35%, #301044 0%, transparent 38%),
-    radial-gradient(ellipse at 50% 100%, #102b45 0%, transparent 45%),
-    linear-gradient(135deg, #080b1c, #090515, #071323);
-  background-size: 200% 200%;
-  animation: galaxyBackground 12s ease infinite;
-}
-
-@keyframes galaxyBackground {
-  0% { background-position: 0% 0%; }
-  50% { background-position: 100% 100%; }
-  100% { background-position: 0% 0%; }
-}
-
-/* HẠT SÁNG LẤP LÁNH */
-#effects::before,
-#effects::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background-image:
-    radial-gradient(2px 2px at 10% 20%, white 90%, transparent),
-    radial-gradient(2px 2px at 30% 70%, #00eaff 90%, transparent),
-    radial-gradient(3px 3px at 50% 40%, white 90%, transparent),
-    radial-gradient(2px 2px at 70% 15%, #ff00e6 90%, transparent),
-    radial-gradient(2px 2px at 85% 65%, white 90%, transparent),
-    radial-gradient(3px 3px at 95% 35%, #00eaff 90%, transparent);
-  background-size: 250px 250px;
-  animation: sparkle 5s linear infinite;
-}
-
-#effects::after {
-  background-size: 170px 190px;
-  animation-duration: 8s;
-  animation-direction: reverse;
-  opacity: .5;
-}
-
-@keyframes sparkle {
-  0%, 100% { opacity: .2; }
-  50% { opacity: 1; }
-}
-
-/* ÁNH SÁNG NEON */
-.panel {
-  box-shadow:
-    0 0 15px #00eaff18,
-    0 0 30px #a855ff12,
-    inset 0 0 20px #00eaff08;
-}
-
 :root{--neon:#00eaff}
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
-body{
- margin:0;color:#fff;font-family:Arial,sans-serif;
- background:radial-gradient(ellipse at 20% 20%,#061c39,transparent 45%),
- radial-gradient(ellipse at 80% 80%,#061b28,transparent 45%),#02040a;
- overflow-x:hidden
-}
-body:before,body:after{
- content:"";position:fixed;width:300px;height:300px;
- border-radius:50%;filter:blur(100px);opacity:.2;
- z-index:-1;pointer-events:none;animation:float 8s infinite alternate
-}
+body{margin:0;color:#fff;font-family:Arial,sans-serif;overflow-x:hidden;background:radial-gradient(ellipse at 20% 20%,#14234a 0%,transparent 40%),radial-gradient(ellipse at 80% 35%,#301044 0%,transparent 38%),radial-gradient(ellipse at 50% 100%,#102b45 0%,transparent 45%),linear-gradient(135deg,#080b1c,#090515,#071323);background-size:200% 200%;animation:galaxyBackground 12s ease infinite}
+@keyframes galaxyBackground{0%,100%{background-position:0 0}50%{background-position:100% 100%}}
+#effects{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden}
+#effects:before,#effects:after{content:"";position:absolute;inset:-20%;background-image:radial-gradient(2px 2px at 10% 20%,#fff 90%,transparent),radial-gradient(2px 2px at 30% 70%,#00eaff 90%,transparent),radial-gradient(3px 3px at 50% 40%,#fff 90%,transparent),radial-gradient(2px 2px at 70% 15%,#ff00e6 90%,transparent),radial-gradient(2px 2px at 85% 65%,#fff 90%,transparent),radial-gradient(3px 3px at 95% 35%,#00eaff 90%,transparent);background-size:250px 250px;animation:sparkle 4s ease-in-out infinite}
+#effects:after{background-size:170px 190px;animation-duration:6s;animation-direction:reverse;opacity:.6}
+@keyframes sparkle{0%,100%{opacity:.15;transform:translateY(0)}50%{opacity:1;transform:translateY(-15px)}}
+#effects .twinkle{position:absolute;width:3px;height:3px;border-radius:50%;background:white;box-shadow:0 0 8px 3px #00eaff;animation:twinkle var(--speed) ease-in-out infinite alternate}
+@keyframes twinkle{from{opacity:.1;transform:scale(.5)}to{opacity:1;transform:scale(2)}}
+#musicNotes{position:fixed;inset:0;z-index:2;pointer-events:none;overflow:hidden}
+.music-note{position:absolute;top:-45px;font-size:var(--size);color:var(--color);text-shadow:0 0 8px currentColor,0 0 18px currentColor;animation:noteFall var(--duration) linear forwards}
+@keyframes noteFall{0%{transform:translate(0,-40px) rotate(0);opacity:0}10%{opacity:1}85%{opacity:.9}100%{transform:translate(var(--drift),110vh) rotate(480deg);opacity:0}}
+#lightningLayer{position:fixed;inset:0;z-index:8;pointer-events:none;overflow:hidden;opacity:0}
+#lightningLayer.strike{animation:skyFlash .8s ease-out}
+@keyframes skyFlash{0%,100%{opacity:0}5%{opacity:1}13%{opacity:.08}23%{opacity:.95}34%{opacity:.1}45%{opacity:.72}60%{opacity:0}}
+#lightningLayer:after{content:"";position:absolute;inset:0;background:radial-gradient(ellipse at 50% 0%,#70eaff66,transparent 70%);opacity:0}
+#lightningLayer.strike:after{animation:flashGlow .8s ease-out}
+@keyframes flashGlow{0%,100%{opacity:0}12%,30%{opacity:1}55%{opacity:.1}}
+body:before,body:after{content:"";position:fixed;width:300px;height:300px;border-radius:50%;filter:blur(100px);opacity:.2;z-index:0;pointer-events:none;animation:float 8s infinite alternate}
 body:before{background:#0077ff;top:-100px;left:-100px}
 body:after{background:#00eaff;bottom:-100px;right:-100px}
 @keyframes float{to{transform:translate(80px,60px) scale(1.3)}}
-header{
- display:flex;justify-content:space-between;align-items:center;
- padding:18px 7%;border-bottom:1px solid #00eaff44;
- position:sticky;top:0;background:#050811ee;
- backdrop-filter:blur(15px);z-index:10
-}
-.logo{font-size:23px;font-weight:900;color:var(--neon);
- text-shadow:0 0 15px var(--neon)}
+header{display:flex;justify-content:space-between;align-items:center;padding:18px 7%;border-bottom:1px solid #00eaff44;position:sticky;top:0;background:#050811ee;backdrop-filter:blur(15px);z-index:10}
+.logo{font-size:23px;font-weight:900;color:var(--neon);text-shadow:0 0 15px var(--neon);animation:logoPulse 1.3s ease-in-out infinite alternate}
+@keyframes logoPulse{to{filter:brightness(1.8);text-shadow:0 0 25px #fff,0 0 40px #00eaff}}
 nav{display:flex;gap:15px;flex-wrap:wrap}
 nav a{color:white;text-decoration:none;font-size:13px}
 nav a:hover{color:var(--neon)}
-button{
- border:1px solid var(--neon);background:transparent;
- color:var(--neon);padding:11px 18px;border-radius:9px;
- cursor:pointer;font-weight:bold;transition:.3s
-}
+button{border:1px solid var(--neon);background:#061322;color:var(--neon);padding:11px 18px;border-radius:9px;cursor:pointer;font-weight:bold;transition:.3s}
 button:hover{background:var(--neon);color:#001018;box-shadow:0 0 20px var(--neon)}
-.hero{
- min-height:75vh;display:flex;flex-direction:column;
- align-items:center;justify-content:center;text-align:center;
- padding:50px 20px;position:relative
-}
+.hero{min-height:75vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:50px 20px;position:relative;z-index:3}
 .hero small{color:var(--neon);letter-spacing:5px}
-.hero h1{
- font-size:clamp(38px,9vw,75px);
- font-weight:900;
- background:linear-gradient(
-  90deg,
-  red,orange,yellow,lime,cyan,blue,violet,red
- );
- background-size:400% 100%;
- background-clip:text;
- -webkit-background-clip:text;
- -webkit-text-fill-color:transparent;
- color:transparent;
- animation:rainbow 3s linear infinite,flash .7s ease-in-out infinite alternate;
-}
-@keyframes rainbow {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
-}
-
-.hero h1 {
-  background-size: 400% 400%;
-  animation: rainbow 3s ease infinite, flash .7s ease-in-out infinite alternate !important;
-}
-@keyframes flash{
- from{filter:drop-shadow(0 0 5px #00eaff)}
- to{filter:drop-shadow(0 0 25px #fff)}
-}
-.hero:after{
- content:"";position:absolute;inset:0;pointer-events:none;
- background:linear-gradient(115deg,transparent 40%,#b9f8ff99 50%,transparent 60%);
- opacity:0;animation:lightning 7s infinite
-}
-@keyframes lightning{
- 0%,88%,91%,94%,100%{opacity:0}
- 89%{opacity:1}90%{opacity:.2}92%{opacity:.7}
-}
+.hero h1{font-size:clamp(38px,9vw,75px);font-weight:900;background:linear-gradient(90deg,red,orange,yellow,lime,cyan,blue,violet,red);background-size:400% 100%;background-clip:text;-webkit-background-clip:text;-webkit-text-fill-color:transparent;color:transparent;animation:rainbow 3s linear infinite,flash .7s ease-in-out infinite alternate}
+@keyframes rainbow{0%{background-position:0 50%}100%{background-position:100% 50%}}
+@keyframes flash{from{filter:drop-shadow(0 0 5px #00eaff)}to{filter:drop-shadow(0 0 25px #fff)}}
+.hero:after{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(115deg,transparent 40%,#b9f8ff99 50%,transparent 60%);opacity:0;animation:lightning 7s infinite}
+@keyframes lightning{0%,88%,91%,94%,100%{opacity:0}89%{opacity:1}90%{opacity:.2}92%{opacity:.7}}
 .hero p{color:#aab7c8;line-height:1.8;max-width:550px}
 .actions{display:flex;gap:12px;flex-wrap:wrap;justify-content:center}
-section{padding:50px 7%;scroll-margin-top:80px}
+section{padding:50px 7%;scroll-margin-top:80px;position:relative;z-index:3}
 .section-title{text-align:center;font-size:29px;margin-bottom:30px}
 .section-title span{color:var(--neon)}
-.card{
- background:#0b1422dd;border:1px solid #00eaff55;
- border-radius:18px;padding:25px;box-shadow:0 0 20px #007bff18;
- transition:.3s
-}
+.card{background:#0b1422dd;border:1px solid #00eaff55;border-radius:18px;padding:25px;box-shadow:0 0 15px #00eaff18,0 0 30px #a855ff12,inset 0 0 20px #00eaff08;transition:.3s}
 .card:hover{transform:translateY(-4px);box-shadow:0 0 25px #00eaff44}
 .about{max-width:800px;margin:auto;text-align:center;line-height:2;color:#c4d1df}
 .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px}
 .skill{text-align:center;padding:28px}
 .skill b{color:var(--neon);font-size:19px}
 .skill p{color:#aab7c8}
-input{
- width:100%;padding:13px;margin:9px 0;border:1px solid #00eaff55;
- border-radius:9px;background:#07101c;color:white;outline:none
-}
+input{width:100%;padding:13px;margin:9px 0;border:1px solid #00eaff55;border-radius:9px;background:#07101c;color:white;outline:none}
 input:focus{border-color:var(--neon);box-shadow:0 0 10px #00eaff33}
-footer{text-align:center;padding:30px;color:#7890a8;border-top:1px solid #00eaff33}
+footer{text-align:center;padding:30px;color:#7890a8;border-top:1px solid #00eaff33;position:relative;z-index:3}
 .hidden{display:none!important}
 #authBox{max-width:420px;margin:35px auto}
 #authBox h2{text-align:center;color:var(--neon)}
 #message{color:var(--neon);text-align:center}
 .profile{text-align:center;max-width:600px;margin:auto}
-.avatar{
- width:110px;height:110px;border-radius:50%;object-fit:cover;
- border:3px solid var(--neon);box-shadow:0 0 25px var(--neon);margin:15px
-}
+.avatar{width:110px;height:110px;border-radius:50%;object-fit:cover;border:3px solid var(--neon);box-shadow:0 0 25px var(--neon);margin:15px}
 #userGallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:12px;margin-top:20px}
 #userGallery img{width:100%;height:150px;object-fit:cover;border-radius:12px}
 hr{border:0;border-top:1px solid #00eaff33;margin:18px 0}
-@media(max-width:600px){
- header{padding:15px 5%;flex-direction:column;gap:14px}
- nav{justify-content:center;gap:12px}
- section{padding:40px 5%}
-}
+#musicButton{position:fixed;right:14px;bottom:15px;z-index:20;border-radius:30px;background:#061322ed;color:white;box-shadow:0 0 15px #00eaff,0 0 30px #005dff88}
+@media(max-width:600px){header{padding:15px 5%;flex-direction:column;gap:14px}nav{justify-content:center;gap:12px}section{padding:40px 5%}}
 </style>
 </head>
 <body>
+<div id="effects" aria-hidden="true"></div>
+<div id="musicNotes" aria-hidden="true"></div>
+<div id="lightningLayer" aria-hidden="true"></div>
 <header>
  <div class="logo">LUAN.</div>
  <nav>
-  <a href="#home">Trang chủ</a>
-  <a href="#about">Giới thiệu</a>
-  <a href="#skills">Sở thích</a>
-  <a href="#gallery">Thư viện</a>
-  <a href="#account">Tài khoản</a>
+  <a href="#home">Trang chủ</a><a href="#about">Giới thiệu</a><a href="#skills">Sở thích</a><a href="#gallery">Thư viện</a><a href="#account">Tài khoản</a>
  </nav>
 </header>
-
 <div class="hero" id="home">
- <small>WELCOME TO MY WEBSITE</small>
- <h1>LUAN PERSONAL</h1>
+ <small>WELCOME TO MY WEBSITE</small><h1>LUAN PERSONAL</h1>
  <p>Chào mừng đến với thế giới của tao. Đam mê công nghệ, xe cộ và những điều khác biệt.</p>
  <div class="actions">
   <button onclick="document.querySelector('#about').scrollIntoView({behavior:'smooth'})">KHÁM PHÁ</button>
   <button onclick="document.querySelector('#account').scrollIntoView({behavior:'smooth'})">TÀI KHOẢN</button>
  </div>
 </div>
-
 <section id="about">
  <h2 class="section-title">GIỚI <span>THIỆU</span></h2>
- <div class="card about">
-  <h2 style="color:var(--neon)">Xin chào, tao là Luân!</h2>
-  <p>Đây là website cá nhân của tao. Nơi lưu giữ thông tin, hình ảnh và những sở thích riêng.</p>
-  <p>Không ngừng học hỏi – Không ngừng phát triển.</p>
- </div>
+ <div class="card about"><h2 style="color:var(--neon)">Xin chào, tao là Luân!</h2><p>Đây là website cá nhân của tao. Nơi lưu giữ thông tin, hình ảnh và những sở thích riêng.</p><p>Không ngừng học hỏi – Không ngừng phát triển.</p></div>
 </section>
-
 <section id="skills">
  <h2 class="section-title">SỞ <span>THÍCH</span></h2>
- <div class="grid">
-  <div class="card skill"><b>🏎️ XE CỘ</b><p>Đam mê Honda Civic Gen 8</p></div>
-  <div class="card skill"><b>💻 CÔNG NGHỆ</b><p>Website và lập trình</p></div>
-  <div class="card skill"><b>🎧 ÂM NHẠC</b><p>Âm nhạc và giải trí</p></div>
- </div>
+ <div class="grid"><div class="card skill"><b>🏎️ XE CỘ</b><p>Đam mê Honda Civic Gen 8</p></div><div class="card skill"><b>💻 CÔNG NGHỆ</b><p>Website và lập trình</p></div><div class="card skill"><b>🎧 ÂM NHẠC</b><p>Âm nhạc và giải trí</p></div></div>
 </section>
-
 <section id="gallery">
  <h2 class="section-title">THƯ <span>VIỆN ẢNH</span></h2>
- <div class="card">
-  <p style="color:#aab7c8">Chọn ảnh từ điện thoại để thêm vào thư viện.</p>
-  <input type="file" id="photoInput" accept="image/*" multiple>
-  <div id="userGallery"></div>
- </div>
+ <div class="card"><p style="color:#aab7c8">Chọn ảnh từ điện thoại để thêm vào thư viện.</p><input type="file" id="photoInput" accept="image/*" multiple><div id="userGallery"></div></div>
 </section>
-
 <section id="account">
  <h2 class="section-title">TÀI <span>KHOẢN</span></h2>
  <div class="card" id="authBox">
-  <h2>LUAN ACCOUNT</h2>
-  <div id="authForms">
-   <input id="username" placeholder="Tên đăng nhập">
-   <input id="password" type="password" placeholder="Mật khẩu">
-   <button onclick="login()" style="width:100%">ĐĂNG NHẬP</button>
-   <hr>
-   <input id="newUsername" placeholder="Tên tài khoản mới">
-   <input id="newPassword" type="password" placeholder="Mật khẩu mới">
+  <h2>LUAN ACCOUNT</h2><div id="authForms">
+   <input id="username" placeholder="Tên đăng nhập"><input id="password" type="password" placeholder="Mật khẩu">
+   <button onclick="login()" style="width:100%">ĐĂNG NHẬP</button><hr>
+   <input id="newUsername" placeholder="Tên tài khoản mới"><input id="newPassword" type="password" placeholder="Mật khẩu mới">
    <button onclick="register()" style="width:100%">ĐĂNG KÝ</button>
-  </div>
-  <p id="message"></p>
+  </div><p id="message"></p>
  </div>
  <div class="card profile hidden" id="profileBox">
   <h2 style="color:var(--neon)">TÀI KHOẢN CỦA BẠN</h2>
   <img class="avatar" id="avatar" src="https://placehold.co/150x150/07101c/00eaff?text=LUAN">
-  <h3 id="profileName"></h3>
-  <p id="profileBio" style="color:#aab7c8"></p>
-  <input id="editName" placeholder="Tên hiển thị">
-  <input id="editBio" placeholder="Giới thiệu bản thân">
-  <input type="file" id="avatarInput" accept="image/*">
-  <button onclick="saveProfile()">LƯU HỒ SƠ</button>
-  <button onclick="logout()">ĐĂNG XUẤT</button>
+  <h3 id="profileName"></h3><p id="profileBio" style="color:#aab7c8"></p>
+  <input id="editName" placeholder="Tên hiển thị"><input id="editBio" placeholder="Giới thiệu bản thân">
+  <input type="file" id="avatarInput" accept="image/*"><button onclick="saveProfile()">LƯU HỒ SƠ</button><button onclick="logout()">ĐĂNG XUẤT</button>
   <p id="profileMessage" style="color:var(--neon)"></p>
  </div>
 </section>
-
-<footer>
- <p>© 2026 LUAN PERSONAL</p>
- <p style="color:var(--neon)">DESIGNED WITH PASSION</p>
-</footer>
-
+<footer><p>© 2026 LUAN PERSONAL</p><p style="color:var(--neon)">DESIGNED WITH PASSION</p></footer>
+<button id="musicButton" type="button">♫ BẬT NHẠC</button>
 <script>
+const effectBox=document.getElementById('effects');
+for(let i=0;i<100;i++){const s=document.createElement('i');s.className='twinkle';s.style.left=Math.random()*100+'%';s.style.top=Math.random()*100+'%';s.style.setProperty('--speed',(1+Math.random()*3)+'s');s.style.animationDelay=(-Math.random()*4)+'s';effectBox.appendChild(s)}
+const noteBox=document.getElementById('musicNotes'),noteChars=['♪','♫','♬','♩'],noteColors=['#00eaff','#ff4edb','#b58cff','#ffe66d','#7dffcf'];
+function spawnNote(){const n=document.createElement('span');n.className='music-note';n.textContent=noteChars[Math.floor(Math.random()*noteChars.length)];n.style.left=Math.random()*100+'%';n.style.setProperty('--color',noteColors[Math.floor(Math.random()*noteColors.length)]);n.style.setProperty('--size',(20+Math.random()*24)+'px');n.style.setProperty('--duration',(7+Math.random()*6)+'s');n.style.setProperty('--drift',(Math.random()*160-80)+'px');noteBox.appendChild(n);setTimeout(()=>n.remove(),14000)}
+setInterval(spawnNote,450);for(let i=0;i<12;i++)setTimeout(spawnNote,i*260);
+const lightning=document.getElementById('lightningLayer');
+function drawLightning(){
+ lightning.innerHTML='';lightning.classList.remove('strike');void lightning.offsetWidth;lightning.classList.add('strike');
+ const svg=document.createElementNS('http://www.w3.org/2000/svg','svg');svg.setAttribute('width','100%');svg.setAttribute('height','100%');svg.setAttribute('viewBox','0 0 1000 700');svg.setAttribute('preserveAspectRatio','none');
+ let x=80+Math.random()*840,y=-10,points=[[x,y]];
+ for(let i=0;i<10;i++){x+=Math.random()*100-50;y+=58+Math.random()*22;points.push([x,y])}
+ const d=points.map((p,i)=>(i?'L':'M')+p[0]+','+p[1]).join(' ');
+ function addPath(color,width,opacity,blur){const p=document.createElementNS('http://www.w3.org/2000/svg','path');p.setAttribute('d',d);p.setAttribute('fill','none');p.setAttribute('stroke',color);p.setAttribute('stroke-width',width);p.setAttribute('stroke-linecap','round');p.setAttribute('stroke-linejoin','round');p.setAttribute('opacity',opacity);if(blur)p.style.filter='blur('+blur+'px)';svg.appendChild(p)}
+ addPath('#008cff',24,.8,9);addPath('#00dfff',11,1,3);addPath('#ffffff',4,1,0);
+ for(let j=2;j<8;j+=2){const a=points[j],bx=a[0]+(Math.random()>.5?1:-1)*(45+Math.random()*70),by=a[1]+50+Math.random()*35;const b=document.createElementNS('http://www.w3.org/2000/svg','path');b.setAttribute('d',`M${a[0]},${a[1]} L${bx},${by}`);b.setAttribute('stroke','#e9fcff');b.setAttribute('stroke-width','3');b.setAttribute('fill','none');b.style.filter='drop-shadow(0 0 8px #00dfff)';svg.appendChild(b)}
+ lightning.appendChild(svg);setTimeout(()=>lightning.classList.remove('strike'),850);setTimeout(()=>lightning.innerHTML='',1100)
+}
+function storm(){drawLightning();if(Math.random()>.35)setTimeout(drawLightning,170+Math.random()*220);setTimeout(storm,2200+Math.random()*2600)}
+setTimeout(storm,800);
+let audioCtx=null,musicTimer=null,musicOn=false,musicIndex=0;
+const melody=[261.63,329.63,392,493.88,392,349.23,293.66,349.23,440,392];
+function playTone(freq,duration=.42){const osc=audioCtx.createOscillator(),gain=audioCtx.createGain(),filter=audioCtx.createBiquadFilter();osc.type='triangle';osc.frequency.value=freq;filter.type='lowpass';filter.frequency.value=1300;gain.gain.setValueAtTime(.0001,audioCtx.currentTime);gain.gain.exponentialRampToValueAtTime(.06,audioCtx.currentTime+.04);gain.gain.exponentialRampToValueAtTime(.0001,audioCtx.currentTime+duration);osc.connect(filter);filter.connect(gain);gain.connect(audioCtx.destination);osc.start();osc.stop(audioCtx.currentTime+duration+.03)}
+function musicStep(){if(!musicOn)return;const f=melody[musicIndex%melody.length];playTone(f);if(musicIndex%4===0)playTone(f/2,.7);musicIndex++}
+document.getElementById('musicButton').addEventListener('click',async()=>{if(!audioCtx)audioCtx=new(window.AudioContext||window.webkitAudioContext)();if(audioCtx.state==='suspended')await audioCtx.resume();musicOn=!musicOn;const b=document.getElementById('musicButton');if(musicOn){b.textContent='♫ TẮT NHẠC';musicStep();musicTimer=setInterval(musicStep,480)}else{b.textContent='♫ BẬT NHẠC';clearInterval(musicTimer)}});
 const getUsers=()=>JSON.parse(localStorage.getItem("luan_users")||"{}");
 const current=()=>localStorage.getItem("luan_current");
-
-function register(){
- const u=document.getElementById("newUsername").value.trim();
- const p=document.getElementById("newPassword").value;
- const msg=document.getElementById("message");
- if(!u||!p){msg.textContent="Nhập đầy đủ thông tin!";return}
- let users=getUsers();
- if(users[u]){msg.textContent="Tên tài khoản đã tồn tại!";return}
- users[u]={password:p,name:u,bio:"",avatar:"",photos:[]};
- localStorage.setItem("luan_users",JSON.stringify(users));
- msg.textContent="Đăng ký thành công! Hãy đăng nhập.";
-}
-function login(){
- const u=document.getElementById("username").value.trim();
- const p=document.getElementById("password").value;
- const users=getUsers();
- if(!users[u]||users[u].password!==p){
-  document.getElementById("message").textContent="Sai tài khoản hoặc mật khẩu!";return;
- }
- localStorage.setItem("luan_current",u);showProfile();
-}
-function showProfile(){
- const u=current(),users=getUsers();
- if(!u||!users[u])return;
- document.getElementById("authBox").classList.add("hidden");
- document.getElementById("profileBox").classList.remove("hidden");
- document.getElementById("profileName").textContent=users[u].name;
- document.getElementById("profileBio").textContent=users[u].bio||"";
- document.getElementById("editName").value=users[u].name;
- document.getElementById("editBio").value=users[u].bio||"";
- document.getElementById("avatar").src=users[u].avatar||"https://placehold.co/150x150/07101c/00eaff?text=LUAN";
- renderPhotos();
-}
-function saveProfile(){
- const u=current(),users=getUsers();if(!u||!users[u])return;
- users[u].name=document.getElementById("editName").value.trim()||u;
- users[u].bio=document.getElementById("editBio").value;
- localStorage.setItem("luan_users",JSON.stringify(users));showProfile();
- document.getElementById("profileMessage").textContent="Đã lưu hồ sơ!";
-}
-function logout(){
- localStorage.removeItem("luan_current");
- document.getElementById("authBox").classList.remove("hidden");
- document.getElementById("profileBox").classList.add("hidden");
- document.getElementById("message").textContent="Đã đăng xuất.";
-}
-function readImage(file,callback){
- const reader=new FileReader();reader.onload=()=>callback(reader.result);reader.readAsDataURL(file);
-}
-document.getElementById("avatarInput").addEventListener("change",function(){
- const file=this.files[0],u=current(),users=getUsers();
- if(!file||!u||!users[u])return;
- readImage(file,data=>{
-  users[u].avatar=data;
-  try{localStorage.setItem("luan_users",JSON.stringify(users));showProfile();}
-  catch(e){alert("Ảnh quá lớn, hãy chọn ảnh nhỏ hơn.")}
- });
-});
-document.getElementById("photoInput").addEventListener("change",function(){
- const files=Array.from(this.files),u=current(),users=getUsers();
- if(!u||!users[u]){alert("Đăng nhập trước nhé!");return}
- if(!files.length)return;
- let count=0;
- files.forEach(file=>readImage(file,data=>{
-  users[u].photos=users[u].photos||[];users[u].photos.push(data);count++;
-  if(count===files.length){
-   try{localStorage.setItem("luan_users",JSON.stringify(users));renderPhotos();}
-   catch(e){alert("Bộ nhớ ảnh đã đầy. Hãy chọn ít ảnh hơn.")}
-  }
- }));
-});
-function renderPhotos(){
- const area=document.getElementById("userGallery");area.innerHTML="";
- const u=current(),users=getUsers();if(!u||!users[u])return;
- (users[u].photos||[]).forEach(src=>{
-  const img=document.createElement("img");img.src=src;area.appendChild(img);
- });
-}
+function register(){const u=document.getElementById("newUsername").value.trim(),p=document.getElementById("newPassword").value,msg=document.getElementById("message");if(!u||!p){msg.textContent="Nhập đầy đủ thông tin!";return}let users=getUsers();if(users[u]){msg.textContent="Tên tài khoản đã tồn tại!";return}users[u]={password:p,name:u,bio:"",avatar:"",photos:[]};localStorage.setItem("luan_users",JSON.stringify(users));msg.textContent="Đăng ký thành công! Hãy đăng nhập."}
+function login(){const u=document.getElementById("username").value.trim(),p=document.getElementById("password").value,users=getUsers();if(!users[u]||users[u].password!==p){document.getElementById("message").textContent="Sai tài khoản hoặc mật khẩu!";return}localStorage.setItem("luan_current",u);showProfile()}
+function showProfile(){const u=current(),users=getUsers();if(!u||!users[u])return;document.getElementById("authBox").classList.add("hidden");document.getElementById("profileBox").classList.remove("hidden");document.getElementById("profileName").textContent=users[u].name;document.getElementById("profileBio").textContent=users[u].bio||"";document.getElementById("editName").value=users[u].name;document.getElementById("editBio").value=users[u].bio||"";document.getElementById("avatar").src=users[u].avatar||"https://placehold.co/150x150/07101c/00eaff?text=LUAN";renderPhotos()}
+function saveProfile(){const u=current(),users=getUsers();if(!u||!users[u])return;users[u].name=document.getElementById("editName").value.trim()||u;users[u].bio=document.getElementById("editBio").value;localStorage.setItem("luan_users",JSON.stringify(users));showProfile();document.getElementById("profileMessage").textContent="Đã lưu hồ sơ!"}
+function logout(){localStorage.removeItem("luan_current");document.getElementById("authBox").classList.remove("hidden");document.getElementById("profileBox").classList.add("hidden");document.getElementById("message").textContent="Đã đăng xuất."}
+function readImage(file,callback){const reader=new FileReader();reader.onload=()=>callback(reader.result);reader.readAsDataURL(file)}
+document.getElementById("avatarInput").addEventListener("change",function(){const file=this.files[0],u=current(),users=getUsers();if(!file||!u||!users[u])return;readImage(file,data=>{users[u].avatar=data;try{localStorage.setItem("luan_users",JSON.stringify(users));showProfile()}catch(e){alert("Ảnh quá lớn, hãy chọn ảnh nhỏ hơn.")}})});
+document.getElementById("photoInput").addEventListener("change",function(){const files=Array.from(this.files),u=current(),users=getUsers();if(!u||!users[u]){alert("Đăng nhập trước nhé!");return}if(!files.length)return;let count=0;files.forEach(file=>readImage(file,data=>{users[u].photos=users[u].photos||[];users[u].photos.push(data);count++;if(count===files.length){try{localStorage.setItem("luan_users",JSON.stringify(users));renderPhotos()}catch(e){alert("Bộ nhớ ảnh đã đầy. Hãy chọn ít ảnh hơn.")}}}))});
+function renderPhotos(){const area=document.getElementById("userGallery");area.innerHTML="";const u=current(),users=getUsers();if(!u||!users[u])return;(users[u].photos||[]).forEach(src=>{const img=document.createElement("img");img.src=src;area.appendChild(img)})}
 if(current())showProfile();
 </script>
 </body>
