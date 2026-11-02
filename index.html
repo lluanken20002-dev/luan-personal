@@ -61,7 +61,16 @@ button:hover{background:var(--neon);color:#001018;box-shadow:0 0 20px var(--neon
  color:transparent;
  animation:rainbow 3s linear infinite,flash .7s ease-in-out infinite alternate;
 }
-@keyframes rainbow{to{background-position:300% 0}}
+@keyframes rainbow {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.hero h1 {
+  background-size: 400% 400%;
+  animation: rainbow 3s ease infinite, flash .7s ease-in-out infinite alternate !important;
+}
 @keyframes flash{
  from{filter:drop-shadow(0 0 5px #00eaff)}
  to{filter:drop-shadow(0 0 25px #fff)}
