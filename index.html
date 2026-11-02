@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="vi">
 <head>
@@ -9,153 +10,73 @@
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
 :root{--cyan:#00eaff}
-body{
- background:#02040a;color:white;font-family:Arial,sans-serif;
- min-height:100vh;overflow-x:hidden;
-}
-body:before{
- content:"";position:fixed;inset:0;z-index:-2;
- background:
- radial-gradient(ellipse at 50% 0%,#003c5570,transparent 65%),
- radial-gradient(ellipse at 10% 90%,#41008055,transparent 50%),
- radial-gradient(ellipse at 90% 80%,#001c6655,transparent 50%);
- background-size:200% 200%;
- animation:nebula 18s ease-in-out infinite alternate;
-}
-@keyframes nebula{
- 0%{background-position:0% 0%;filter:hue-rotate(0deg)}
- 50%{background-position:100% 50%;filter:hue-rotate(100deg)}
- 100%{background-position:0% 100%;filter:hue-rotate(200deg)}
-}
-body:after{
- content:"";position:fixed;inset:5px;z-index:1000;
- border:2px solid transparent;border-radius:13px;
- background:linear-gradient(135deg,red,orange,yellow,lime,cyan,blue,violet,red) border-box;
- -webkit-mask:linear-gradient(#fff 0 0) padding-box,linear-gradient(#fff 0 0);
- -webkit-mask-composite:xor;mask-composite:exclude;
- pointer-events:none;animation:edge 4s linear infinite;
-}
+body{background:#02040a;color:white;font-family:Arial,sans-serif;min-height:100vh;overflow-x:hidden}
+body:before{content:"";position:fixed;inset:0;z-index:-2;background:radial-gradient(ellipse at 50% 0%,#003c5570,transparent 65%),radial-gradient(ellipse at 10% 90%,#41008055,transparent 50%),radial-gradient(ellipse at 90% 80%,#001c6655,transparent 50%);background-size:200% 200%;animation:nebula 18s ease-in-out infinite alternate}
+@keyframes nebula{0%{background-position:0% 0%;filter:hue-rotate(0deg)}50%{background-position:100% 50%;filter:hue-rotate(100deg)}100%{background-position:0% 100%;filter:hue-rotate(200deg)}}
+body:after{content:"";position:fixed;inset:5px;z-index:1000;border:2px solid transparent;border-radius:13px;background:linear-gradient(135deg,red,orange,yellow,lime,cyan,blue,violet,red) border-box;-webkit-mask:linear-gradient(#fff 0 0) padding-box,linear-gradient(#fff 0 0);-webkit-mask-composite:xor;mask-composite:exclude;pointer-events:none;animation:edge 4s linear infinite}
 @keyframes edge{to{filter:hue-rotate(360deg)}}
-.logo,.hero h1,h2{
- background:linear-gradient(90deg,red,orange,yellow,lime,cyan,blue,violet,red);
- background-size:400% 400%;
- -webkit-background-clip:text;background-clip:text;
- color:transparent;animation:rainbow 4s linear infinite;
-}
+.logo,.hero h1,h2{background:linear-gradient(90deg,red,orange,yellow,lime,cyan,blue,violet,red);background-size:400% 400%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:rainbow 4s linear infinite}
 @keyframes rainbow{to{background-position:400% 50%}}
 .logo{font-size:32px;font-weight:900;letter-spacing:5px;filter:drop-shadow(0 0 8px cyan)}
 header{padding:25px 12px;text-align:center;border-bottom:1px solid #00eaff55}
 header p{color:#8da4b8}
-.light{
- height:3px;margin-top:15px;
- background:linear-gradient(90deg,transparent,cyan,white,magenta,blue,transparent);
- box-shadow:0 0 15px cyan;animation:laser 2s linear infinite alternate;
-}
+.light{height:3px;margin-top:15px;background:linear-gradient(90deg,transparent,cyan,white,magenta,blue,transparent);box-shadow:0 0 15px cyan;animation:laser 2s linear infinite alternate}
 @keyframes laser{from{opacity:.3}to{opacity:1;filter:hue-rotate(360deg)}}
-.laserline{
- position:fixed;top:0;left:-100%;height:2px;width:70%;z-index:5;
- background:linear-gradient(90deg,transparent,cyan,white,magenta,transparent);
- box-shadow:0 0 20px cyan;pointer-events:none;animation:scan 7s linear infinite;
-}
+.laserline{position:fixed;top:0;left:-100%;height:2px;width:70%;z-index:5;background:linear-gradient(90deg,transparent,cyan,white,magenta,transparent);box-shadow:0 0 20px cyan;pointer-events:none;animation:scan 7s linear infinite}
 @keyframes scan{to{left:150%}}
 nav{display:flex;justify-content:center;flex-wrap:wrap;gap:10px;padding:18px}
-button{
- border:1px solid cyan;background:#071522;color:white;
- padding:12px 16px;border-radius:9px;cursor:pointer;
- font-weight:bold;transition:.2s;
-}
+button{border:1px solid cyan;background:#071522;color:white;padding:12px 16px;border-radius:9px;cursor:pointer;font-weight:bold;transition:.2s}
 button:hover{background:cyan;color:black;box-shadow:0 0 20px cyan;transform:scale(1.04)}
 .container{max-width:950px;margin:auto;padding:18px}
-.card{
- background:linear-gradient(145deg,#0a1420,#03070e);
- border:1px solid #00eaff88;border-radius:16px;
- padding:22px;margin-bottom:20px;
- animation:rgbGlow 8s linear infinite;transition:.2s;
-}
-@keyframes rgbGlow{
- 0%,100%{border-color:#00eaff;box-shadow:0 0 14px #00eaff22}
- 25%{border-color:#a000ff;box-shadow:0 0 19px #a000ff44}
- 50%{border-color:#ff00aa;box-shadow:0 0 19px #ff00aa44}
- 75%{border-color:#00ff99;box-shadow:0 0 19px #00ff9944}
-}
+.card{background:linear-gradient(145deg,#0a1420,#03070e);border:1px solid #00eaff88;border-radius:16px;padding:22px;margin-bottom:20px;animation:rgbGlow 8s linear infinite;transition:.2s}
+@keyframes rgbGlow{0%,100%{border-color:#00eaff;box-shadow:0 0 14px #00eaff22}25%{border-color:#a000ff;box-shadow:0 0 19px #a000ff44}50%{border-color:#ff00aa;box-shadow:0 0 19px #ff00aa44}75%{border-color:#00ff99;box-shadow:0 0 19px #00ff9944}}
 h2{margin-bottom:16px}
 .hero{text-align:center;padding:48px 15px}
 .hero h1{font-size:38px;margin-bottom:15px}
 .hero p{color:#aab9c9;line-height:1.8}
 .hidden{display:none!important}
-input,textarea{
- width:100%;padding:13px;margin:8px 0;background:#020812;color:white;
- border:1px solid #00eaff55;border-radius:8px;outline:none;
-}
+input,textarea{width:100%;padding:13px;margin:8px 0;background:#020812;color:white;border:1px solid #00eaff55;border-radius:8px;outline:none}
 input:focus,textarea:focus{border-color:cyan;box-shadow:0 0 12px cyan}
 .primary{background:#00d9ee;color:#001018;border:none}
 .center{text-align:center}
-.avatar{
- width:100px;height:100px;border-radius:50%;object-fit:cover;
- border:2px solid cyan;box-shadow:0 0 20px cyan;
-}
+.avatar{width:100px;height:100px;border-radius:50%;object-fit:cover;border:2px solid cyan;box-shadow:0 0 20px cyan}
 .gallery{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
-.gallery img{
- width:100%;height:160px;object-fit:cover;
- border-radius:10px;border:1px solid #00eaff55;
-}
+.gallery img{width:100%;height:160px;object-fit:cover;border-radius:10px;border:1px solid #00eaff55}
 .small{font-size:12px;color:#8299aa;margin-top:10px}
 footer{text-align:center;color:#62788b;padding:25px;border-top:1px solid #00eaff33}
-.sparkle{
- position:fixed;pointer-events:none;color:white;z-index:900;
- text-shadow:0 0 8px cyan,0 0 15px white;
- animation:twinkle 2s ease-in-out forwards;
-}
-@keyframes twinkle{
- 0%,100%{opacity:0;transform:scale(.2)}
- 50%{opacity:1;transform:scale(1.5) rotate(180deg)}
-}
-.music-btn{
- position:fixed;right:20px;bottom:22px;z-index:1100;
- border-radius:50%;width:58px;height:58px;font-size:23px;
- background:#061522;border:2px solid cyan;
- box-shadow:0 0 18px cyan;animation:musicGlow 2s infinite alternate;
-}
+.sparkle{position:fixed;pointer-events:none;color:white;z-index:900;text-shadow:0 0 8px cyan,0 0 15px white;animation:twinkle 2s ease-in-out forwards}
+@keyframes twinkle{0%,100%{opacity:0;transform:scale(.2)}50%{opacity:1;transform:scale(1.5) rotate(180deg)}}
+.music-btn{position:fixed;right:20px;bottom:22px;z-index:1100;border-radius:50%;width:58px;height:58px;font-size:23px;background:#061522;border:2px solid cyan;box-shadow:0 0 18px cyan;animation:musicGlow 2s infinite alternate}
 @keyframes musicGlow{to{transform:scale(1.1);box-shadow:0 0 28px magenta}}
 .music-btn.playing{background:#00d9ee;color:black}
-.music-status{
- position:fixed;right:20px;bottom:90px;z-index:1100;
- background:#071522;border:1px solid cyan;color:white;
- padding:8px 12px;border-radius:9px;font-size:12px;
- max-width:260px;display:none;overflow-wrap:anywhere;
-}
+.music-status{position:fixed;right:20px;bottom:90px;z-index:1100;background:#071522;border:1px solid cyan;color:white;padding:8px 12px;border-radius:9px;font-size:12px;max-width:260px;display:none;overflow-wrap:anywhere}
 .music-status.show{display:block}
-.lightning-bolt{
- position:fixed;z-index:950;top:0;height:72vh;width:38vw;
- pointer-events:none;filter:drop-shadow(0 0 7px cyan) drop-shadow(0 0 18px #8b5cff);
- animation:boltFlash .55s ease-out forwards;
+.lightning-bolt{position:fixed;z-index:950;top:0;height:72vh;width:38vw;pointer-events:none;filter:drop-shadow(0 0 7px cyan) drop-shadow(0 0 18px #8b5cff);animation:boltFlash .55s ease-out forwards}
+.lightning-bolt polyline{fill:none;stroke:#d9ffff;stroke-width:3.5;stroke-linecap:round;stroke-linejoin:round}
+@keyframes boltFlash{0%{opacity:0}8%{opacity:1}18%{opacity:.25}28%{opacity:1}55%{opacity:.85}100%{opacity:0}}
+.lightning-screen-flash{position:fixed;inset:0;z-index:940;pointer-events:none;background:#b9faff;animation:screenFlash .42s ease-out forwards}
+@keyframes screenFlash{0%,100%{opacity:0}8%{opacity:.22}18%{opacity:0}29%{opacity:.12}45%{opacity:0}}
+
+/* NỐT NHẠC RGB RƠI */
+.falling-note{position:fixed;top:-50px;z-index:899;pointer-events:none;font-size:28px;font-weight:bold;will-change:transform,opacity;text-shadow:0 0 8px currentColor,0 0 18px currentColor;animation:musicRain linear forwards}
+@keyframes musicRain{
+0%{transform:translate3d(0,0,0) rotate(0deg);opacity:0}
+10%{opacity:1}
+90%{opacity:1}
+100%{transform:translate3d(var(--drift),110vh,0) rotate(400deg);opacity:0}
 }
-.lightning-bolt polyline{
- fill:none;stroke:#d9ffff;stroke-width:3.5;
- stroke-linecap:round;stroke-linejoin:round;
-}
-@keyframes boltFlash{
- 0%{opacity:0}8%{opacity:1}18%{opacity:.25}
- 28%{opacity:1}55%{opacity:.85}100%{opacity:0}
-}
-.lightning-screen-flash{
- position:fixed;inset:0;z-index:940;pointer-events:none;
- background:#b9faff;animation:screenFlash .42s ease-out forwards;
-}
-@keyframes screenFlash{
- 0%,100%{opacity:0}8%{opacity:.22}18%{opacity:0}29%{opacity:.12}45%{opacity:0}
-}
+
 @media(max-width:600px){
- .hero{padding:35px 12px}
- .hero h1{font-size:30px}
- .logo{font-size:26px;letter-spacing:3px}
- .card{padding:17px}
- nav{gap:7px;padding:13px 8px}
- nav button{padding:10px 11px;font-size:12px}
- .lightning-bolt{width:58vw}
+.hero{padding:35px 12px}
+.hero h1{font-size:30px}
+.logo{font-size:26px;letter-spacing:3px}
+.card{padding:17px}
+nav{gap:7px;padding:13px 8px}
+nav button{padding:10px 11px;font-size:12px}
+.lightning-bolt{width:58vw}
 }
 @media(prefers-reduced-motion:reduce){
- body:before,.card,.logo,.hero h1,h2,.light,.laserline{animation:none!important}
+body:before,.card,.logo,.hero h1,h2,.light,.laserline{animation:none!important}
 }
 </style>
 </head>
@@ -177,6 +98,7 @@ footer{text-align:center;color:#62788b;padding:25px;border-top:1px solid #00eaff
 </nav>
 
 <div class="container">
+
 <section id="home">
  <div class="card hero">
   <h1>WELCOME TO LUAN</h1>
@@ -219,6 +141,35 @@ footer{text-align:center;color:#62788b;padding:25px;border-top:1px solid #00eaff
  </div>
 </section>
 
+<section id="account" class="hidden">
+ <div class="card" id="loginBox">
+  <h2>ĐĂNG NHẬP</h2>
+  <input id="loginUser" placeholder="Tên tài khoản" autocomplete="username">
+  <input id="loginPass" type="password" placeholder="Mật khẩu" autocomplete="current-password">
+  <button class="primary" onclick="login()">ĐĂNG NHẬP</button>
+  <p class="small">Chưa có tài khoản?</p>
+  <button onclick="showRegister()">TẠO TÀI KHOẢN MỚI</button>
+  <p id="loginMessage" style="color:cyan;margin-top:15px"></p>
+ </div>
+
+ <div class="card hidden" id="registerBox">
+  <h2>ĐĂNG KÝ TÀI KHOẢN</h2>
+  <p style="color:#91a6b8;margin-bottom:10px">Tạo tài khoản mới để sử dụng website.</p>
+  <input id="regUser" placeholder="Tên tài khoản mới" autocomplete="username">
+  <input id="regPass" type="password" placeholder="Mật khẩu (ít nhất 6 ký tự)" autocomplete="new-password">
+  <input id="regConfirm" type="password" placeholder="Nhập lại mật khẩu" autocomplete="new-password">
+  <button class="primary" onclick="register()">ĐĂNG KÝ NGAY</button>
+  <button onclick="showLogin()" style="margin-top:10px">QUAY LẠI ĐĂNG NHẬP</button>
+  <p id="registerMessage" style="color:cyan;margin-top:15px"></p>
+ </div>
+
+ <div class="card hidden" id="userBox">
+  <h2>TÀI KHOẢN CỦA BẠN</h2>
+  <p id="welcome"></p>
+  <br>
+  <button onclick="logout()">ĐĂNG XUẤT</button>
+ </div>
+</section>
 
 </div>
 
@@ -243,28 +194,80 @@ function show(id){
 }
 
 function getUsers(){
- return JSON.parse(localStorage.getItem('luan_users')||'{}');
+ try{return JSON.parse(localStorage.getItem('luan_users')||'{}')}
+ catch(e){return {}}
 }
 
+/* ĐĂNG KÝ */
+function showRegister(){
+ $('loginBox').classList.add('hidden');
+ $('userBox').classList.add('hidden');
+ $('registerBox').classList.remove('hidden');
+ $('registerMessage').textContent='';
+ $('regUser').value='';
+ $('regPass').value='';
+ $('regConfirm').value='';
+}
+
+/* QUAY LẠI ĐĂNG NHẬP */
+function showLogin(){
+ $('registerBox').classList.add('hidden');
+ $('userBox').classList.add('hidden');
+ $('loginBox').classList.remove('hidden');
+ $('loginMessage').textContent='';
+}
+
+/* TẠO TÀI KHOẢN */
 function register(){
- let u=$('loginUser').value.trim();
- let p=$('loginPass').value;
- if(!u||!p){$('message').textContent='Nhập đầy đủ thông tin!';return}
- let users=getUsers();
- if(users[u]){$('message').textContent='Tài khoản đã tồn tại!';return}
+ const u=$('regUser').value.trim();
+ const p=$('regPass').value;
+ const confirm=$('regConfirm').value;
+
+ if(!u||!p||!confirm){
+  $('registerMessage').textContent='Vui lòng nhập đầy đủ thông tin!';
+  return;
+ }
+ if(u.length<3){
+  $('registerMessage').textContent='Tên tài khoản phải có ít nhất 3 ký tự!';
+  return;
+ }
+ if(p.length<6){
+  $('registerMessage').textContent='Mật khẩu phải có ít nhất 6 ký tự!';
+  return;
+ }
+ if(p!==confirm){
+  $('registerMessage').textContent='Mật khẩu nhập lại không khớp!';
+  return;
+ }
+
+ const users=getUsers();
+ if(users[u]){
+  $('registerMessage').textContent='Tên tài khoản đã tồn tại!';
+  return;
+ }
+
  users[u]={password:p};
  localStorage.setItem('luan_users',JSON.stringify(users));
- $('message').textContent='Tạo tài khoản thành công! Hãy đăng nhập.';
+
+ $('loginUser').value=u;
+ $('loginPass').value='';
+ $('registerBox').classList.add('hidden');
+ $('loginBox').classList.remove('hidden');
+ $('loginMessage').textContent='Đăng ký thành công! Hãy đăng nhập.';
 }
 
+/* ĐĂNG NHẬP */
 function login(){
- let u=$('loginUser').value.trim();
- let p=$('loginPass').value;
- let users=getUsers();
+ const u=$('loginUser').value.trim();
+ const p=$('loginPass').value;
+ const users=getUsers();
+
  if(users[u]&&users[u].password===p){
   localStorage.setItem('luan_current',u);
   updateAccount();
- }else{$('message').textContent='Sai tài khoản hoặc mật khẩu!'}
+ }else{
+  $('loginMessage').textContent='Sai tài khoản hoặc mật khẩu!';
+ }
 }
 
 function logout(){
@@ -273,12 +276,14 @@ function logout(){
 }
 
 function updateAccount(){
- let u=localStorage.getItem('luan_current');
+ const u=localStorage.getItem('luan_current');
  $('loginBox').classList.toggle('hidden',!!u);
+ $('registerBox').classList.add('hidden');
  $('userBox').classList.toggle('hidden',!u);
  $('welcome').textContent=u?'Xin chào '+u+'!':'';
 }
 
+/* HỒ SƠ */
 function saveProfile(){
  let data={
   name:$('name').value,
@@ -291,7 +296,8 @@ function saveProfile(){
 }
 
 function loadProfile(){
- let d=JSON.parse(localStorage.getItem('luan_profile')||'{}');
+ let d={};
+ try{d=JSON.parse(localStorage.getItem('luan_profile')||'{}')}catch(e){}
  $('name').value=d.name||'';
  $('bio').value=d.bio||'';
  $('avatar').value=d.avatar||'';
@@ -300,10 +306,12 @@ function loadProfile(){
  $('showAvatar').src=d.avatar||'https://placehold.co/150x150/071522/00eaff?text=LUAN';
 }
 
+/* THƯ VIỆN ẢNH */
 function addPhoto(){
  let url=$('photoURL').value.trim();
  if(!url)return;
- let photos=JSON.parse(localStorage.getItem('luan_photos')||'[]');
+ let photos=[];
+ try{photos=JSON.parse(localStorage.getItem('luan_photos')||'[]')}catch(e){}
  photos.push(url);
  localStorage.setItem('luan_photos',JSON.stringify(photos));
  $('photoURL').value='';
@@ -311,13 +319,15 @@ function addPhoto(){
 }
 
 function loadPhotos(){
- let photos=JSON.parse(localStorage.getItem('luan_photos')||'[]');
+ let photos=[];
+ try{photos=JSON.parse(localStorage.getItem('luan_photos')||'[]')}catch(e){}
  $('photos').innerHTML='';
  photos.forEach((url,i)=>{
   let box=document.createElement('div');
   let img=document.createElement('img');
   img.src=url;
   img.onerror=()=>img.style.display='none';
+
   let btn=document.createElement('button');
   btn.textContent='XÓA';
   btn.style.marginTop='5px';
@@ -326,16 +336,16 @@ function loadPhotos(){
    localStorage.setItem('luan_photos',JSON.stringify(photos));
    loadPhotos();
   };
+
   box.append(img,btn);
   $('photos').appendChild(box);
  });
 }
 
-/* TRÌNH PHÁT NHẠC - TỐI ƯU CHO IPHONE */
+/* TRÌNH PHÁT NHẠC */
 const music=$('music');
 const musicBtn=$('musicBtn');
 const musicStatus=$('musicStatus');
-
 music.volume=1;
 
 function showMusicStatus(message){
@@ -348,9 +358,7 @@ musicBtn.addEventListener('click',async()=>{
   music.pause();
   return;
  }
-
  showMusicStatus('Đang tải nhạc...');
-
  try{
   await music.play();
   musicBtn.classList.add('playing');
@@ -360,7 +368,6 @@ musicBtn.addEventListener('click',async()=>{
   musicBtn.classList.remove('playing');
   musicBtn.textContent='🎵';
   showMusicStatus('Lỗi phát nhạc: '+error.name);
-  console.error('Music error:',error);
  }
 });
 
@@ -386,23 +393,20 @@ music.addEventListener('error',()=>{
  showMusicStatus('Không tải được file nhạc. Mã lỗi: '+code);
 });
 
-function stopMusic(){
- music.pause();
- music.currentTime=0;
-}
-
 /* TIA SÉT */
 function createLightning(){
  const svg=document.createElementNS('http://www.w3.org/2000/svg','svg');
  svg.setAttribute('viewBox','0 0 300 600');
  svg.classList.add('lightning-bolt');
  svg.style.left=(Math.random()*78)+'vw';
+
  const points=['150,0'];
  let x=150;
  for(let y=65;y<570;y+=65){
   x=Math.max(35,Math.min(265,x+(Math.random()-.5)*145));
   points.push(x+','+y);
  }
+
  const line=document.createElementNS('http://www.w3.org/2000/svg','polyline');
  line.setAttribute('points',points.join(' '));
  svg.appendChild(line);
@@ -411,6 +415,7 @@ function createLightning(){
  const flash=document.createElement('div');
  flash.className='lightning-screen-flash';
  document.body.appendChild(flash);
+
  setTimeout(()=>{svg.remove();flash.remove()},600);
 }
 
@@ -432,51 +437,31 @@ setInterval(()=>{
  setTimeout(()=>s.remove(),2000);
 },500);
 
+/* NỐT NHẠC RGB RƠI - CHẠY CẢ KHI CHƯA BẬT NHẠC */
+(function(){
+ const symbols=['♪','♫','♬','♩','𝄞'];
+ const colors=['#00eaff','#ff00ff','#00ff99','#ffff00','#ffffff','#ff4444'];
+
+ function createFallingNote(){
+  const note=document.createElement('div');
+  note.className='falling-note';
+  note.textContent=symbols[Math.floor(Math.random()*symbols.length)];
+  note.style.left=Math.random()*95+'vw';
+  note.style.color=colors[Math.floor(Math.random()*colors.length)];
+  note.style.setProperty('--drift',(Math.random()*180-90)+'px');
+  note.style.animationDuration=(4+Math.random()*3)+'s';
+
+  document.body.appendChild(note);
+  note.addEventListener('animationend',()=>note.remove());
+ }
+
+ setInterval(createFallingNote,350);
+})();
+
+/* KHỞI ĐỘNG */
 loadProfile();
 loadPhotos();
 updateAccount();
- 
-/* HIỆU ỨNG NỐT NHẠC RGB RƠI */
-function createFallingNote(){
- const note=document.createElement('div');
- const notes=['♪','♫','♬','♩','𝄞'];
- note.textContent=notes[Math.floor(Math.random()*notes.length)];
-
- note.style.position='fixed';
- note.style.left=Math.random()*100+'vw';
- note.style.top='-40px';
- note.style.zIndex='899';
- note.style.pointerEvents='none';
- note.style.fontSize=(18+Math.random()*25)+'px';
- note.style.fontWeight='bold';
-
- const colors=['#00eaff','#ff00ff','#00ff99','#ffff00','#ff4444','#ffffff'];
- const color=colors[Math.floor(Math.random()*colors.length)];
- note.style.color=color;
- note.style.textShadow=`0 0 8px ${color},0 0 18px ${color}`;
-
- document.body.appendChild(note);
-
- const duration=3500+Math.random()*3500;
- const drift=(Math.random()-.5)*160;
- const start=performance.now();
-
- function animate(now){
-  const progress=(now-start)/duration;
-  if(progress>=1){
-   note.remove();
-   return;
-  }
-  note.style.transform=`translate(${drift*progress}px,${window.innerHeight*progress}px) rotate(${progress*360}deg)`;
-  note.style.opacity=String(Math.min(1,(1-progress)*2));
-  requestAnimationFrame(animate);
- }
- requestAnimationFrame(animate);
-}
-
-setInterval(createFallingNote,350);
-
 </script>
 </body>
 </html>
-
