@@ -1,35 +1,32 @@
 
-<!DOCTYPE html>
+<!doctype html>
 <html lang="vi">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="theme-color" content="#02040a">
 <title>LUAN PERSONAL VIP</title>
-
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
-:root{--cyan:#00eaff}
-body{background:#02040a;color:white;font-family:Arial,sans-serif;min-height:100vh;overflow-x:hidden}
-body:before{content:"";position:fixed;inset:0;z-index:-2;background:radial-gradient(ellipse at 50% 0%,#003c5570,transparent 65%),radial-gradient(ellipse at 10% 90%,#41008055,transparent 50%),radial-gradient(ellipse at 90% 80%,#001c6655,transparent 50%);background-size:200% 200%;animation:nebula 18s ease-in-out infinite alternate}
-@keyframes nebula{0%{background-position:0% 0%;filter:hue-rotate(0deg)}50%{background-position:100% 50%;filter:hue-rotate(100deg)}100%{background-position:0% 100%;filter:hue-rotate(200deg)}}
-body:after{content:"";position:fixed;inset:5px;z-index:1000;border:2px solid transparent;border-radius:13px;background:linear-gradient(135deg,red,orange,yellow,lime,cyan,blue,violet,red) border-box;-webkit-mask:linear-gradient(#fff 0 0) padding-box,linear-gradient(#fff 0 0);-webkit-mask-composite:xor;mask-composite:exclude;pointer-events:none;animation:edge 4s linear infinite}
-@keyframes edge{to{filter:hue-rotate(360deg)}}
-.logo,.hero h1,h2{background:linear-gradient(90deg,red,orange,yellow,lime,cyan,blue,violet,red);background-size:400% 400%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:rainbow 4s linear infinite}
-@keyframes rainbow{to{background-position:400% 50%}}
+body{background:#02040a;color:#fff;font:16px Arial;min-height:100vh;overflow-x:hidden}
+body:before{content:"";position:fixed;inset:0;z-index:-2;background:radial-gradient(ellipse at 50% 0%,#003c5570,transparent 65%),radial-gradient(ellipse at 10% 90%,#41008055,transparent 50%),radial-gradient(ellipse at 90% 80%,#001c6655,transparent 50%);animation:neb 18s ease-in-out infinite alternate}
+@keyframes neb{to{filter:hue-rotate(220deg);background-position:100% 100%}}
+body:after{content:"";position:fixed;inset:5px;z-index:1000;border:2px solid transparent;border-radius:13px;background:linear-gradient(135deg,red,orange,yellow,lime,cyan,blue,violet,red) border-box;-webkit-mask:linear-gradient(#fff 0 0) padding-box,linear-gradient(#fff 0 0);-webkit-mask-composite:xor;mask-composite:exclude;pointer-events:none;animation:hue 4s linear infinite}
+@keyframes hue{to{filter:hue-rotate(360deg)}}
+.logo,.hero h1,h2{background:linear-gradient(90deg,red,orange,yellow,lime,cyan,blue,violet,red);background-size:400%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:rainbow 4s linear infinite}
+@keyframes rainbow{to{background-position:400%}}
 .logo{font-size:32px;font-weight:900;letter-spacing:5px;filter:drop-shadow(0 0 8px cyan)}
-header{padding:25px 12px;text-align:center;border-bottom:1px solid #00eaff55}
+header{text-align:center;padding:25px 12px;border-bottom:1px solid #00eaff55}
 header p{color:#8da4b8}
-.light{height:3px;margin-top:15px;background:linear-gradient(90deg,transparent,cyan,white,magenta,blue,transparent);box-shadow:0 0 15px cyan;animation:laser 2s linear infinite alternate}
-@keyframes laser{from{opacity:.3}to{opacity:1;filter:hue-rotate(360deg)}}
+.light{height:3px;margin-top:15px;background:linear-gradient(90deg,transparent,cyan,white,magenta,blue,transparent);box-shadow:0 0 15px cyan;animation:hue 2s linear infinite alternate}
 .laserline{position:fixed;top:0;left:-100%;height:2px;width:70%;z-index:5;background:linear-gradient(90deg,transparent,cyan,white,magenta,transparent);box-shadow:0 0 20px cyan;pointer-events:none;animation:scan 7s linear infinite}
 @keyframes scan{to{left:150%}}
 nav{display:flex;justify-content:center;flex-wrap:wrap;gap:10px;padding:18px}
 button{border:1px solid cyan;background:#071522;color:white;padding:12px 16px;border-radius:9px;cursor:pointer;font-weight:bold;transition:.2s}
-button:hover{background:cyan;color:black;box-shadow:0 0 20px cyan;transform:scale(1.04)}
+button:hover{background:cyan;color:#000;box-shadow:0 0 20px cyan}
 .container{max-width:950px;margin:auto;padding:18px}
-.card{background:linear-gradient(145deg,#0a1420,#03070e);border:1px solid #00eaff88;border-radius:16px;padding:22px;margin-bottom:20px;animation:rgbGlow 8s linear infinite;transition:.2s}
-@keyframes rgbGlow{0%,100%{border-color:#00eaff;box-shadow:0 0 14px #00eaff22}25%{border-color:#a000ff;box-shadow:0 0 19px #a000ff44}50%{border-color:#ff00aa;box-shadow:0 0 19px #ff00aa44}75%{border-color:#00ff99;box-shadow:0 0 19px #00ff9944}}
+.card{background:linear-gradient(145deg,#0a1420,#03070e);border:1px solid #00eaff88;border-radius:16px;padding:22px;margin-bottom:20px;animation:glow 8s linear infinite}
+@keyframes glow{0%,100%{border-color:#00eaff;box-shadow:0 0 14px #00eaff22}25%{border-color:#a000ff;box-shadow:0 0 19px #a000ff44}50%{border-color:#ff00aa;box-shadow:0 0 19px #ff00aa44}75%{border-color:#00ff99;box-shadow:0 0 19px #00ff9944}}
 h2{margin-bottom:16px}
 .hero{text-align:center;padding:48px 15px}
 .hero h1{font-size:38px;margin-bottom:15px}
@@ -37,151 +34,123 @@ h2{margin-bottom:16px}
 .hidden{display:none!important}
 input,textarea{width:100%;padding:13px;margin:8px 0;background:#020812;color:white;border:1px solid #00eaff55;border-radius:8px;outline:none}
 input:focus,textarea:focus{border-color:cyan;box-shadow:0 0 12px cyan}
-.primary{background:#00d9ee;color:#001018;border:none}
+.primary{background:#00d9ee;color:#001018;border:0}
 .center{text-align:center}
 .avatar{width:100px;height:100px;border-radius:50%;object-fit:cover;border:2px solid cyan;box-shadow:0 0 20px cyan}
 .gallery{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
 .gallery img{width:100%;height:160px;object-fit:cover;border-radius:10px;border:1px solid #00eaff55}
 .small{font-size:12px;color:#8299aa;margin-top:10px}
 footer{text-align:center;color:#62788b;padding:25px;border-top:1px solid #00eaff33}
-.sparkle{position:fixed;pointer-events:none;color:white;z-index:900;text-shadow:0 0 8px cyan,0 0 15px white;animation:twinkle 2s ease-in-out forwards}
+.sparkle{position:fixed;pointer-events:none;color:white;z-index:900;text-shadow:0 0 8px cyan,0 0 15px white;animation:twinkle 2s forwards}
 @keyframes twinkle{0%,100%{opacity:0;transform:scale(.2)}50%{opacity:1;transform:scale(1.5) rotate(180deg)}}
-.music-btn{position:fixed;right:20px;bottom:22px;z-index:1100;border-radius:50%;width:58px;height:58px;font-size:23px;background:#061522;border:2px solid cyan;box-shadow:0 0 18px cyan;animation:musicGlow 2s infinite alternate}
-@keyframes musicGlow{to{transform:scale(1.1);box-shadow:0 0 28px magenta}}
-.music-btn.playing{background:#00d9ee;color:black}
-.music-status{position:fixed;right:20px;bottom:90px;z-index:1100;background:#071522;border:1px solid cyan;color:white;padding:8px 12px;border-radius:9px;font-size:12px;max-width:260px;display:none;overflow-wrap:anywhere}
+.music-btn{position:fixed;right:20px;bottom:22px;z-index:2100;border-radius:50%;width:58px;height:58px;font-size:23px;background:#061522;border:2px solid cyan;box-shadow:0 0 18px cyan;animation:pulse 2s infinite alternate}
+.music-btn.playing{background:#00d9ee;color:#000}
+@keyframes pulse{to{transform:scale(1.1);box-shadow:0 0 28px magenta}}
+.music-status{position:fixed;right:20px;bottom:90px;z-index:2100;background:#071522;border:1px solid cyan;padding:8px 12px;border-radius:9px;font-size:12px;max-width:260px;display:none}
 .music-status.show{display:block}
-.lightning-bolt{position:fixed;z-index:950;top:0;height:72vh;width:38vw;pointer-events:none;filter:drop-shadow(0 0 7px cyan) drop-shadow(0 0 18px #8b5cff);animation:boltFlash .55s ease-out forwards}
+.lightning-bolt{position:fixed;z-index:950;top:0;height:72vh;width:38vw;pointer-events:none;filter:drop-shadow(0 0 7px cyan) drop-shadow(0 0 18px #8b5cff);animation:bolt .55s forwards}
 .lightning-bolt polyline{fill:none;stroke:#d9ffff;stroke-width:3.5;stroke-linecap:round;stroke-linejoin:round}
-@keyframes boltFlash{0%{opacity:0}8%{opacity:1}18%{opacity:.25}28%{opacity:1}55%{opacity:.85}100%{opacity:0}}
-.lightning-screen-flash{position:fixed;inset:0;z-index:940;pointer-events:none;background:#b9faff;animation:screenFlash .42s ease-out forwards}
-@keyframes screenFlash{0%,100%{opacity:0}8%{opacity:.22}18%{opacity:0}29%{opacity:.12}45%{opacity:0}}
-
-/* NỐT NHẠC RGB RƠI */
-.falling-note{position:fixed;top:-50px;z-index:899;pointer-events:none;font-size:28px;font-weight:bold;will-change:transform,opacity;text-shadow:0 0 8px currentColor,0 0 18px currentColor;animation:musicRain linear forwards}
-@keyframes musicRain{
-0%{transform:translate3d(0,0,0) rotate(0deg);opacity:0}
-10%{opacity:1}
-90%{opacity:1}
-100%{transform:translate3d(var(--drift),110vh,0) rotate(400deg);opacity:0}
-}
-
-@media(max-width:600px){
-.hero{padding:35px 12px}
-.hero h1{font-size:30px}
-.logo{font-size:26px;letter-spacing:3px}
-.card{padding:17px}
-nav{gap:7px;padding:13px 8px}
-nav button{padding:10px 11px;font-size:12px}
-.lightning-bolt{width:58vw}
-}
-@media(prefers-reduced-motion:reduce){
-body:before,.card,.logo,.hero h1,h2,.light,.laserline{animation:none!important}
-}
+@keyframes bolt{0%{opacity:0}8%,28%,55%{opacity:1}18%{opacity:.25}100%{opacity:0}}
+.lightning-screen-flash{position:fixed;inset:0;z-index:940;pointer-events:none;background:#b9faff;animation:flash .42s forwards}
+@keyframes flash{0%,100%{opacity:0}8%{opacity:.22}29%{opacity:.12}}
+.falling-note{position:fixed!important;top:-45px;left:0;z-index:2000!important;display:block;pointer-events:none!important;font-size:30px;line-height:1;font-weight:900;text-shadow:0 0 7px currentColor,0 0 16px currentColor,0 0 28px currentColor;will-change:transform,opacity}
+@media(max-width:600px){.hero{padding:35px 12px}.hero h1{font-size:30px}.logo{font-size:26px;letter-spacing:3px}.card{padding:17px}nav{gap:7px;padding:13px 8px}nav button{padding:10px 11px;font-size:12px}.lightning-bolt{width:58vw}}
 </style>
 </head>
-
 <body>
 <div class="laserline"></div>
-
 <header>
- <div class="logo">LUAN PERSONAL</div>
- <div class="light"></div>
- <p style="margin-top:12px;letter-spacing:4px">VIP RGB EXPERIENCE</p>
+<div class="logo">LUAN PERSONAL</div>
+<div class="light"></div>
+<p style="margin-top:12px;letter-spacing:4px">VIP RGB EXPERIENCE</p>
 </header>
 
 <nav>
- <button onclick="show('home')">TRANG CHỦ</button>
- <button onclick="show('about')">GIỚI THIỆU</button>
- <button onclick="show('gallery')">THƯ VIỆN</button>
- <button onclick="show('account')">TÀI KHOẢN</button>
+<button onclick="show('home')">TRANG CHỦ</button>
+<button onclick="show('about')">GIỚI THIỆU</button>
+<button onclick="show('gallery')">THƯ VIỆN</button>
+<button onclick="show('account')">TÀI KHOẢN</button>
 </nav>
 
 <div class="container">
-
 <section id="home">
- <div class="card hero">
-  <h1>WELCOME TO LUAN</h1>
-  <p>Chào mừng đến với thế giới riêng của tôi.</p>
-  <p>Đam mê công nghệ • Ô tô • Cuộc sống</p>
-  <br>
-  <button onclick="show('about')">KHÁM PHÁ NGAY</button>
- </div>
- <div class="card center">
-  <h2>MY DREAM CAR</h2>
-  <h1 style="color:cyan">HONDA CIVIC GEN 8</h1>
-  <p style="color:#91a6b8;margin-top:12px">DREAM IT. BUILD IT. DRIVE IT.</p>
- </div>
+<div class="card hero">
+<h1>WELCOME TO LUAN</h1>
+<p>Chào mừng đến với thế giới riêng của tôi.</p>
+<p>Đam mê công nghệ • Ô tô • Cuộc sống</p><br>
+<button onclick="show('about')">KHÁM PHÁ NGAY</button>
+</div>
+<div class="card center">
+<h2>MY DREAM CAR</h2>
+<h1 style="color:cyan">HONDA CIVIC GEN 8</h1>
+<p style="color:#91a6b8;margin-top:12px">DREAM IT. BUILD IT. DRIVE IT.</p>
+</div>
 </section>
 
 <section id="about" class="hidden">
- <div class="card center">
-  <h2>GIỚI THIỆU</h2>
-  <img id="showAvatar" class="avatar" src="https://placehold.co/150x150/071522/00eaff?text=LUAN">
-  <h2 id="showName">LUAN</h2>
-  <p id="showBio">Welcome to my personal website.</p>
-  <br>
-  <p>Đam mê Honda Civic, công nghệ và sáng tạo.</p>
- </div>
- <div class="card">
-  <h2>CHỈNH SỬA HỒ SƠ</h2>
-  <input id="name" placeholder="Tên của bạn">
-  <textarea id="bio" placeholder="Giới thiệu bản thân"></textarea>
-  <input id="avatar" placeholder="Link ảnh đại diện">
-  <button class="primary" onclick="saveProfile()">LƯU HỒ SƠ</button>
- </div>
+<div class="card center">
+<h2>GIỚI THIỆU</h2>
+<img id="showAvatar" class="avatar" src="https://placehold.co/150x150/071522/00eaff?text=LUAN" alt="Avatar">
+<h2 id="showName">LUAN</h2>
+<p id="showBio">Welcome to my personal website.</p><br>
+<p>Đam mê Honda Civic, công nghệ và sáng tạo.</p>
+</div>
+<div class="card">
+<h2>CHỈNH SỬA HỒ SƠ</h2>
+<input id="name" placeholder="Tên của bạn">
+<textarea id="bio" placeholder="Giới thiệu bản thân"></textarea>
+<input id="avatar" placeholder="Link ảnh đại diện">
+<button class="primary" onclick="saveProfile()">LƯU HỒ SƠ</button>
+</div>
 </section>
 
 <section id="gallery" class="hidden">
- <div class="card">
-  <h2>THƯ VIỆN ẢNH</h2>
-  <input id="photoURL" placeholder="Dán link hình ảnh">
-  <button onclick="addPhoto()">THÊM ẢNH</button>
-  <div class="gallery" id="photos" style="margin-top:20px"></div>
- </div>
+<div class="card">
+<h2>THƯ VIỆN ẢNH</h2>
+<input id="photoURL" placeholder="Dán link hình ảnh">
+<button onclick="addPhoto()">THÊM ẢNH</button>
+<div class="gallery" id="photos" style="margin-top:20px"></div>
+</div>
 </section>
 
 <section id="account" class="hidden">
- <div class="card" id="loginBox">
-  <h2>ĐĂNG NHẬP</h2>
-  <input id="loginUser" placeholder="Tên tài khoản" autocomplete="username">
-  <input id="loginPass" type="password" placeholder="Mật khẩu" autocomplete="current-password">
-  <button class="primary" onclick="login()">ĐĂNG NHẬP</button>
-  <p class="small">Chưa có tài khoản?</p>
-  <button onclick="showRegister()">TẠO TÀI KHOẢN MỚI</button>
-  <p id="loginMessage" style="color:cyan;margin-top:15px"></p>
- </div>
+<div class="card" id="loginBox">
+<h2>ĐĂNG NHẬP</h2>
+<input id="loginUser" placeholder="Tên tài khoản" autocomplete="username">
+<input id="loginPass" type="password" placeholder="Mật khẩu" autocomplete="current-password">
+<button class="primary" onclick="login()">ĐĂNG NHẬP</button>
+<p class="small">Chưa có tài khoản?</p>
+<button onclick="showRegister()">TẠO TÀI KHOẢN MỚI</button>
+<p id="loginMessage" style="color:cyan;margin-top:15px"></p>
+</div>
 
- <div class="card hidden" id="registerBox">
-  <h2>ĐĂNG KÝ TÀI KHOẢN</h2>
-  <p style="color:#91a6b8;margin-bottom:10px">Tạo tài khoản mới để sử dụng website.</p>
-  <input id="regUser" placeholder="Tên tài khoản mới" autocomplete="username">
-  <input id="regPass" type="password" placeholder="Mật khẩu (ít nhất 6 ký tự)" autocomplete="new-password">
-  <input id="regConfirm" type="password" placeholder="Nhập lại mật khẩu" autocomplete="new-password">
-  <button class="primary" onclick="register()">ĐĂNG KÝ NGAY</button>
-  <button onclick="showLogin()" style="margin-top:10px">QUAY LẠI ĐĂNG NHẬP</button>
-  <p id="registerMessage" style="color:cyan;margin-top:15px"></p>
- </div>
+<div class="card hidden" id="registerBox">
+<h2>ĐĂNG KÝ TÀI KHOẢN</h2>
+<p style="color:#91a6b8;margin-bottom:10px">Tạo tài khoản mới để sử dụng website.</p>
+<input id="regUser" placeholder="Tên tài khoản mới" autocomplete="username">
+<input id="regPass" type="password" placeholder="Mật khẩu (ít nhất 6 ký tự)" autocomplete="new-password">
+<input id="regConfirm" type="password" placeholder="Nhập lại mật khẩu" autocomplete="new-password">
+<button class="primary" onclick="register()">ĐĂNG KÝ NGAY</button>
+<button onclick="showLogin()" style="margin-top:10px">QUAY LẠI ĐĂNG NHẬP</button>
+<p id="registerMessage" style="color:cyan;margin-top:15px"></p>
+</div>
 
- <div class="card hidden" id="userBox">
-  <h2>TÀI KHOẢN CỦA BẠN</h2>
-  <p id="welcome"></p>
-  <br>
-  <button onclick="logout()">ĐĂNG XUẤT</button>
- </div>
+<div class="card hidden" id="userBox">
+<h2>TÀI KHOẢN CỦA BẠN</h2>
+<p id="welcome"></p><br>
+<button onclick="logout()">ĐĂNG XUẤT</button>
+</div>
 </section>
-
 </div>
 
 <footer>
- <p>© 2026 LUAN PERSONAL</p>
- <p class="small">DESIGNED WITH PASSION • VIP RGB EDITION</p>
+<p>© 2026 LUAN PERSONAL</p>
+<p class="small">DESIGNED WITH PASSION • VIP RGB EDITION</p>
 </footer>
 
 <audio id="music" preload="auto" playsinline webkit-playsinline>
- <source src="https://lluanken20002-dev.github.io/luan-personal/nhac.mp3.mp3" type="audio/mpeg">
+<source src="https://lluanken20002-dev.github.io/luan-personal/nhac.mp3.mp3" type="audio/mpeg">
 </audio>
-
 <div class="music-status" id="musicStatus">Sẵn sàng phát nhạc</div>
 <button class="music-btn" id="musicBtn" type="button" aria-label="Phát nhạc">🎵</button>
 
@@ -189,276 +158,290 @@ body:before,.card,.logo,.hero h1,h2,.light,.laserline{animation:none!important}
 const $=id=>document.getElementById(id);
 
 function show(id){
- document.querySelectorAll('.container section').forEach(s=>s.classList.add('hidden'));
- $(id).classList.remove('hidden');
+document.querySelectorAll('.container section').forEach(s=>s.classList.add('hidden'));
+$(id).classList.remove('hidden');
 }
 
 function getUsers(){
- try{return JSON.parse(localStorage.getItem('luan_users')||'{}')}
- catch(e){return {}}
+try{return JSON.parse(localStorage.getItem('luan_users')||'{}')}
+catch(e){return {}}
 }
 
-/* ĐĂNG KÝ */
 function showRegister(){
- $('loginBox').classList.add('hidden');
- $('userBox').classList.add('hidden');
- $('registerBox').classList.remove('hidden');
- $('registerMessage').textContent='';
- $('regUser').value='';
- $('regPass').value='';
- $('regConfirm').value='';
+$('loginBox').classList.add('hidden');
+$('userBox').classList.add('hidden');
+$('registerBox').classList.remove('hidden');
+$('registerMessage').textContent='';
+$('regUser').value='';
+$('regPass').value='';
+$('regConfirm').value='';
 }
 
-/* QUAY LẠI ĐĂNG NHẬP */
 function showLogin(){
- $('registerBox').classList.add('hidden');
- $('userBox').classList.add('hidden');
- $('loginBox').classList.remove('hidden');
- $('loginMessage').textContent='';
+$('registerBox').classList.add('hidden');
+$('userBox').classList.add('hidden');
+$('loginBox').classList.remove('hidden');
+$('loginMessage').textContent='';
 }
 
-/* TẠO TÀI KHOẢN */
 function register(){
- const u=$('regUser').value.trim();
- const p=$('regPass').value;
- const confirm=$('regConfirm').value;
+const u=$('regUser').value.trim();
+const p=$('regPass').value;
+const cf=$('regConfirm').value;
 
- if(!u||!p||!confirm){
-  $('registerMessage').textContent='Vui lòng nhập đầy đủ thông tin!';
-  return;
- }
- if(u.length<3){
-  $('registerMessage').textContent='Tên tài khoản phải có ít nhất 3 ký tự!';
-  return;
- }
- if(p.length<6){
-  $('registerMessage').textContent='Mật khẩu phải có ít nhất 6 ký tự!';
-  return;
- }
- if(p!==confirm){
-  $('registerMessage').textContent='Mật khẩu nhập lại không khớp!';
-  return;
- }
-
- const users=getUsers();
- if(users[u]){
-  $('registerMessage').textContent='Tên tài khoản đã tồn tại!';
-  return;
- }
-
- users[u]={password:p};
- localStorage.setItem('luan_users',JSON.stringify(users));
-
- $('loginUser').value=u;
- $('loginPass').value='';
- $('registerBox').classList.add('hidden');
- $('loginBox').classList.remove('hidden');
- $('loginMessage').textContent='Đăng ký thành công! Hãy đăng nhập.';
+if(!u||!p||!cf){
+$('registerMessage').textContent='Vui lòng nhập đầy đủ thông tin!';
+return;
+}
+if(u.length<3){
+$('registerMessage').textContent='Tên tài khoản phải có ít nhất 3 ký tự!';
+return;
+}
+if(p.length<6){
+$('registerMessage').textContent='Mật khẩu phải có ít nhất 6 ký tự!';
+return;
+}
+if(p!==cf){
+$('registerMessage').textContent='Mật khẩu nhập lại không khớp!';
+return;
 }
 
-/* ĐĂNG NHẬP */
-function login(){
- const u=$('loginUser').value.trim();
- const p=$('loginPass').value;
- const users=getUsers();
+const users=getUsers();
+if(users[u]){
+$('registerMessage').textContent='Tên tài khoản đã tồn tại!';
+return;
+}
 
- if(users[u]&&users[u].password===p){
-  localStorage.setItem('luan_current',u);
-  updateAccount();
- }else{
-  $('loginMessage').textContent='Sai tài khoản hoặc mật khẩu!';
- }
+users[u]={password:p};
+localStorage.setItem('luan_users',JSON.stringify(users));
+$('loginUser').value=u;
+$('loginPass').value='';
+$('registerBox').classList.add('hidden');
+$('loginBox').classList.remove('hidden');
+$('loginMessage').textContent='Đăng ký thành công! Hãy đăng nhập.';
+}
+
+function login(){
+const u=$('loginUser').value.trim();
+const p=$('loginPass').value;
+const users=getUsers();
+
+if(users[u]&&users[u].password===p){
+localStorage.setItem('luan_current',u);
+updateAccount();
+}else{
+$('loginMessage').textContent='Sai tài khoản hoặc mật khẩu!';
+}
 }
 
 function logout(){
- localStorage.removeItem('luan_current');
- updateAccount();
+localStorage.removeItem('luan_current');
+updateAccount();
 }
 
 function updateAccount(){
- const u=localStorage.getItem('luan_current');
- $('loginBox').classList.toggle('hidden',!!u);
- $('registerBox').classList.add('hidden');
- $('userBox').classList.toggle('hidden',!u);
- $('welcome').textContent=u?'Xin chào '+u+'!':'';
+const u=localStorage.getItem('luan_current');
+$('loginBox').classList.toggle('hidden',!!u);
+$('registerBox').classList.add('hidden');
+$('userBox').classList.toggle('hidden',!u);
+$('welcome').textContent=u?'Xin chào '+u+'!':'';
 }
 
-/* HỒ SƠ */
 function saveProfile(){
- let data={
-  name:$('name').value,
-  bio:$('bio').value,
-  avatar:$('avatar').value
- };
- localStorage.setItem('luan_profile',JSON.stringify(data));
- loadProfile();
- alert('Đã lưu hồ sơ!');
+const d={
+name:$('name').value,
+bio:$('bio').value,
+avatar:$('avatar').value
+};
+localStorage.setItem('luan_profile',JSON.stringify(d));
+loadProfile();
+alert('Đã lưu hồ sơ!');
 }
 
 function loadProfile(){
- let d={};
- try{d=JSON.parse(localStorage.getItem('luan_profile')||'{}')}catch(e){}
- $('name').value=d.name||'';
- $('bio').value=d.bio||'';
- $('avatar').value=d.avatar||'';
- $('showName').textContent=d.name||'LUAN';
- $('showBio').textContent=d.bio||'Welcome to my personal website.';
- $('showAvatar').src=d.avatar||'https://placehold.co/150x150/071522/00eaff?text=LUAN';
+let d={};
+try{d=JSON.parse(localStorage.getItem('luan_profile')||'{}')}catch(e){}
+$('name').value=d.name||'';
+$('bio').value=d.bio||'';
+$('avatar').value=d.avatar||'';
+$('showName').textContent=d.name||'LUAN';
+$('showBio').textContent=d.bio||'Welcome to my personal website.';
+$('showAvatar').src=d.avatar||'https://placehold.co/150x150/071522/00eaff?text=LUAN';
 }
 
-/* THƯ VIỆN ẢNH */
 function addPhoto(){
- let url=$('photoURL').value.trim();
- if(!url)return;
- let photos=[];
- try{photos=JSON.parse(localStorage.getItem('luan_photos')||'[]')}catch(e){}
- photos.push(url);
- localStorage.setItem('luan_photos',JSON.stringify(photos));
- $('photoURL').value='';
- loadPhotos();
+const url=$('photoURL').value.trim();
+if(!url)return;
+let a=[];
+try{a=JSON.parse(localStorage.getItem('luan_photos')||'[]')}catch(e){}
+a.push(url);
+localStorage.setItem('luan_photos',JSON.stringify(a));
+$('photoURL').value='';
+loadPhotos();
 }
 
 function loadPhotos(){
- let photos=[];
- try{photos=JSON.parse(localStorage.getItem('luan_photos')||'[]')}catch(e){}
- $('photos').innerHTML='';
- photos.forEach((url,i)=>{
-  let box=document.createElement('div');
-  let img=document.createElement('img');
-  img.src=url;
-  img.onerror=()=>img.style.display='none';
-
-  let btn=document.createElement('button');
-  btn.textContent='XÓA';
-  btn.style.marginTop='5px';
-  btn.onclick=()=>{
-   photos.splice(i,1);
-   localStorage.setItem('luan_photos',JSON.stringify(photos));
-   loadPhotos();
-  };
-
-  box.append(img,btn);
-  $('photos').appendChild(box);
- });
+let a=[];
+try{a=JSON.parse(localStorage.getItem('luan_photos')||'[]')}catch(e){}
+$('photos').innerHTML='';
+a.forEach((url,i)=>{
+const box=document.createElement('div');
+const img=document.createElement('img');
+const b=document.createElement('button');
+img.src=url;
+img.alt='Ảnh thư viện';
+img.onerror=()=>img.style.display='none';
+b.textContent='XÓA';
+b.style.marginTop='5px';
+b.onclick=()=>{
+a.splice(i,1);
+localStorage.setItem('luan_photos',JSON.stringify(a));
+loadPhotos();
+};
+box.append(img,b);
+$('photos').appendChild(box);
+});
 }
 
-/* TRÌNH PHÁT NHẠC */
+/* PHÁT NHẠC - iPhone cần chạm nút */
 const music=$('music');
 const musicBtn=$('musicBtn');
 const musicStatus=$('musicStatus');
 music.volume=1;
 
-function showMusicStatus(message){
- musicStatus.textContent=message;
- musicStatus.classList.add('show');
+function status(t){
+musicStatus.textContent=t;
+musicStatus.classList.add('show');
 }
 
 musicBtn.addEventListener('click',async()=>{
- if(!music.paused){
-  music.pause();
-  return;
- }
- showMusicStatus('Đang tải nhạc...');
- try{
-  await music.play();
-  musicBtn.classList.add('playing');
-  musicBtn.textContent='Ⅱ';
-  showMusicStatus('♫ Đang phát nhạc');
- }catch(error){
-  musicBtn.classList.remove('playing');
-  musicBtn.textContent='🎵';
-  showMusicStatus('Lỗi phát nhạc: '+error.name);
- }
+if(!music.paused){
+music.pause();
+return;
+}
+status('Đang tải nhạc...');
+try{
+await music.play();
+musicBtn.classList.add('playing');
+musicBtn.textContent='Ⅱ';
+status('♫ Đang phát nhạc');
+}catch(e){
+musicBtn.classList.remove('playing');
+musicBtn.textContent='🎵';
+status('Lỗi phát nhạc: '+e.name);
+}
 });
 
 music.addEventListener('play',()=>{
- musicBtn.classList.add('playing');
- musicBtn.textContent='Ⅱ';
- showMusicStatus('♫ Đang phát nhạc');
+musicBtn.classList.add('playing');
+musicBtn.textContent='Ⅱ';
+status('♫ Đang phát nhạc');
 });
 
 music.addEventListener('pause',()=>{
- musicBtn.classList.remove('playing');
- musicBtn.textContent='🎵';
+musicBtn.classList.remove('playing');
+musicBtn.textContent='🎵';
 });
 
 music.addEventListener('ended',()=>{
- musicBtn.classList.remove('playing');
- musicBtn.textContent='🎵';
- showMusicStatus('Đã phát xong');
+musicBtn.classList.remove('playing');
+musicBtn.textContent='🎵';
+status('Đã phát xong');
 });
 
 music.addEventListener('error',()=>{
- let code=music.error?music.error.code:'không rõ';
- showMusicStatus('Không tải được file nhạc. Mã lỗi: '+code);
+status('Không tải được file nhạc. Kiểm tra nhac.mp3.mp3');
 });
 
-/* TIA SÉT */
-function createLightning(){
- const svg=document.createElementNS('http://www.w3.org/2000/svg','svg');
- svg.setAttribute('viewBox','0 0 300 600');
- svg.classList.add('lightning-bolt');
- svg.style.left=(Math.random()*78)+'vw';
+/* HIỆU ỨNG SÉT */
+function lightning(){
+const svg=document.createElementNS('http://www.w3.org/2000/svg','svg');
+svg.setAttribute('viewBox','0 0 300 600');
+svg.classList.add('lightning-bolt');
+svg.style.left=Math.random()*78+'vw';
 
- const points=['150,0'];
- let x=150;
- for(let y=65;y<570;y+=65){
-  x=Math.max(35,Math.min(265,x+(Math.random()-.5)*145));
-  points.push(x+','+y);
- }
+let pts=['150,0'];
+let x=150;
 
- const line=document.createElementNS('http://www.w3.org/2000/svg','polyline');
- line.setAttribute('points',points.join(' '));
- svg.appendChild(line);
- document.body.appendChild(svg);
+for(let y=65;y<570;y+=65){
+x=Math.max(35,Math.min(265,x+(Math.random()-.5)*145));
+pts.push(x+','+y);
+}
 
- const flash=document.createElement('div');
- flash.className='lightning-screen-flash';
- document.body.appendChild(flash);
+const line=document.createElementNS('http://www.w3.org/2000/svg','polyline');
+line.setAttribute('points',pts.join(' '));
+svg.appendChild(line);
+document.body.appendChild(svg);
 
- setTimeout(()=>{svg.remove();flash.remove()},600);
+const f=document.createElement('div');
+f.className='lightning-screen-flash';
+document.body.appendChild(f);
+
+setTimeout(()=>{
+svg.remove();
+f.remove();
+},600);
 }
 
 function scheduleLightning(){
- createLightning();
- setTimeout(scheduleLightning,4200+Math.random()*5200);
+lightning();
+setTimeout(scheduleLightning,4200+Math.random()*5200);
 }
 setTimeout(scheduleLightning,2200);
 
-/* LẤP LÁNH */
+/* HIỆU ỨNG LẤP LÁNH */
 setInterval(()=>{
- let s=document.createElement('div');
- s.className='sparkle';
- s.textContent=['✦','✧','✨','★'][Math.floor(Math.random()*4)];
- s.style.left=Math.random()*98+'vw';
- s.style.top=Math.random()*95+'vh';
- s.style.fontSize=(10+Math.random()*14)+'px';
- document.body.appendChild(s);
- setTimeout(()=>s.remove(),2000);
+const s=document.createElement('div');
+s.className='sparkle';
+s.textContent=['✦','✧','✨','★'][Math.floor(Math.random()*4)];
+s.style.left=Math.random()*98+'vw';
+s.style.top=Math.random()*95+'vh';
+s.style.fontSize=10+Math.random()*14+'px';
+document.body.appendChild(s);
+setTimeout(()=>s.remove(),2000);
 },500);
 
-/* NỐT NHẠC RGB RƠI - CHẠY CẢ KHI CHƯA BẬT NHẠC */
+/* NỐT NHẠC RGB RƠI LIÊN TỤC */
 (function(){
- const symbols=['♪','♫','♬','♩','𝄞'];
- const colors=['#00eaff','#ff00ff','#00ff99','#ffff00','#ffffff','#ff4444'];
+const symbols=['♪','♫','♬','♩','𝄞'];
+const colors=['#00eaff','#ff00ff','#00ff99','#ffff00','#fff','#ff4444'];
 
- function createFallingNote(){
-  const note=document.createElement('div');
-  note.className='falling-note';
-  note.textContent=symbols[Math.floor(Math.random()*symbols.length)];
-  note.style.left=Math.random()*95+'vw';
-  note.style.color=colors[Math.floor(Math.random()*colors.length)];
-  note.style.setProperty('--drift',(Math.random()*180-90)+'px');
-  note.style.animationDuration=(4+Math.random()*3)+'s';
+function drop(){
+const n=document.createElement('div');
+n.className='falling-note';
+n.textContent=symbols[Math.floor(Math.random()*symbols.length)];
+n.style.left=(3+Math.random()*92)+'vw';
+n.style.color=colors[Math.floor(Math.random()*colors.length)];
+document.body.appendChild(n);
 
-  document.body.appendChild(note);
-  note.addEventListener('animationend',()=>note.remove());
- }
+const dx=Math.random()*160-80;
+const dur=5000+Math.random()*2500;
 
- setInterval(createFallingNote,350);
+if(n.animate){
+const a=n.animate([
+{transform:'translate3d(0,0,0) rotate(0)',opacity:0},
+{transform:'translate3d('+(dx*.25)+'px,18vh,0) rotate(90deg)',opacity:1,offset:.18},
+{transform:'translate3d('+dx+'px,110vh,0) rotate(420deg)',opacity:0}
+],{
+duration:dur,
+easing:'linear',
+fill:'forwards'
+});
+a.onfinish=()=>n.remove();
+}else{
+n.style.transition='transform '+dur+'ms linear,opacity '+dur+'ms linear';
+requestAnimationFrame(()=>{
+n.style.transform='translate3d('+dx+'px,110vh,0) rotate(420deg)';
+n.style.opacity=0;
+});
+setTimeout(()=>n.remove(),dur+100);
+}
+}
+
+drop();
+setInterval(drop,650);
 })();
 
-/* KHỞI ĐỘNG */
 loadProfile();
 loadPhotos();
 updateAccount();
