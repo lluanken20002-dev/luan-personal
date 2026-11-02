@@ -6,6 +6,61 @@
 <meta name="theme-color" content="#02040a">
 <title>LUAN PERSONAL</title>
 <style>
+ 
+/* NỀN SAO LẤP LÁNH */
+body {
+  background:
+    radial-gradient(ellipse at 20% 20%, #14234a 0%, transparent 40%),
+    radial-gradient(ellipse at 80% 35%, #301044 0%, transparent 38%),
+    radial-gradient(ellipse at 50% 100%, #102b45 0%, transparent 45%),
+    linear-gradient(135deg, #080b1c, #090515, #071323);
+  background-size: 200% 200%;
+  animation: galaxyBackground 12s ease infinite;
+}
+
+@keyframes galaxyBackground {
+  0% { background-position: 0% 0%; }
+  50% { background-position: 100% 100%; }
+  100% { background-position: 0% 0%; }
+}
+
+/* HẠT SÁNG LẤP LÁNH */
+#effects::before,
+#effects::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image:
+    radial-gradient(2px 2px at 10% 20%, white 90%, transparent),
+    radial-gradient(2px 2px at 30% 70%, #00eaff 90%, transparent),
+    radial-gradient(3px 3px at 50% 40%, white 90%, transparent),
+    radial-gradient(2px 2px at 70% 15%, #ff00e6 90%, transparent),
+    radial-gradient(2px 2px at 85% 65%, white 90%, transparent),
+    radial-gradient(3px 3px at 95% 35%, #00eaff 90%, transparent);
+  background-size: 250px 250px;
+  animation: sparkle 5s linear infinite;
+}
+
+#effects::after {
+  background-size: 170px 190px;
+  animation-duration: 8s;
+  animation-direction: reverse;
+  opacity: .5;
+}
+
+@keyframes sparkle {
+  0%, 100% { opacity: .2; }
+  50% { opacity: 1; }
+}
+
+/* ÁNH SÁNG NEON */
+.panel {
+  box-shadow:
+    0 0 15px #00eaff18,
+    0 0 30px #a855ff12,
+    inset 0 0 20px #00eaff08;
+}
+
 :root{--neon:#00eaff}
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
