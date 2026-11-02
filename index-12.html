@@ -1,0 +1,349 @@
+
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LUAN PERSONAL</title>
+
+<style>
+/* NEON CYBER VIP */
+html{scroll-behavior:smooth}
+
+body{
+ background:
+ radial-gradient(ellipse at 20% 20%,#061c39 0%,transparent 45%),
+ radial-gradient(ellipse at 80% 80%,#061b28 0%,transparent 45%),
+ #02040a;
+}
+
+.hero h1{
+ animation:neonPulse 1.8s infinite alternate;
+}
+
+@keyframes neonPulse{
+ from{text-shadow:0 0 8px #00eaff,0 0 20px #087cff}
+ to{text-shadow:0 0 15px #00eaff,0 0 45px #087cff,0 0 70px #00eaff}
+}
+
+.card{
+ position:relative;
+ overflow:hidden;
+}
+
+.card:before{
+ content:"";
+ position:absolute;
+ top:-100%;
+ left:-50%;
+ width:200%;
+ height:200%;
+ background:linear-gradient(transparent,#00eaff12,transparent);
+ transform:rotate(35deg);
+ animation:shine 5s linear infinite;
+ pointer-events:none;
+}
+
+@keyframes shine{
+ to{top:100%;left:100%}
+}
+
+button{
+ box-shadow:0 0 8px #00eaff44;
+}
+
+button:active{
+ transform:scale(.94);
+}
+
+.logo{
+ animation:logoGlow 2s infinite alternate;
+}
+
+@keyframes logoGlow{
+ to{ text-shadow:0 0 20px #00eaff,0 0 35px #087cff}
+}
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--neon:#00eaff;--blue:#087cff;--bg:#050811}
+body{
+ background:var(--bg);color:white;
+ font-family:Arial,sans-serif;
+ min-height:100vh;overflow-x:hidden;
+}
+body:before,body:after{
+ content:"";position:fixed;width:350px;height:350px;
+ border-radius:50%;filter:blur(110px);
+ opacity:.22;z-index:-1;animation:float 8s infinite alternate;
+}
+body:before{background:#0077ff;top:-100px;left:-100px}
+body:after{background:#00eaff;bottom:-100px;right:-100px;animation-delay:2s}
+@keyframes float{to{transform:translate(100px,80px) scale(1.3)}}
+header{
+ display:flex;justify-content:space-between;align-items:center;
+ padding:20px 7%;border-bottom:1px solid #00eaff44;
+ position:sticky;top:0;background:#050811dd;
+ backdrop-filter:blur(15px);z-index:10;
+}
+.logo{font-size:22px;font-weight:900;color:var(--neon);letter-spacing:3px}
+nav{display:flex;gap:18px;flex-wrap:wrap}
+nav a{color:white;text-decoration:none;font-size:13px}
+nav a:hover{color:var(--neon)}
+button{
+ border:1px solid var(--neon);background:transparent;
+ color:var(--neon);padding:11px 18px;border-radius:9px;
+ cursor:pointer;transition:.3s;font-weight:bold;
+}
+button:hover{background:var(--neon);color:#001018;box-shadow:0 0 20px var(--neon)}
+.hero{
+ min-height:75vh;display:flex;flex-direction:column;
+ align-items:center;justify-content:center;text-align:center;
+ padding:55px 20px;
+}
+.hero small{color:var(--neon);letter-spacing:5px}
+.hero h1{
+ font-size:clamp(38px,9vw,75px);margin:20px 0;
+ text-shadow:0 0 15px #00eaff,0 0 40px #087cff;
+ animation:pulse 2s infinite alternate;
+}
+@keyframes pulse{to{text-shadow:0 0 25px #00eaff,0 0 65px #087cff}}
+.hero p{color:#aab7c8;line-height:1.8;max-width:550px}
+.hero .actions{display:flex;gap:12px;margin-top:28px;flex-wrap:wrap;justify-content:center}
+section{padding:55px 7%;scroll-margin-top:80px}
+.section-title{text-align:center;font-size:29px;margin-bottom:30px}
+.section-title span{color:var(--neon)}
+.card{
+ background:#0b1422cc;border:1px solid #00eaff55;
+ border-radius:18px;padding:25px;
+ box-shadow:0 0 25px #007bff12;
+ transition:.3s;
+}
+.card:hover{transform:translateY(-5px);box-shadow:0 0 25px #00eaff30}
+.about{max-width:800px;margin:auto;text-align:center;line-height:2;color:#c4d1df}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px}
+.skill{text-align:center;padding:28px}
+.skill b{color:var(--neon);font-size:19px}
+.skill p{color:#aab7c8;margin-top:12px}
+.gallery img{width:100%;height:190px;object-fit:cover;border-radius:12px}
+.gallery .empty{height:140px;display:grid;place-items:center;color:#6b849d}
+input,textarea{
+ width:100%;padding:13px;margin:9px 0;
+ border:1px solid #00eaff55;border-radius:9px;
+ background:#07101c;color:white;outline:none;
+}
+input:focus,textarea:focus{border-color:var(--neon);box-shadow:0 0 10px #00eaff33}
+footer{text-align:center;padding:30px;color:#7890a8;border-top:1px solid #00eaff33}
+.hidden{display:none!important}
+#authBox{max-width:420px;margin:35px auto}
+#authBox h2{text-align:center;color:var(--neon);margin-bottom:18px}
+#message{color:var(--neon);font-size:13px;margin-top:10px;text-align:center}
+.profile{text-align:center;max-width:600px;margin:auto}
+.avatar{
+ width:110px;height:110px;border-radius:50%;object-fit:cover;
+ border:3px solid var(--neon);box-shadow:0 0 25px var(--neon);
+ margin:15px;
+}
+#userGallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:12px;margin-top:20px}
+#userGallery img{width:100%;height:150px;object-fit:cover;border-radius:12px}
+hr{border:0;border-top:1px solid #00eaff33;margin:18px 0}
+@media(max-width:600px){
+ header{padding:15px 5%;flex-direction:column;gap:14px}
+ nav{justify-content:center}
+ section{padding:40px 5%}
+}
+</style>
+</head>
+
+<body>
+
+<header>
+ <div class="logo">LUAN.</div>
+ <nav>
+  <a href="#home">Trang chủ</a>
+  <a href="#about">Giới thiệu</a>
+  <a href="#skills">Sở thích</a>
+  <a href="#gallery">Thư viện</a>
+  <a href="#account">Tài khoản</a>
+ </nav>
+</header>
+
+<div class="hero" id="home">
+ <small>WELCOME TO MY WEBSITE</small>
+ <h1>LUAN PERSONAL</h1>
+ <p>Chào mừng đến với thế giới của tao. Đam mê công nghệ, xe cộ và những điều khác biệt.</p>
+ <div class="actions">
+  <button onclick="document.querySelector('#about').scrollIntoView({behavior:'smooth'})">Khám phá</button>
+  <button onclick="document.querySelector('#account').scrollIntoView({behavior:'smooth'})">Tài khoản</button>
+ </div>
+</div>
+
+<section id="about">
+ <h2 class="section-title">GIỚI <span>THIỆU</span></h2>
+ <div class="card about">
+  <h2 style="color:var(--neon)">Xin chào, tao là Luân!</h2>
+  <p>Đây là website cá nhân của tao. Nơi lưu giữ thông tin, hình ảnh và những sở thích riêng.</p>
+  <p>Không ngừng học hỏi – Không ngừng phát triển.</p>
+ </div>
+</section>
+
+<section id="skills">
+ <h2 class="section-title">SỞ <span>THÍCH</span></h2>
+ <div class="grid">
+  <div class="card skill"><b>🏎️ XE CỘ</b><p>Đam mê Honda Civic Gen 8</p></div>
+  <div class="card skill"><b>💻 CÔNG NGHỆ</b><p>Website và lập trình</p></div>
+  <div class="card skill"><b>🎧 ÂM NHẠC</b><p>Âm nhạc và giải trí</p></div>
+ </div>
+</section>
+
+<section id="gallery">
+ <h2 class="section-title">THƯ <span>VIỆN ẢNH</span></h2>
+ <div class="card">
+  <p style="color:#aab7c8;margin-bottom:15px">Chọn ảnh từ điện thoại để thêm vào thư viện.</p>
+  <input type="file" id="photoInput" accept="image/*" multiple>
+  <div id="userGallery"></div>
+ </div>
+</section>
+
+<section id="account">
+ <h2 class="section-title">TÀI <span>KHOẢN</span></h2>
+
+ <div class="card" id="authBox">
+  <h2>LUAN ACCOUNT</h2>
+  <div id="authForms">
+   <input id="username" placeholder="Tên đăng nhập">
+   <input id="password" type="password" placeholder="Mật khẩu">
+   <button onclick="login()" style="width:100%">ĐĂNG NHẬP</button>
+   <hr>
+   <input id="newUsername" placeholder="Tên tài khoản mới">
+   <input id="newPassword" type="password" placeholder="Mật khẩu mới">
+   <button onclick="register()" style="width:100%">ĐĂNG KÝ</button>
+  </div>
+  <p id="message"></p>
+ </div>
+
+ <div class="card profile hidden" id="profileBox">
+  <h2 style="color:var(--neon)">TÀI KHOẢN CỦA BẠN</h2>
+  <img class="avatar" id="avatar" src="https://placehold.co/150x150/07101c/00eaff?text=LUAN">
+  <h3 id="profileName"></h3>
+  <input id="editName" placeholder="Tên hiển thị">
+  <input id="editBio" placeholder="Giới thiệu bản thân">
+  <input type="file" id="avatarInput" accept="image/*">
+  <button onclick="saveProfile()">LƯU HỒ SƠ</button>
+  <button onclick="logout()">ĐĂNG XUẤT</button>
+  <p id="profileMessage" style="color:var(--neon);margin-top:12px"></p>
+ </div>
+</section>
+
+<footer>
+ <p>© 2026 LUAN PERSONAL</p>
+ <p style="color:var(--neon);margin-top:8px">DESIGNED WITH PASSION</p>
+</footer>
+
+<script>
+const getUsers=()=>JSON.parse(localStorage.getItem("luan_users")||"{}");
+const current=()=>localStorage.getItem("luan_current");
+
+function register(){
+ const u=document.getElementById("newUsername").value.trim();
+ const p=document.getElementById("newPassword").value;
+ const msg=document.getElementById("message");
+ if(!u||!p){msg.textContent="Nhập đầy đủ thông tin!";return}
+ let users=getUsers();
+ if(users[u]){msg.textContent="Tên tài khoản đã tồn tại!";return}
+ users[u]={password:p,name:u,bio:"",avatar:"",photos:[]};
+ localStorage.setItem("luan_users",JSON.stringify(users));
+ msg.textContent="Đăng ký thành công! Hãy đăng nhập.";
+}
+
+function login(){
+ const u=document.getElementById("username").value.trim();
+ const p=document.getElementById("password").value;
+ const users=getUsers();
+ if(!users[u]||users[u].password!==p){
+  document.getElementById("message").textContent="Sai tài khoản hoặc mật khẩu!";
+  return;
+ }
+ localStorage.setItem("luan_current",u);
+ showProfile();
+}
+
+function showProfile(){
+ const u=current();
+ const users=getUsers();
+ if(!u||!users[u])return;
+ document.getElementById("authForms").classList.add("hidden");
+ document.getElementById("profileBox").classList.remove("hidden");
+ document.getElementById("profileName").textContent=users[u].name;
+ document.getElementById("editName").value=users[u].name;
+ document.getElementById("editBio").value=users[u].bio||"";
+ document.getElementById("avatar").src=users[u].avatar||"https://placehold.co/150x150/07101c/00eaff?text=LUAN";
+ renderPhotos();
+}
+
+function saveProfile(){
+ const u=current(),users=getUsers();
+ if(!u)return;
+ users[u].name=document.getElementById("editName").value.trim()||u;
+ users[u].bio=document.getElementById("editBio").value;
+ localStorage.setItem("luan_users",JSON.stringify(users));
+ showProfile();
+ document.getElementById("profileMessage").textContent="Đã lưu hồ sơ!";
+}
+
+function logout(){
+ localStorage.removeItem("luan_current");
+ document.getElementById("authForms").classList.remove("hidden");
+ document.getElementById("profileBox").classList.add("hidden");
+ document.getElementById("message").textContent="Đã đăng xuất.";
+}
+
+function readImage(file,callback){
+ const reader=new FileReader();
+ reader.onload=()=>callback(reader.result);
+ reader.readAsDataURL(file);
+}
+
+document.getElementById("avatarInput").addEventListener("change",function(){
+ const file=this.files[0],u=current(),users=getUsers();
+ if(!file||!u)return;
+ readImage(file,data=>{
+  users[u].avatar=data;
+  localStorage.setItem("luan_users",JSON.stringify(users));
+  showProfile();
+ });
+});
+
+document.getElementById("photoInput").addEventListener("change",function(){
+ const files=Array.from(this.files),u=current(),users=getUsers();
+ if(!u){alert("Đăng nhập trước nhé!");return}
+ let count=0;
+ files.forEach(file=>{
+  readImage(file,data=>{
+   users[u].photos=users[u].photos||[];
+   users[u].photos.push(data);
+   count++;
+   if(count===files.length){
+    try{
+     localStorage.setItem("luan_users",JSON.stringify(users));
+     renderPhotos();
+    }catch(e){alert("Bộ nhớ ảnh đã đầy. Hãy chọn ít ảnh hơn.")}
+   }
+  });
+ });
+});
+
+function renderPhotos(){
+ const area=document.getElementById("userGallery");
+ area.innerHTML="";
+ const u=current(),users=getUsers();
+ if(!u||!users[u])return;
+ (users[u].photos||[]).forEach(src=>{
+  const img=document.createElement("img");
+  img.src=src;
+  area.appendChild(img);
+ });
+}
+
+if(current())showProfile();
+</script>
+</body>
+</html>
