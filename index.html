@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="vi">
 <head>
@@ -220,23 +219,7 @@ footer{text-align:center;color:#62788b;padding:25px;border-top:1px solid #00eaff
  </div>
 </section>
 
-<section id="account" class="hidden">
- <div class="card" id="loginBox">
-  <h2>ĐĂNG NHẬP</h2>
-  <input id="loginUser" placeholder="Tên tài khoản">
-  <input id="loginPass" type="password" placeholder="Mật khẩu">
-  <button class="primary" onclick="login()">ĐĂNG NHẬP</button>
-  <p class="small">Chưa có tài khoản?</p>
-  <button onclick="register()">TẠO TÀI KHOẢN</button>
-  <p id="message" style="color:cyan;margin-top:15px"></p>
- </div>
- <div class="card hidden" id="userBox">
-  <h2>TÀI KHOẢN CỦA BẠN</h2>
-  <p id="welcome"></p>
-  <br>
-  <button onclick="logout()">ĐĂNG XUẤT</button>
- </div>
-</section>
+
 </div>
 
 <footer>
@@ -452,6 +435,48 @@ setInterval(()=>{
 loadProfile();
 loadPhotos();
 updateAccount();
+ 
+/* HIỆU ỨNG NỐT NHẠC RGB RƠI */
+function createFallingNote(){
+ const note=document.createElement('div');
+ const notes=['♪','♫','♬','♩','𝄞'];
+ note.textContent=notes[Math.floor(Math.random()*notes.length)];
+
+ note.style.position='fixed';
+ note.style.left=Math.random()*100+'vw';
+ note.style.top='-40px';
+ note.style.zIndex='899';
+ note.style.pointerEvents='none';
+ note.style.fontSize=(18+Math.random()*25)+'px';
+ note.style.fontWeight='bold';
+
+ const colors=['#00eaff','#ff00ff','#00ff99','#ffff00','#ff4444','#ffffff'];
+ const color=colors[Math.floor(Math.random()*colors.length)];
+ note.style.color=color;
+ note.style.textShadow=`0 0 8px ${color},0 0 18px ${color}`;
+
+ document.body.appendChild(note);
+
+ const duration=3500+Math.random()*3500;
+ const drift=(Math.random()-.5)*160;
+ const start=performance.now();
+
+ function animate(now){
+  const progress=(now-start)/duration;
+  if(progress>=1){
+   note.remove();
+   return;
+  }
+  note.style.transform=`translate(${drift*progress}px,${window.innerHeight*progress}px) rotate(${progress*360}deg)`;
+  note.style.opacity=String(Math.min(1,(1-progress)*2));
+  requestAnimationFrame(animate);
+ }
+ requestAnimationFrame(animate);
+}
+
+setInterval(createFallingNote,350);
+
 </script>
 </body>
 </html>
+
