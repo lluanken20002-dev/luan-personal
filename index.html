@@ -462,6 +462,20 @@ setInterval(()=>{
 loadProfile();
 loadPhotos();
 updateAccount();
+ <audio id="music" src="nhac.mp3" preload="auto"></audio>
+
+<button onclick="toggleMusic()">🎵 PLAY / PAUSE</button>
+
+<script>
+const music = document.getElementById("music");
+
+function toggleMusic() {
+  if (music.paused) {
+    music.play();
+  } else {
+    music.pause();
+  }
+}
 </script>
 
 </body>
