@@ -48,11 +48,18 @@ button:hover{background:var(--neon);color:#001018;box-shadow:0 0 20px var(--neon
 }
 .hero small{color:var(--neon);letter-spacing:5px}
 .hero h1{
- font-size:clamp(38px,9vw,75px);font-weight:900;
- background:linear-gradient(90deg,red,orange,yellow,lime,cyan,blue,violet,red);
- background-size:300% 100%;
- -webkit-background-clip:text;background-clip:text;color:transparent;
- animation:rainbow 4s linear infinite,flash 1s infinite alternate
+ font-size:clamp(38px,9vw,75px);
+ font-weight:900;
+ background:linear-gradient(
+  90deg,
+  red,orange,yellow,lime,cyan,blue,violet,red
+ );
+ background-size:400% 100%;
+ background-clip:text;
+ -webkit-background-clip:text;
+ -webkit-text-fill-color:transparent;
+ color:transparent;
+ animation:rainbow 3s linear infinite,flash .7s ease-in-out infinite alternate;
 }
 @keyframes rainbow{to{background-position:300% 0}}
 @keyframes flash{
