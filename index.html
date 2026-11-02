@@ -5,7 +5,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="theme-color" content="#02040a">
-<title>LUAN PERSONAL ULTIMATE</title>
+<title>LUAN PERSONAL VIP</title>
 
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
@@ -19,21 +19,28 @@ body:before{
  content:"";position:fixed;inset:0;z-index:-2;
  background:
  radial-gradient(ellipse at 50% 0%,#003c5570,transparent 65%),
- radial-gradient(ellipse at 10% 90%,#41008033,transparent 50%);
+ radial-gradient(ellipse at 10% 90%,#41008055,transparent 50%),
+ radial-gradient(ellipse at 90% 80%,#001c6655,transparent 50%);
+ background-size:200% 200%;
+ animation:nebula 18s ease-in-out infinite alternate;
+}
+@keyframes nebula{
+ 0%{background-position:0% 0%;filter:hue-rotate(0deg)}
+ 50%{background-position:100% 50%;filter:hue-rotate(100deg)}
+ 100%{background-position:0% 100%;filter:hue-rotate(200deg)}
 }
 body:after{
- content:"";position:fixed;inset:5px;
+ content:"";position:fixed;inset:5px;z-index:1000;
  border:2px solid transparent;border-radius:13px;
  background:linear-gradient(135deg,red,orange,yellow,lime,cyan,blue,violet,red) border-box;
  -webkit-mask:linear-gradient(#fff 0 0) padding-box,linear-gradient(#fff 0 0);
  -webkit-mask-composite:xor;
  mask-composite:exclude;
- pointer-events:none;z-index:1000;
+ pointer-events:none;
  animation:edge 4s linear infinite;
 }
 @keyframes edge{to{filter:hue-rotate(360deg)}}
 
-/* LED 7 MÀU */
 .logo,.hero h1,h2{
  background:linear-gradient(90deg,red,orange,yellow,lime,cyan,blue,violet,red);
  background-size:400% 400%;
@@ -42,13 +49,12 @@ body:after{
  animation:rainbow 4s linear infinite;
 }
 @keyframes rainbow{
- 0%{background-position:0% 50%}
- 100%{background-position:400% 50%}
+ to{background-position:400% 50%}
 }
 .logo{
  font-size:32px;font-weight:900;
  letter-spacing:5px;
- filter:drop-shadow(0 0 8px #00eaff);
+ filter:drop-shadow(0 0 8px cyan);
 }
 header{
  padding:25px 12px;text-align:center;
@@ -65,49 +71,50 @@ header p{color:#8da4b8}
  from{opacity:.3;filter:hue-rotate(0deg)}
  to{opacity:1;filter:hue-rotate(360deg)}
 }
-
-/* LASER QUÉT */
 .laserline{
  position:fixed;top:0;left:-100%;
- height:2px;width:70%;
+ height:2px;width:70%;z-index:5;
  background:linear-gradient(90deg,transparent,cyan,white,magenta,transparent);
  box-shadow:0 0 20px cyan;
- z-index:5;pointer-events:none;
+ pointer-events:none;
  animation:scan 7s linear infinite;
 }
-@keyframes scan{
- to{left:150%}
-}
+@keyframes scan{to{left:150%}}
+
 nav{
  display:flex;justify-content:center;
  flex-wrap:wrap;gap:10px;padding:18px;
 }
 button{
- border:1px solid #00eaff;
+ border:1px solid cyan;
  background:#071522;color:white;
  padding:12px 16px;border-radius:9px;
  cursor:pointer;font-weight:bold;
  transition:.2s;
 }
 button:hover{
- background:#00eaff;color:black;
+ background:cyan;color:black;
  box-shadow:0 0 20px cyan;
  transform:scale(1.04);
 }
 .container{max-width:950px;margin:auto;padding:18px}
 .card{
  background:linear-gradient(145deg,#0a1420,#03070e);
- border:1px solid #00eaff55;
+ border:1px solid #00eaff88;
  border-radius:16px;padding:22px;
  margin-bottom:20px;
- box-shadow:0 0 15px #00eaff22;
- transition:box-shadow .15s;
+ animation:rgbGlow 8s linear infinite;
+ transition:.2s;
+}
+@keyframes rgbGlow{
+ 0%,100%{border-color:#00eaff;box-shadow:0 0 14px #00eaff22}
+ 25%{border-color:#a000ff;box-shadow:0 0 19px #a000ff44}
+ 50%{border-color:#ff00aa;box-shadow:0 0 19px #ff00aa44}
+ 75%{border-color:#00ff99;box-shadow:0 0 19px #00ff9944}
 }
 h2{margin-bottom:16px}
 .hero{text-align:center;padding:48px 15px}
-.hero h1{
- font-size:38px;margin-bottom:15px;
-}
+.hero h1{font-size:38px;margin-bottom:15px}
 .hero p{color:#aab9c9;line-height:1.8}
 .hidden{display:none!important}
 input,textarea{
@@ -138,8 +145,6 @@ footer{
  text-align:center;color:#62788b;
  padding:25px;border-top:1px solid #00eaff33;
 }
-
-/* LẤP LÁNH */
 .sparkle{
  position:fixed;pointer-events:none;
  color:white;z-index:900;
@@ -150,12 +155,9 @@ footer{
  0%,100%{opacity:0;transform:scale(.2) rotate(0)}
  50%{opacity:1;transform:scale(1.5) rotate(180deg)}
 }
-
-/* NỐT NHẠC */
 .music-note{
- position:fixed;bottom:-40px;
- z-index:900;pointer-events:none;
- font-size:25px;color:#00eaff;
+ position:fixed;bottom:-40px;z-index:900;
+ pointer-events:none;font-size:25px;color:cyan;
  text-shadow:0 0 12px cyan,0 0 25px blue;
  animation:floatNote 5s linear forwards;
 }
@@ -164,14 +166,7 @@ footer{
  15%{opacity:1}
  100%{transform:translateY(-110vh) rotate(360deg);opacity:0}
 }
-
-/* NHỊP NHẠC */
-body.beat .card{
- box-shadow:0 0 22px #00eaff88,0 0 35px #a000ff44;
-}
-body.beat .logo{
- filter:drop-shadow(0 0 20px cyan);
-}
+body.beat .card{box-shadow:0 0 22px #00eaff88,0 0 35px #a000ff44}
 .music-btn{
  position:fixed;right:20px;bottom:22px;
  z-index:1100;border-radius:50%;
@@ -179,28 +174,66 @@ body.beat .logo{
  background:#061522;border:2px solid cyan;
  box-shadow:0 0 18px cyan;
 }
-.music-btn.playing{
- animation:musicPulse .5s infinite alternate;
-}
+.music-btn.playing{animation:musicPulse .5s infinite alternate}
 @keyframes musicPulse{
  to{transform:scale(1.12);box-shadow:0 0 30px magenta}
 }
-.status{
- font-size:12px;color:#00eaff;margin-top:10px;
+.status{font-size:12px;color:cyan;margin-top:10px}
+
+/* TIA SÉT */
+.lightning-bolt{
+ position:fixed;z-index:950;top:0;
+ height:72vh;width:38vw;
+ pointer-events:none;
+ filter:drop-shadow(0 0 7px cyan) drop-shadow(0 0 18px #8b5cff);
+ animation:boltFlash .55s ease-out forwards;
+}
+.lightning-bolt polyline{
+ fill:none;stroke:#d9ffff;stroke-width:3.5;
+ stroke-linecap:round;stroke-linejoin:round;
+}
+@keyframes boltFlash{
+ 0%{opacity:0}
+ 8%{opacity:1}
+ 18%{opacity:.25}
+ 28%{opacity:1}
+ 55%{opacity:.85}
+ 100%{opacity:0}
+}
+.lightning-screen-flash{
+ position:fixed;inset:0;z-index:940;
+ pointer-events:none;background:#b9faff;
+ animation:screenFlash .42s ease-out forwards;
+}
+@keyframes screenFlash{
+ 0%,100%{opacity:0}
+ 8%{opacity:.22}
+ 18%{opacity:0}
+ 29%{opacity:.12}
+ 45%{opacity:0}
+}
+@media(max-width:600px){
+ .hero{padding:35px 12px}
+ .hero h1{font-size:30px}
+ .logo{font-size:26px;letter-spacing:3px}
+ .card{padding:17px}
+ nav{gap:7px;padding:13px 8px}
+ nav button{padding:10px 11px;font-size:12px}
+ .lightning-bolt{width:58vw}
+}
+@media(prefers-reduced-motion:reduce){
+ body:before,.card,.logo,.hero h1,h2,.light,.laserline{animation:none!important}
 }
 </style>
 </head>
 
 <body>
-
 <div class="laserline"></div>
 
 <header>
  <div class="logo">LUAN PERSONAL</div>
  <div class="light"></div>
- <p style="margin-top:12px;letter-spacing:4px">
- ULTIMATE RGB EXPERIENCE
- </p>
+ <p style="margin-top:12px;letter-spacing:4px">VIP RGB EXPERIENCE</p>
 </header>
 
 <nav>
@@ -211,7 +244,6 @@ body.beat .logo{
 </nav>
 
 <div class="container">
-
 <section id="home">
  <div class="card hero">
   <h1>WELCOME TO LUAN</h1>
@@ -224,9 +256,7 @@ body.beat .logo{
  <div class="card center">
   <h2>MY DREAM CAR</h2>
   <h1 style="color:cyan">HONDA CIVIC GEN 8</h1>
-  <p style="color:#91a6b8;margin-top:12px">
-   DREAM IT. BUILD IT. DRIVE IT.
-  </p>
+  <p style="color:#91a6b8;margin-top:12px">DREAM IT. BUILD IT. DRIVE IT.</p>
  </div>
 
  <div class="card center">
@@ -285,12 +315,11 @@ body.beat .logo{
   <button onclick="logout()">ĐĂNG XUẤT</button>
  </div>
 </section>
-
 </div>
 
 <footer>
  <p>© 2026 LUAN PERSONAL</p>
- <p class="small">DESIGNED WITH PASSION • RGB EDITION</p>
+ <p class="small">DESIGNED WITH PASSION • VIP RGB EDITION</p>
 </footer>
 
 <button class="music-btn" id="musicBtn" onclick="toggleMusic()">🎵</button>
@@ -395,6 +424,33 @@ function loadPhotos(){
  });
 }
 
+/* TIA SÉT */
+function createLightning(){
+ const svg=document.createElementNS('http://www.w3.org/2000/svg','svg');
+ svg.setAttribute('viewBox','0 0 300 600');
+ svg.classList.add('lightning-bolt');
+ svg.style.left=(Math.random()*78)+'vw';
+ const points=['150,0'];
+ let x=150;
+ for(let y=65;y<570;y+=65){
+  x=Math.max(35,Math.min(265,x+(Math.random()-.5)*145));
+  points.push(x+','+y);
+ }
+ const line=document.createElementNS('http://www.w3.org/2000/svg','polyline');
+ line.setAttribute('points',points.join(' '));
+ svg.appendChild(line);
+ document.body.appendChild(svg);
+ const flash=document.createElement('div');
+ flash.className='lightning-screen-flash';
+ document.body.appendChild(flash);
+ setTimeout(()=>{svg.remove();flash.remove()},600);
+}
+function scheduleLightning(){
+ createLightning();
+ setTimeout(scheduleLightning,4200+Math.random()*5200);
+}
+setTimeout(scheduleLightning,2200);
+
 /* LẤP LÁNH */
 setInterval(()=>{
  let s=document.createElement('div');
@@ -405,7 +461,7 @@ setInterval(()=>{
  s.style.fontSize=(10+Math.random()*14)+'px';
  document.body.appendChild(s);
  setTimeout(()=>s.remove(),2000);
-},350);
+},500);
 
 /* NỐT NHẠC BAY */
 setInterval(()=>{
@@ -415,38 +471,36 @@ setInterval(()=>{
  n.style.left=Math.random()*95+'vw';
  document.body.appendChild(n);
  setTimeout(()=>n.remove(),5000);
-},900);
+},1200);
 
-/* NHẠC ĐIỆN TỬ TỰ TẠO */
+/* NHẠC ĐIỆN TỬ */
 let audioCtx=null;
 let musicTimer=null;
 let playing=false;
 let step=0;
 let master=null;
 
-function playTone(freq,duration,type,volume,delay=0){
+function playTone(freq,duration,type,volume){
  if(!audioCtx||!master)return;
  let osc=audioCtx.createOscillator();
  let gain=audioCtx.createGain();
  osc.type=type;
  osc.frequency.value=freq;
- gain.gain.setValueAtTime(0.0001,audioCtx.currentTime+delay);
- gain.gain.exponentialRampToValueAtTime(volume,audioCtx.currentTime+delay+0.015);
- gain.gain.exponentialRampToValueAtTime(0.0001,audioCtx.currentTime+delay+duration);
+ gain.gain.setValueAtTime(0.0001,audioCtx.currentTime);
+ gain.gain.exponentialRampToValueAtTime(volume,audioCtx.currentTime+.015);
+ gain.gain.exponentialRampToValueAtTime(0.0001,audioCtx.currentTime+duration);
  osc.connect(gain);
  gain.connect(master);
- osc.start(audioCtx.currentTime+delay);
- osc.stop(audioCtx.currentTime+delay+duration+0.03);
+ osc.start();
+ osc.stop(audioCtx.currentTime+duration+.03);
 }
 
 function musicBeat(){
  if(!playing)return;
  let notes=[261.63,329.63,392,523.25,392,329.63,293.66,440];
- let t=audioCtx.currentTime;
- let bass=step%4===0;
- playTone(bass?65:82,.20,'sine',.42);
- playTone(notes[step%notes.length],.23,'triangle',.12);
- if(step%2===0)playTone(notes[(step+2)%notes.length]*2,.12,'sine',.045);
+ playTone(step%4===0?65:82,.20,'sine',.30);
+ playTone(notes[step%notes.length],.23,'triangle',.10);
+ if(step%2===0)playTone(notes[(step+2)%notes.length]*2,.12,'sine',.035);
  document.body.classList.add('beat');
  setTimeout(()=>document.body.classList.remove('beat'),130);
  step++;
@@ -486,6 +540,5 @@ loadProfile();
 loadPhotos();
 updateAccount();
 </script>
-
 </body>
 </html>
