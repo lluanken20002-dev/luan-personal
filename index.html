@@ -48,9 +48,8 @@ body:after{
  color:transparent;
  animation:rainbow 4s linear infinite;
 }
-@keyframes rainbow{
- to{background-position:400% 50%}
-}
+@keyframes rainbow{to{background-position:400% 50%}}
+
 .logo{
  font-size:32px;font-weight:900;
  letter-spacing:5px;
@@ -155,30 +154,17 @@ footer{
  0%,100%{opacity:0;transform:scale(.2) rotate(0)}
  50%{opacity:1;transform:scale(1.5) rotate(180deg)}
 }
-.music-note{
- position:fixed;bottom:-40px;z-index:900;
- pointer-events:none;font-size:25px;color:cyan;
- text-shadow:0 0 12px cyan,0 0 25px blue;
- animation:floatNote 5s linear forwards;
-}
-@keyframes floatNote{
- 0%{transform:translateY(0) rotate(0);opacity:0}
- 15%{opacity:1}
- 100%{transform:translateY(-110vh) rotate(360deg);opacity:0}
-}
-body.beat .card{box-shadow:0 0 22px #00eaff88,0 0 35px #a000ff44}
 .music-btn{
  position:fixed;right:20px;bottom:22px;
  z-index:1100;border-radius:50%;
  width:58px;height:58px;font-size:23px;
  background:#061522;border:2px solid cyan;
  box-shadow:0 0 18px cyan;
+ animation:musicGlow 2s infinite alternate;
 }
-.music-btn.playing{animation:musicPulse .5s infinite alternate}
-@keyframes musicPulse{
- to{transform:scale(1.12);box-shadow:0 0 30px magenta}
+@keyframes musicGlow{
+ to{transform:scale(1.1);box-shadow:0 0 28px magenta}
 }
-.status{font-size:12px;color:cyan;margin-top:10px}
 
 /* TIA SÉT */
 .lightning-bolt{
@@ -244,6 +230,7 @@ body.beat .card{box-shadow:0 0 22px #00eaff88,0 0 35px #a000ff44}
 </nav>
 
 <div class="container">
+
 <section id="home">
  <div class="card hero">
   <h1>WELCOME TO LUAN</h1>
@@ -256,15 +243,9 @@ body.beat .card{box-shadow:0 0 22px #00eaff88,0 0 35px #a000ff44}
  <div class="card center">
   <h2>MY DREAM CAR</h2>
   <h1 style="color:cyan">HONDA CIVIC GEN 8</h1>
-  <p style="color:#91a6b8;margin-top:12px">DREAM IT. BUILD IT. DRIVE IT.</p>
- </div>
-
- <div class="card center">
-  <h2>RGB MUSIC SYSTEM</h2>
-  <p>Nhạc điện tử • LED 7 màu • Hiệu ứng nhịp</p>
-  <p class="status" id="musicStatus">MUSIC: OFF</p>
-  <br>
-  <button onclick="toggleMusic()">BẬT / TẮT NHẠC</button>
+  <p style="color:#91a6b8;margin-top:12px">
+   DREAM IT. BUILD IT. DRIVE IT.
+  </p>
  </div>
 </section>
 
@@ -315,14 +296,17 @@ body.beat .card{box-shadow:0 0 22px #00eaff88,0 0 35px #a000ff44}
   <button onclick="logout()">ĐĂNG XUẤT</button>
  </div>
 </section>
+
 </div>
 
 <footer>
  <p>© 2026 LUAN PERSONAL</p>
  <p class="small">DESIGNED WITH PASSION • VIP RGB EDITION</p>
 </footer>
+
 <button class="music-btn"
-onclick="window.open('https://youtu.be/iTtcgEboDIg','_blank')">🎵</button>
+ onclick="window.open('https://youtu.be/iTtcgEboDIg','_blank')"
+ aria-label="Nghe nhạc">🎵</button>
 
 <script>
 const $=id=>document.getElementById(id);
@@ -340,9 +324,15 @@ function getUsers(){
 function register(){
  let u=$('loginUser').value.trim();
  let p=$('loginPass').value;
- if(!u||!p){$('message').textContent='Nhập đầy đủ thông tin!';return}
+ if(!u||!p){
+  $('message').textContent='Nhập đầy đủ thông tin!';
+  return;
+ }
  let users=getUsers();
- if(users[u]){$('message').textContent='Tài khoản đã tồn tại!';return}
+ if(users[u]){
+  $('message').textContent='Tài khoản đã tồn tại!';
+  return;
+ }
  users[u]={password:p};
  localStorage.setItem('luan_users',JSON.stringify(users));
  $('message').textContent='Tạo tài khoản thành công! Hãy đăng nhập.';
@@ -440,11 +430,17 @@ function createLightning(){
  line.setAttribute('points',points.join(' '));
  svg.appendChild(line);
  document.body.appendChild(svg);
+
  const flash=document.createElement('div');
  flash.className='lightning-screen-flash';
  document.body.appendChild(flash);
- setTimeout(()=>{svg.remove();flash.remove()},600);
+
+ setTimeout(()=>{
+  svg.remove();
+  flash.remove();
+ },600);
 }
+
 function scheduleLightning(){
  createLightning();
  setTimeout(scheduleLightning,4200+Math.random()*5200);
@@ -463,121 +459,10 @@ setInterval(()=>{
  setTimeout(()=>s.remove(),2000);
 },500);
 
-/* NỐT NHẠC BAY */
-setInterval(()=>{
- let n=document.createElement('div');
- n.className='music-note';
- n.textContent=['♪','♫','♬','♩'][Math.floor(Math.random()*4)];
- n.style.left=Math.random()*95+'vw';
- document.body.appendChild(n);
- setTimeout(()=>n.remove(),5000);
-},1200);
- let btn=$('musicBtn');
- if(!playing){
-  try{
-   if(!audioCtx){
-    audioCtx=new (window.AudioContext||window.webkitAudioContext)();
-    master=audioCtx.createGain();
-    master.gain.value=.35;
-    master.connect(audioCtx.destination);
-   }
-   if(audioCtx.state==='suspended')await audioCtx.resume();
-   playing=true;
-   musicBeat();
-   musicTimer=setInterval(musicBeat,300);
-   btn.textContent='🔊';
-   btn.classList.add('playing');
-   $('musicStatus').textContent='MUSIC: PLAYING';
-  }catch(e){
-   alert('Thiết bị không hỗ trợ phát nhạc.');
-  }
- }else{
-  playing=false;
-  clearInterval(musicTimer);
-  btn.textContent='🎵';
-  btn.classList.remove('playing');
-  $('musicStatus').textContent='MUSIC: OFF';
-  document.body.classList.remove('beat');
- }
-}
-
 loadProfile();
 loadPhotos();
 updateAccount();
 </script>
 
-<!-- LUAN RGB MUSIC -->
-<style>
-.luan-music {
-  max-width:500px;
-  margin:25px auto;
-  padding:20px;
-  text-align:center;
-  color:white;
-  background:#030611;
-  border:2px solid #00eaff;
-  border-radius:20px;
-  animation:rgbBorder 3s linear infinite;
-  box-shadow:0 0 15px #00eaff, 0 0 35px #8a00ff;
-}
-.luan-music h2 {
-  color:#00eaff;
-  text-shadow:0 0 15px cyan;
-  animation:glow 1.5s infinite alternate;
-}
-.luan-bars {
-  height:55px;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  gap:5px;
-  margin:15px;
-}
-.luan-bars span {
-  width:6px;
-  height:15px;
-  border-radius:8px;
-  background:#00eaff;
-  box-shadow:0 0 10px cyan;
-  animation:wave .6s ease-in-out infinite alternate;
-}
-.luan-bars span:nth-child(2n) {animation-delay:.2s;background:#ff00e6}
-.luan-bars span:nth-child(3n) {animation-delay:.4s;background:#aaff00}
-.luan-bars span:nth-child(4n) {animation-delay:.1s;background:#ff9900}
-@keyframes wave {
-  from {height:8px}
-  to {height:55px}
-}
-@keyframes glow {
-  from {text-shadow:0 0 5px cyan}
-  to {text-shadow:0 0 25px cyan,0 0 40px blue}
-}
-@keyframes rgbBorder {
-  0% {border-color:#00eaff}
-  33% {border-color:#ff00e6}
-  66% {border-color:#aaff00}
-  100% {border-color:#00eaff}
-}
-</style>
-
-<div class="luan-music">
-  <h2>⚡ LUAN RGB MUSIC ⚡</h2>
-  <p>SAO KHÔNG BUÔNG XUỐNG</p>
-
-  <div class="luan-bars">
-    <span></span><span></span><span></span>
-    <span></span><span></span><span></span>
-    <span></span><span></span><span></span>
-    <span></span><span></span><span></span>
-    <span></span><span></span><span></span>
-  </div>
-  <p style="color:#00eaff;text-shadow:0 0 10px cyan">
-    ⚡ MUSIC • RGB • LIGHTNING ⚡
-  </p>
-</div>
-
-
 </body>
- 
-
 </html>
