@@ -321,8 +321,8 @@ body.beat .card{box-shadow:0 0 22px #00eaff88,0 0 35px #a000ff44}
  <p>© 2026 LUAN PERSONAL</p>
  <p class="small">DESIGNED WITH PASSION • VIP RGB EDITION</p>
 </footer>
-
-<button class="music-btn" id="musicBtn" onclick="toggleMusic()">🎵</button>
+<button class="music-btn"
+onclick="window.open('https://youtu.be/iTtcgEboDIg','_blank')">🎵</button>
 
 <script>
 const $=id=>document.getElementById(id);
@@ -472,41 +472,6 @@ setInterval(()=>{
  document.body.appendChild(n);
  setTimeout(()=>n.remove(),5000);
 },1200);
-
-/* NHẠC ĐIỆN TỬ */
-let audioCtx=null;
-let musicTimer=null;
-let playing=false;
-let step=0;
-let master=null;
-
-function playTone(freq,duration,type,volume){
- if(!audioCtx||!master)return;
- let osc=audioCtx.createOscillator();
- let gain=audioCtx.createGain();
- osc.type=type;
- osc.frequency.value=freq;
- gain.gain.setValueAtTime(0.0001,audioCtx.currentTime);
- gain.gain.exponentialRampToValueAtTime(volume,audioCtx.currentTime+.015);
- gain.gain.exponentialRampToValueAtTime(0.0001,audioCtx.currentTime+duration);
- osc.connect(gain);
- gain.connect(master);
- osc.start();
- osc.stop(audioCtx.currentTime+duration+.03);
-}
-
-function musicBeat(){
- if(!playing)return;
- let notes=[261.63,329.63,392,523.25,392,329.63,293.66,440];
- playTone(step%4===0?65:82,.20,'sine',.30);
- playTone(notes[step%notes.length],.23,'triangle',.10);
- if(step%2===0)playTone(notes[(step+2)%notes.length]*2,.12,'sine',.035);
- document.body.classList.add('beat');
- setTimeout(()=>document.body.classList.remove('beat'),130);
- step++;
-}
-
-async function toggleMusic(){
  let btn=$('musicBtn');
  if(!playing){
   try{
@@ -606,11 +571,6 @@ updateAccount();
     <span></span><span></span><span></span>
     <span></span><span></span><span></span>
   </div>
-<iframe
-  src="https://www.youtube-nocookie.com/embed/iTtcgEboDIg?autoplay=1&playsinline=1"
-  allow="autoplay"
-  style="position:absolute;width:1px;height:1px;opacity:0;pointer-events:none">
-</iframe>
   <p style="color:#00eaff;text-shadow:0 0 10px cyan">
     ⚡ MUSIC • RGB • LIGHTNING ⚡
   </p>
