@@ -1,166 +1,491 @@
+
 <!DOCTYPE html>
 <html lang="vi">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="theme-color" content="#02040a">
-<title>LUAN PERSONAL</title>
+<title>LUAN PERSONAL ULTIMATE</title>
+
 <style>
-:root{--neon:#00eaff}
-*{box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{margin:0;color:#fff;font-family:Arial,sans-serif;overflow-x:hidden;background:radial-gradient(ellipse at 20% 20%,#14234a 0%,transparent 40%),radial-gradient(ellipse at 80% 35%,#301044 0%,transparent 38%),radial-gradient(ellipse at 50% 100%,#102b45 0%,transparent 45%),linear-gradient(135deg,#080b1c,#090515,#071323);background-size:200% 200%;animation:galaxyBackground 12s ease infinite}
-@keyframes galaxyBackground{0%,100%{background-position:0 0}50%{background-position:100% 100%}}
-#effects{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden}
-#effects:before,#effects:after{content:"";position:absolute;inset:-20%;background-image:radial-gradient(2px 2px at 10% 20%,#fff 90%,transparent),radial-gradient(2px 2px at 30% 70%,#00eaff 90%,transparent),radial-gradient(3px 3px at 50% 40%,#fff 90%,transparent),radial-gradient(2px 2px at 70% 15%,#ff00e6 90%,transparent),radial-gradient(2px 2px at 85% 65%,#fff 90%,transparent),radial-gradient(3px 3px at 95% 35%,#00eaff 90%,transparent);background-size:250px 250px;animation:sparkle 4s ease-in-out infinite}
-#effects:after{background-size:170px 190px;animation-duration:6s;animation-direction:reverse;opacity:.6}
-@keyframes sparkle{0%,100%{opacity:.15;transform:translateY(0)}50%{opacity:1;transform:translateY(-15px)}}
-#effects .twinkle{position:absolute;width:3px;height:3px;border-radius:50%;background:white;box-shadow:0 0 8px 3px #00eaff;animation:twinkle var(--speed) ease-in-out infinite alternate}
-@keyframes twinkle{from{opacity:.1;transform:scale(.5)}to{opacity:1;transform:scale(2)}}
-#musicNotes{position:fixed;inset:0;z-index:2;pointer-events:none;overflow:hidden}
-.music-note{position:absolute;top:-45px;font-size:var(--size);color:var(--color);text-shadow:0 0 8px currentColor,0 0 18px currentColor;animation:noteFall var(--duration) linear forwards}
-@keyframes noteFall{0%{transform:translate(0,-40px) rotate(0);opacity:0}10%{opacity:1}85%{opacity:.9}100%{transform:translate(var(--drift),110vh) rotate(480deg);opacity:0}}
-#lightningLayer{position:fixed;inset:0;z-index:8;pointer-events:none;overflow:hidden;opacity:0}
-#lightningLayer.strike{animation:skyFlash .8s ease-out}
-@keyframes skyFlash{0%,100%{opacity:0}5%{opacity:1}13%{opacity:.08}23%{opacity:.95}34%{opacity:.1}45%{opacity:.72}60%{opacity:0}}
-#lightningLayer:after{content:"";position:absolute;inset:0;background:radial-gradient(ellipse at 50% 0%,#70eaff66,transparent 70%);opacity:0}
-#lightningLayer.strike:after{animation:flashGlow .8s ease-out}
-@keyframes flashGlow{0%,100%{opacity:0}12%,30%{opacity:1}55%{opacity:.1}}
-body:before,body:after{content:"";position:fixed;width:300px;height:300px;border-radius:50%;filter:blur(100px);opacity:.2;z-index:0;pointer-events:none;animation:float 8s infinite alternate}
-body:before{background:#0077ff;top:-100px;left:-100px}
-body:after{background:#00eaff;bottom:-100px;right:-100px}
-@keyframes float{to{transform:translate(80px,60px) scale(1.3)}}
-header{display:flex;justify-content:space-between;align-items:center;padding:18px 7%;border-bottom:1px solid #00eaff44;position:sticky;top:0;background:#050811ee;backdrop-filter:blur(15px);z-index:10}
-.logo{font-size:23px;font-weight:900;color:var(--neon);text-shadow:0 0 15px var(--neon);animation:logoPulse 1.3s ease-in-out infinite alternate}
-@keyframes logoPulse{to{filter:brightness(1.8);text-shadow:0 0 25px #fff,0 0 40px #00eaff}}
-nav{display:flex;gap:15px;flex-wrap:wrap}
-nav a{color:white;text-decoration:none;font-size:13px}
-nav a:hover{color:var(--neon)}
-button{border:1px solid var(--neon);background:#061322;color:var(--neon);padding:11px 18px;border-radius:9px;cursor:pointer;font-weight:bold;transition:.3s}
-button:hover{background:var(--neon);color:#001018;box-shadow:0 0 20px var(--neon)}
-.hero{min-height:75vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:50px 20px;position:relative;z-index:3}
-.hero small{color:var(--neon);letter-spacing:5px}
-.hero h1{font-size:clamp(38px,9vw,75px);font-weight:900;background:linear-gradient(90deg,red,orange,yellow,lime,cyan,blue,violet,red);background-size:400% 100%;background-clip:text;-webkit-background-clip:text;-webkit-text-fill-color:transparent;color:transparent;animation:rainbow 3s linear infinite,flash .7s ease-in-out infinite alternate}
-@keyframes rainbow{0%{background-position:0 50%}100%{background-position:100% 50%}}
-@keyframes flash{from{filter:drop-shadow(0 0 5px #00eaff)}to{filter:drop-shadow(0 0 25px #fff)}}
-.hero:after{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(115deg,transparent 40%,#b9f8ff99 50%,transparent 60%);opacity:0;animation:lightning 7s infinite}
-@keyframes lightning{0%,88%,91%,94%,100%{opacity:0}89%{opacity:1}90%{opacity:.2}92%{opacity:.7}}
-.hero p{color:#aab7c8;line-height:1.8;max-width:550px}
-.actions{display:flex;gap:12px;flex-wrap:wrap;justify-content:center}
-section{padding:50px 7%;scroll-margin-top:80px;position:relative;z-index:3}
-.section-title{text-align:center;font-size:29px;margin-bottom:30px}
-.section-title span{color:var(--neon)}
-.card{background:#0b1422dd;border:1px solid #00eaff55;border-radius:18px;padding:25px;box-shadow:0 0 15px #00eaff18,0 0 30px #a855ff12,inset 0 0 20px #00eaff08;transition:.3s}
-.card:hover{transform:translateY(-4px);box-shadow:0 0 25px #00eaff44}
-.about{max-width:800px;margin:auto;text-align:center;line-height:2;color:#c4d1df}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px}
-.skill{text-align:center;padding:28px}
-.skill b{color:var(--neon);font-size:19px}
-.skill p{color:#aab7c8}
-input{width:100%;padding:13px;margin:9px 0;border:1px solid #00eaff55;border-radius:9px;background:#07101c;color:white;outline:none}
-input:focus{border-color:var(--neon);box-shadow:0 0 10px #00eaff33}
-footer{text-align:center;padding:30px;color:#7890a8;border-top:1px solid #00eaff33;position:relative;z-index:3}
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--cyan:#00eaff}
+body{
+ background:#02040a;color:white;
+ font-family:Arial,sans-serif;
+ min-height:100vh;overflow-x:hidden;
+}
+body:before{
+ content:"";position:fixed;inset:0;z-index:-2;
+ background:
+ radial-gradient(ellipse at 50% 0%,#003c5570,transparent 65%),
+ radial-gradient(ellipse at 10% 90%,#41008033,transparent 50%);
+}
+body:after{
+ content:"";position:fixed;inset:5px;
+ border:2px solid transparent;border-radius:13px;
+ background:linear-gradient(135deg,red,orange,yellow,lime,cyan,blue,violet,red) border-box;
+ -webkit-mask:linear-gradient(#fff 0 0) padding-box,linear-gradient(#fff 0 0);
+ -webkit-mask-composite:xor;
+ mask-composite:exclude;
+ pointer-events:none;z-index:1000;
+ animation:edge 4s linear infinite;
+}
+@keyframes edge{to{filter:hue-rotate(360deg)}}
+
+/* LED 7 MÀU */
+.logo,.hero h1,h2{
+ background:linear-gradient(90deg,red,orange,yellow,lime,cyan,blue,violet,red);
+ background-size:400% 400%;
+ -webkit-background-clip:text;background-clip:text;
+ color:transparent;
+ animation:rainbow 4s linear infinite;
+}
+@keyframes rainbow{
+ 0%{background-position:0% 50%}
+ 100%{background-position:400% 50%}
+}
+.logo{
+ font-size:32px;font-weight:900;
+ letter-spacing:5px;
+ filter:drop-shadow(0 0 8px #00eaff);
+}
+header{
+ padding:25px 12px;text-align:center;
+ border-bottom:1px solid #00eaff55;
+}
+header p{color:#8da4b8}
+.light{
+ height:3px;margin-top:15px;
+ background:linear-gradient(90deg,transparent,cyan,white,magenta,blue,transparent);
+ box-shadow:0 0 15px cyan;
+ animation:laser 2s linear infinite alternate;
+}
+@keyframes laser{
+ from{opacity:.3;filter:hue-rotate(0deg)}
+ to{opacity:1;filter:hue-rotate(360deg)}
+}
+
+/* LASER QUÉT */
+.laserline{
+ position:fixed;top:0;left:-100%;
+ height:2px;width:70%;
+ background:linear-gradient(90deg,transparent,cyan,white,magenta,transparent);
+ box-shadow:0 0 20px cyan;
+ z-index:5;pointer-events:none;
+ animation:scan 7s linear infinite;
+}
+@keyframes scan{
+ to{left:150%}
+}
+nav{
+ display:flex;justify-content:center;
+ flex-wrap:wrap;gap:10px;padding:18px;
+}
+button{
+ border:1px solid #00eaff;
+ background:#071522;color:white;
+ padding:12px 16px;border-radius:9px;
+ cursor:pointer;font-weight:bold;
+ transition:.2s;
+}
+button:hover{
+ background:#00eaff;color:black;
+ box-shadow:0 0 20px cyan;
+ transform:scale(1.04);
+}
+.container{max-width:950px;margin:auto;padding:18px}
+.card{
+ background:linear-gradient(145deg,#0a1420,#03070e);
+ border:1px solid #00eaff55;
+ border-radius:16px;padding:22px;
+ margin-bottom:20px;
+ box-shadow:0 0 15px #00eaff22;
+ transition:box-shadow .15s;
+}
+h2{margin-bottom:16px}
+.hero{text-align:center;padding:48px 15px}
+.hero h1{
+ font-size:38px;margin-bottom:15px;
+}
+.hero p{color:#aab9c9;line-height:1.8}
 .hidden{display:none!important}
-#authBox{max-width:420px;margin:35px auto}
-#authBox h2{text-align:center;color:var(--neon)}
-#message{color:var(--neon);text-align:center}
-.profile{text-align:center;max-width:600px;margin:auto}
-.avatar{width:110px;height:110px;border-radius:50%;object-fit:cover;border:3px solid var(--neon);box-shadow:0 0 25px var(--neon);margin:15px}
-#userGallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:12px;margin-top:20px}
-#userGallery img{width:100%;height:150px;object-fit:cover;border-radius:12px}
-hr{border:0;border-top:1px solid #00eaff33;margin:18px 0}
-#musicButton{position:fixed;right:14px;bottom:15px;z-index:20;border-radius:30px;background:#061322ed;color:white;box-shadow:0 0 15px #00eaff,0 0 30px #005dff88}
-@media(max-width:600px){header{padding:15px 5%;flex-direction:column;gap:14px}nav{justify-content:center;gap:12px}section{padding:40px 5%}}
+input,textarea{
+ width:100%;padding:13px;margin:8px 0;
+ background:#020812;color:white;
+ border:1px solid #00eaff55;
+ border-radius:8px;outline:none;
+}
+input:focus,textarea:focus{
+ border-color:cyan;box-shadow:0 0 12px cyan;
+}
+.primary{background:#00d9ee;color:#001018;border:none}
+.center{text-align:center}
+.avatar{
+ width:100px;height:100px;border-radius:50%;
+ object-fit:cover;border:2px solid cyan;
+ box-shadow:0 0 20px cyan;
+}
+.gallery{
+ display:grid;grid-template-columns:repeat(2,1fr);gap:12px;
+}
+.gallery img{
+ width:100%;height:160px;object-fit:cover;
+ border-radius:10px;border:1px solid #00eaff55;
+}
+.small{font-size:12px;color:#8299aa;margin-top:10px}
+footer{
+ text-align:center;color:#62788b;
+ padding:25px;border-top:1px solid #00eaff33;
+}
+
+/* LẤP LÁNH */
+.sparkle{
+ position:fixed;pointer-events:none;
+ color:white;z-index:900;
+ text-shadow:0 0 8px cyan,0 0 15px white;
+ animation:twinkle 2s ease-in-out forwards;
+}
+@keyframes twinkle{
+ 0%,100%{opacity:0;transform:scale(.2) rotate(0)}
+ 50%{opacity:1;transform:scale(1.5) rotate(180deg)}
+}
+
+/* NỐT NHẠC */
+.music-note{
+ position:fixed;bottom:-40px;
+ z-index:900;pointer-events:none;
+ font-size:25px;color:#00eaff;
+ text-shadow:0 0 12px cyan,0 0 25px blue;
+ animation:floatNote 5s linear forwards;
+}
+@keyframes floatNote{
+ 0%{transform:translateY(0) rotate(0);opacity:0}
+ 15%{opacity:1}
+ 100%{transform:translateY(-110vh) rotate(360deg);opacity:0}
+}
+
+/* NHỊP NHẠC */
+body.beat .card{
+ box-shadow:0 0 22px #00eaff88,0 0 35px #a000ff44;
+}
+body.beat .logo{
+ filter:drop-shadow(0 0 20px cyan);
+}
+.music-btn{
+ position:fixed;right:20px;bottom:22px;
+ z-index:1100;border-radius:50%;
+ width:58px;height:58px;font-size:23px;
+ background:#061522;border:2px solid cyan;
+ box-shadow:0 0 18px cyan;
+}
+.music-btn.playing{
+ animation:musicPulse .5s infinite alternate;
+}
+@keyframes musicPulse{
+ to{transform:scale(1.12);box-shadow:0 0 30px magenta}
+}
+.status{
+ font-size:12px;color:#00eaff;margin-top:10px;
+}
 </style>
 </head>
+
 <body>
-<div id="effects" aria-hidden="true"></div>
-<div id="musicNotes" aria-hidden="true"></div>
-<div id="lightningLayer" aria-hidden="true"></div>
+
+<div class="laserline"></div>
+
 <header>
- <div class="logo">LUAN.</div>
- <nav>
-  <a href="#home">Trang chủ</a><a href="#about">Giới thiệu</a><a href="#skills">Sở thích</a><a href="#gallery">Thư viện</a><a href="#account">Tài khoản</a>
- </nav>
+ <div class="logo">LUAN PERSONAL</div>
+ <div class="light"></div>
+ <p style="margin-top:12px;letter-spacing:4px">
+ ULTIMATE RGB EXPERIENCE
+ </p>
 </header>
-<div class="hero" id="home">
- <small>WELCOME TO MY WEBSITE</small><h1>LUAN PERSONAL</h1>
- <p>Chào mừng đến với thế giới của tao. Đam mê công nghệ, xe cộ và những điều khác biệt.</p>
- <div class="actions">
-  <button onclick="document.querySelector('#about').scrollIntoView({behavior:'smooth'})">KHÁM PHÁ</button>
-  <button onclick="document.querySelector('#account').scrollIntoView({behavior:'smooth'})">TÀI KHOẢN</button>
+
+<nav>
+ <button onclick="show('home')">TRANG CHỦ</button>
+ <button onclick="show('about')">GIỚI THIỆU</button>
+ <button onclick="show('gallery')">THƯ VIỆN</button>
+ <button onclick="show('account')">TÀI KHOẢN</button>
+</nav>
+
+<div class="container">
+
+<section id="home">
+ <div class="card hero">
+  <h1>WELCOME TO LUAN</h1>
+  <p>Chào mừng đến với thế giới riêng của tôi.</p>
+  <p>Đam mê công nghệ • Ô tô • Cuộc sống</p>
+  <br>
+  <button onclick="show('about')">KHÁM PHÁ NGAY</button>
  </div>
+
+ <div class="card center">
+  <h2>MY DREAM CAR</h2>
+  <h1 style="color:cyan">HONDA CIVIC GEN 8</h1>
+  <p style="color:#91a6b8;margin-top:12px">
+   DREAM IT. BUILD IT. DRIVE IT.
+  </p>
+ </div>
+
+ <div class="card center">
+  <h2>RGB MUSIC SYSTEM</h2>
+  <p>Nhạc điện tử • LED 7 màu • Hiệu ứng nhịp</p>
+  <p class="status" id="musicStatus">MUSIC: OFF</p>
+  <br>
+  <button onclick="toggleMusic()">BẬT / TẮT NHẠC</button>
+ </div>
+</section>
+
+<section id="about" class="hidden">
+ <div class="card center">
+  <h2>GIỚI THIỆU</h2>
+  <img id="showAvatar" class="avatar"
+  src="https://placehold.co/150x150/071522/00eaff?text=LUAN">
+  <h2 id="showName">LUAN</h2>
+  <p id="showBio">Welcome to my personal website.</p>
+  <br>
+  <p>Đam mê Honda Civic, công nghệ và sáng tạo.</p>
+ </div>
+
+ <div class="card">
+  <h2>CHỈNH SỬA HỒ SƠ</h2>
+  <input id="name" placeholder="Tên của bạn">
+  <textarea id="bio" placeholder="Giới thiệu bản thân"></textarea>
+  <input id="avatar" placeholder="Link ảnh đại diện">
+  <button class="primary" onclick="saveProfile()">LƯU HỒ SƠ</button>
+ </div>
+</section>
+
+<section id="gallery" class="hidden">
+ <div class="card">
+  <h2>THƯ VIỆN ẢNH</h2>
+  <input id="photoURL" placeholder="Dán link hình ảnh">
+  <button onclick="addPhoto()">THÊM ẢNH</button>
+  <div class="gallery" id="photos" style="margin-top:20px"></div>
+ </div>
+</section>
+
+<section id="account" class="hidden">
+ <div class="card" id="loginBox">
+  <h2>ĐĂNG NHẬP</h2>
+  <input id="loginUser" placeholder="Tên tài khoản">
+  <input id="loginPass" type="password" placeholder="Mật khẩu">
+  <button class="primary" onclick="login()">ĐĂNG NHẬP</button>
+  <p class="small">Chưa có tài khoản?</p>
+  <button onclick="register()">TẠO TÀI KHOẢN</button>
+  <p id="message" style="color:cyan;margin-top:15px"></p>
+ </div>
+
+ <div class="card hidden" id="userBox">
+  <h2>TÀI KHOẢN CỦA BẠN</h2>
+  <p id="welcome"></p>
+  <br>
+  <button onclick="logout()">ĐĂNG XUẤT</button>
+ </div>
+</section>
+
 </div>
-<section id="about">
- <h2 class="section-title">GIỚI <span>THIỆU</span></h2>
- <div class="card about"><h2 style="color:var(--neon)">Xin chào, tao là Luân!</h2><p>Đây là website cá nhân của tao. Nơi lưu giữ thông tin, hình ảnh và những sở thích riêng.</p><p>Không ngừng học hỏi – Không ngừng phát triển.</p></div>
-</section>
-<section id="skills">
- <h2 class="section-title">SỞ <span>THÍCH</span></h2>
- <div class="grid"><div class="card skill"><b>🏎️ XE CỘ</b><p>Đam mê Honda Civic Gen 8</p></div><div class="card skill"><b>💻 CÔNG NGHỆ</b><p>Website và lập trình</p></div><div class="card skill"><b>🎧 ÂM NHẠC</b><p>Âm nhạc và giải trí</p></div></div>
-</section>
-<section id="gallery">
- <h2 class="section-title">THƯ <span>VIỆN ẢNH</span></h2>
- <div class="card"><p style="color:#aab7c8">Chọn ảnh từ điện thoại để thêm vào thư viện.</p><input type="file" id="photoInput" accept="image/*" multiple><div id="userGallery"></div></div>
-</section>
-<section id="account">
- <h2 class="section-title">TÀI <span>KHOẢN</span></h2>
- <div class="card" id="authBox">
-  <h2>LUAN ACCOUNT</h2><div id="authForms">
-   <input id="username" placeholder="Tên đăng nhập"><input id="password" type="password" placeholder="Mật khẩu">
-   <button onclick="login()" style="width:100%">ĐĂNG NHẬP</button><hr>
-   <input id="newUsername" placeholder="Tên tài khoản mới"><input id="newPassword" type="password" placeholder="Mật khẩu mới">
-   <button onclick="register()" style="width:100%">ĐĂNG KÝ</button>
-  </div><p id="message"></p>
- </div>
- <div class="card profile hidden" id="profileBox">
-  <h2 style="color:var(--neon)">TÀI KHOẢN CỦA BẠN</h2>
-  <img class="avatar" id="avatar" src="https://placehold.co/150x150/07101c/00eaff?text=LUAN">
-  <h3 id="profileName"></h3><p id="profileBio" style="color:#aab7c8"></p>
-  <input id="editName" placeholder="Tên hiển thị"><input id="editBio" placeholder="Giới thiệu bản thân">
-  <input type="file" id="avatarInput" accept="image/*"><button onclick="saveProfile()">LƯU HỒ SƠ</button><button onclick="logout()">ĐĂNG XUẤT</button>
-  <p id="profileMessage" style="color:var(--neon)"></p>
- </div>
-</section>
-<footer><p>© 2026 LUAN PERSONAL</p><p style="color:var(--neon)">DESIGNED WITH PASSION</p></footer>
-<button id="musicButton" type="button">♫ BẬT NHẠC</button>
+
+<footer>
+ <p>© 2026 LUAN PERSONAL</p>
+ <p class="small">DESIGNED WITH PASSION • RGB EDITION</p>
+</footer>
+
+<button class="music-btn" id="musicBtn" onclick="toggleMusic()">🎵</button>
+
 <script>
-const effectBox=document.getElementById('effects');
-for(let i=0;i<100;i++){const s=document.createElement('i');s.className='twinkle';s.style.left=Math.random()*100+'%';s.style.top=Math.random()*100+'%';s.style.setProperty('--speed',(1+Math.random()*3)+'s');s.style.animationDelay=(-Math.random()*4)+'s';effectBox.appendChild(s)}
-const noteBox=document.getElementById('musicNotes'),noteChars=['♪','♫','♬','♩'],noteColors=['#00eaff','#ff4edb','#b58cff','#ffe66d','#7dffcf'];
-function spawnNote(){const n=document.createElement('span');n.className='music-note';n.textContent=noteChars[Math.floor(Math.random()*noteChars.length)];n.style.left=Math.random()*100+'%';n.style.setProperty('--color',noteColors[Math.floor(Math.random()*noteColors.length)]);n.style.setProperty('--size',(20+Math.random()*24)+'px');n.style.setProperty('--duration',(7+Math.random()*6)+'s');n.style.setProperty('--drift',(Math.random()*160-80)+'px');noteBox.appendChild(n);setTimeout(()=>n.remove(),14000)}
-setInterval(spawnNote,450);for(let i=0;i<12;i++)setTimeout(spawnNote,i*260);
-const lightning=document.getElementById('lightningLayer');
-function drawLightning(){
- lightning.innerHTML='';lightning.classList.remove('strike');void lightning.offsetWidth;lightning.classList.add('strike');
- const svg=document.createElementNS('http://www.w3.org/2000/svg','svg');svg.setAttribute('width','100%');svg.setAttribute('height','100%');svg.setAttribute('viewBox','0 0 1000 700');svg.setAttribute('preserveAspectRatio','none');
- let x=80+Math.random()*840,y=-10,points=[[x,y]];
- for(let i=0;i<10;i++){x+=Math.random()*100-50;y+=58+Math.random()*22;points.push([x,y])}
- const d=points.map((p,i)=>(i?'L':'M')+p[0]+','+p[1]).join(' ');
- function addPath(color,width,opacity,blur){const p=document.createElementNS('http://www.w3.org/2000/svg','path');p.setAttribute('d',d);p.setAttribute('fill','none');p.setAttribute('stroke',color);p.setAttribute('stroke-width',width);p.setAttribute('stroke-linecap','round');p.setAttribute('stroke-linejoin','round');p.setAttribute('opacity',opacity);if(blur)p.style.filter='blur('+blur+'px)';svg.appendChild(p)}
- addPath('#008cff',24,.8,9);addPath('#00dfff',11,1,3);addPath('#ffffff',4,1,0);
- for(let j=2;j<8;j+=2){const a=points[j],bx=a[0]+(Math.random()>.5?1:-1)*(45+Math.random()*70),by=a[1]+50+Math.random()*35;const b=document.createElementNS('http://www.w3.org/2000/svg','path');b.setAttribute('d',`M${a[0]},${a[1]} L${bx},${by}`);b.setAttribute('stroke','#e9fcff');b.setAttribute('stroke-width','3');b.setAttribute('fill','none');b.style.filter='drop-shadow(0 0 8px #00dfff)';svg.appendChild(b)}
- lightning.appendChild(svg);setTimeout(()=>lightning.classList.remove('strike'),850);setTimeout(()=>lightning.innerHTML='',1100)
+const $=id=>document.getElementById(id);
+
+function show(id){
+ document.querySelectorAll('.container section')
+ .forEach(s=>s.classList.add('hidden'));
+ $(id).classList.remove('hidden');
 }
-function storm(){drawLightning();if(Math.random()>.35)setTimeout(drawLightning,170+Math.random()*220);setTimeout(storm,2200+Math.random()*2600)}
-setTimeout(storm,800);
-let audioCtx=null,musicTimer=null,musicOn=false,musicIndex=0;
-const melody=[261.63,329.63,392,493.88,392,349.23,293.66,349.23,440,392];
-function playTone(freq,duration=.42){const osc=audioCtx.createOscillator(),gain=audioCtx.createGain(),filter=audioCtx.createBiquadFilter();osc.type='triangle';osc.frequency.value=freq;filter.type='lowpass';filter.frequency.value=1300;gain.gain.setValueAtTime(.0001,audioCtx.currentTime);gain.gain.exponentialRampToValueAtTime(.06,audioCtx.currentTime+.04);gain.gain.exponentialRampToValueAtTime(.0001,audioCtx.currentTime+duration);osc.connect(filter);filter.connect(gain);gain.connect(audioCtx.destination);osc.start();osc.stop(audioCtx.currentTime+duration+.03)}
-function musicStep(){if(!musicOn)return;const f=melody[musicIndex%melody.length];playTone(f);if(musicIndex%4===0)playTone(f/2,.7);musicIndex++}
-document.getElementById('musicButton').addEventListener('click',async()=>{if(!audioCtx)audioCtx=new(window.AudioContext||window.webkitAudioContext)();if(audioCtx.state==='suspended')await audioCtx.resume();musicOn=!musicOn;const b=document.getElementById('musicButton');if(musicOn){b.textContent='♫ TẮT NHẠC';musicStep();musicTimer=setInterval(musicStep,480)}else{b.textContent='♫ BẬT NHẠC';clearInterval(musicTimer)}});
-const getUsers=()=>JSON.parse(localStorage.getItem("luan_users")||"{}");
-const current=()=>localStorage.getItem("luan_current");
-function register(){const u=document.getElementById("newUsername").value.trim(),p=document.getElementById("newPassword").value,msg=document.getElementById("message");if(!u||!p){msg.textContent="Nhập đầy đủ thông tin!";return}let users=getUsers();if(users[u]){msg.textContent="Tên tài khoản đã tồn tại!";return}users[u]={password:p,name:u,bio:"",avatar:"",photos:[]};localStorage.setItem("luan_users",JSON.stringify(users));msg.textContent="Đăng ký thành công! Hãy đăng nhập."}
-function login(){const u=document.getElementById("username").value.trim(),p=document.getElementById("password").value,users=getUsers();if(!users[u]||users[u].password!==p){document.getElementById("message").textContent="Sai tài khoản hoặc mật khẩu!";return}localStorage.setItem("luan_current",u);showProfile()}
-function showProfile(){const u=current(),users=getUsers();if(!u||!users[u])return;document.getElementById("authBox").classList.add("hidden");document.getElementById("profileBox").classList.remove("hidden");document.getElementById("profileName").textContent=users[u].name;document.getElementById("profileBio").textContent=users[u].bio||"";document.getElementById("editName").value=users[u].name;document.getElementById("editBio").value=users[u].bio||"";document.getElementById("avatar").src=users[u].avatar||"https://placehold.co/150x150/07101c/00eaff?text=LUAN";renderPhotos()}
-function saveProfile(){const u=current(),users=getUsers();if(!u||!users[u])return;users[u].name=document.getElementById("editName").value.trim()||u;users[u].bio=document.getElementById("editBio").value;localStorage.setItem("luan_users",JSON.stringify(users));showProfile();document.getElementById("profileMessage").textContent="Đã lưu hồ sơ!"}
-function logout(){localStorage.removeItem("luan_current");document.getElementById("authBox").classList.remove("hidden");document.getElementById("profileBox").classList.add("hidden");document.getElementById("message").textContent="Đã đăng xuất."}
-function readImage(file,callback){const reader=new FileReader();reader.onload=()=>callback(reader.result);reader.readAsDataURL(file)}
-document.getElementById("avatarInput").addEventListener("change",function(){const file=this.files[0],u=current(),users=getUsers();if(!file||!u||!users[u])return;readImage(file,data=>{users[u].avatar=data;try{localStorage.setItem("luan_users",JSON.stringify(users));showProfile()}catch(e){alert("Ảnh quá lớn, hãy chọn ảnh nhỏ hơn.")}})});
-document.getElementById("photoInput").addEventListener("change",function(){const files=Array.from(this.files),u=current(),users=getUsers();if(!u||!users[u]){alert("Đăng nhập trước nhé!");return}if(!files.length)return;let count=0;files.forEach(file=>readImage(file,data=>{users[u].photos=users[u].photos||[];users[u].photos.push(data);count++;if(count===files.length){try{localStorage.setItem("luan_users",JSON.stringify(users));renderPhotos()}catch(e){alert("Bộ nhớ ảnh đã đầy. Hãy chọn ít ảnh hơn.")}}}))});
-function renderPhotos(){const area=document.getElementById("userGallery");area.innerHTML="";const u=current(),users=getUsers();if(!u||!users[u])return;(users[u].photos||[]).forEach(src=>{const img=document.createElement("img");img.src=src;area.appendChild(img)})}
-if(current())showProfile();
+
+function getUsers(){
+ return JSON.parse(localStorage.getItem('luan_users')||'{}');
+}
+
+function register(){
+ let u=$('loginUser').value.trim();
+ let p=$('loginPass').value;
+ if(!u||!p){$('message').textContent='Nhập đầy đủ thông tin!';return}
+ let users=getUsers();
+ if(users[u]){$('message').textContent='Tài khoản đã tồn tại!';return}
+ users[u]={password:p};
+ localStorage.setItem('luan_users',JSON.stringify(users));
+ $('message').textContent='Tạo tài khoản thành công! Hãy đăng nhập.';
+}
+
+function login(){
+ let u=$('loginUser').value.trim();
+ let p=$('loginPass').value;
+ let users=getUsers();
+ if(users[u]&&users[u].password===p){
+  localStorage.setItem('luan_current',u);
+  updateAccount();
+ }else{
+  $('message').textContent='Sai tài khoản hoặc mật khẩu!';
+ }
+}
+
+function logout(){
+ localStorage.removeItem('luan_current');
+ updateAccount();
+}
+
+function updateAccount(){
+ let u=localStorage.getItem('luan_current');
+ $('loginBox').classList.toggle('hidden',!!u);
+ $('userBox').classList.toggle('hidden',!u);
+ $('welcome').textContent=u?'Xin chào '+u+'!':'';
+}
+
+function saveProfile(){
+ let data={
+  name:$('name').value,
+  bio:$('bio').value,
+  avatar:$('avatar').value
+ };
+ localStorage.setItem('luan_profile',JSON.stringify(data));
+ loadProfile();
+ alert('Đã lưu hồ sơ!');
+}
+
+function loadProfile(){
+ let d=JSON.parse(localStorage.getItem('luan_profile')||'{}');
+ $('name').value=d.name||'';
+ $('bio').value=d.bio||'';
+ $('avatar').value=d.avatar||'';
+ $('showName').textContent=d.name||'LUAN';
+ $('showBio').textContent=d.bio||'Welcome to my personal website.';
+ $('showAvatar').src=d.avatar||'https://placehold.co/150x150/071522/00eaff?text=LUAN';
+}
+
+function addPhoto(){
+ let url=$('photoURL').value.trim();
+ if(!url)return;
+ let photos=JSON.parse(localStorage.getItem('luan_photos')||'[]');
+ photos.push(url);
+ localStorage.setItem('luan_photos',JSON.stringify(photos));
+ $('photoURL').value='';
+ loadPhotos();
+}
+
+function loadPhotos(){
+ let photos=JSON.parse(localStorage.getItem('luan_photos')||'[]');
+ $('photos').innerHTML='';
+ photos.forEach((url,i)=>{
+  let box=document.createElement('div');
+  let img=document.createElement('img');
+  img.src=url;
+  img.onerror=()=>img.style.display='none';
+  let btn=document.createElement('button');
+  btn.textContent='XÓA';
+  btn.style.marginTop='5px';
+  btn.onclick=()=>{
+   photos.splice(i,1);
+   localStorage.setItem('luan_photos',JSON.stringify(photos));
+   loadPhotos();
+  };
+  box.append(img,btn);
+  $('photos').appendChild(box);
+ });
+}
+
+/* LẤP LÁNH */
+setInterval(()=>{
+ let s=document.createElement('div');
+ s.className='sparkle';
+ s.textContent=['✦','✧','✨','★'][Math.floor(Math.random()*4)];
+ s.style.left=Math.random()*98+'vw';
+ s.style.top=Math.random()*95+'vh';
+ s.style.fontSize=(10+Math.random()*14)+'px';
+ document.body.appendChild(s);
+ setTimeout(()=>s.remove(),2000);
+},350);
+
+/* NỐT NHẠC BAY */
+setInterval(()=>{
+ let n=document.createElement('div');
+ n.className='music-note';
+ n.textContent=['♪','♫','♬','♩'][Math.floor(Math.random()*4)];
+ n.style.left=Math.random()*95+'vw';
+ document.body.appendChild(n);
+ setTimeout(()=>n.remove(),5000);
+},900);
+
+/* NHẠC ĐIỆN TỬ TỰ TẠO */
+let audioCtx=null;
+let musicTimer=null;
+let playing=false;
+let step=0;
+let master=null;
+
+function playTone(freq,duration,type,volume,delay=0){
+ if(!audioCtx||!master)return;
+ let osc=audioCtx.createOscillator();
+ let gain=audioCtx.createGain();
+ osc.type=type;
+ osc.frequency.value=freq;
+ gain.gain.setValueAtTime(0.0001,audioCtx.currentTime+delay);
+ gain.gain.exponentialRampToValueAtTime(volume,audioCtx.currentTime+delay+0.015);
+ gain.gain.exponentialRampToValueAtTime(0.0001,audioCtx.currentTime+delay+duration);
+ osc.connect(gain);
+ gain.connect(master);
+ osc.start(audioCtx.currentTime+delay);
+ osc.stop(audioCtx.currentTime+delay+duration+0.03);
+}
+
+function musicBeat(){
+ if(!playing)return;
+ let notes=[261.63,329.63,392,523.25,392,329.63,293.66,440];
+ let t=audioCtx.currentTime;
+ let bass=step%4===0;
+ playTone(bass?65:82,.20,'sine',.42);
+ playTone(notes[step%notes.length],.23,'triangle',.12);
+ if(step%2===0)playTone(notes[(step+2)%notes.length]*2,.12,'sine',.045);
+ document.body.classList.add('beat');
+ setTimeout(()=>document.body.classList.remove('beat'),130);
+ step++;
+}
+
+async function toggleMusic(){
+ let btn=$('musicBtn');
+ if(!playing){
+  try{
+   if(!audioCtx){
+    audioCtx=new (window.AudioContext||window.webkitAudioContext)();
+    master=audioCtx.createGain();
+    master.gain.value=.35;
+    master.connect(audioCtx.destination);
+   }
+   if(audioCtx.state==='suspended')await audioCtx.resume();
+   playing=true;
+   musicBeat();
+   musicTimer=setInterval(musicBeat,300);
+   btn.textContent='🔊';
+   btn.classList.add('playing');
+   $('musicStatus').textContent='MUSIC: PLAYING';
+  }catch(e){
+   alert('Thiết bị không hỗ trợ phát nhạc.');
+  }
+ }else{
+  playing=false;
+  clearInterval(musicTimer);
+  btn.textContent='🎵';
+  btn.classList.remove('playing');
+  $('musicStatus').textContent='MUSIC: OFF';
+  document.body.classList.remove('beat');
+ }
+}
+
+loadProfile();
+loadPhotos();
+updateAccount();
 </script>
+
 </body>
 </html>
