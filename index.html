@@ -9,402 +9,449 @@
 
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
-:root{--bg:#02040a;--panel:#0b1020;--text:#f5f7ff;--muted:#9ba6bd}
+:root{--cyan:#00eaff}
 body{
-  background:var(--bg);color:var(--text);
-  font-family:Arial,sans-serif;min-height:100vh;
-  overflow-x:hidden;
+ background:#02040a;color:white;font-family:Arial,sans-serif;
+ min-height:100vh;overflow-x:hidden;
 }
 body:before{
-  content:"";position:fixed;inset:0;pointer-events:none;z-index:-1;
-  background:
-  radial-gradient(circle at 15% 20%,#09244c55,transparent 35%),
-  radial-gradient(circle at 85% 75%,#5b0c6655,transparent 35%);
+ content:"";position:fixed;inset:0;z-index:-2;
+ background:
+ radial-gradient(ellipse at 50% 0%,#003c5570,transparent 65%),
+ radial-gradient(ellipse at 10% 90%,#41008055,transparent 50%),
+ radial-gradient(ellipse at 90% 80%,#001c6655,transparent 50%);
+ background-size:200% 200%;
+ animation:nebula 18s ease-in-out infinite alternate;
 }
-#particles{position:fixed;inset:0;pointer-events:none;z-index:0}
-.lightning{
-  position:fixed;inset:0;pointer-events:none;z-index:5;
-  background:white;opacity:0;
+@keyframes nebula{
+ 0%{background-position:0% 0%;filter:hue-rotate(0deg)}
+ 50%{background-position:100% 50%;filter:hue-rotate(100deg)}
+ 100%{background-position:0% 100%;filter:hue-rotate(200deg)}
 }
-.lightning.flash{animation:flash .35s}
-@keyframes flash{0%,100%{opacity:0}15%{opacity:.15}30%{opacity:0}55%{opacity:.09}}
-.rgb{
-  border:1px solid transparent;
-  background:linear-gradient(#080d19,#080d19) padding-box,
-  linear-gradient(120deg,red,orange,yellow,lime,cyan,blue,violet,red) border-box;
-  background-size:100% 100%,300% 300%;
-  animation:rgb 5s linear infinite;
-  box-shadow:0 0 18px #00d9ff22;
+body:after{
+ content:"";position:fixed;inset:5px;z-index:1000;
+ border:2px solid transparent;border-radius:13px;
+ background:linear-gradient(135deg,red,orange,yellow,lime,cyan,blue,violet,red) border-box;
+ -webkit-mask:linear-gradient(#fff 0 0) padding-box,linear-gradient(#fff 0 0);
+ -webkit-mask-composite:xor;mask-composite:exclude;
+ pointer-events:none;animation:edge 4s linear infinite;
 }
-@keyframes rgb{to{background-position:0 0,300% 0}}
-header{
-  position:sticky;top:0;z-index:10;
-  background:#02040add;backdrop-filter:blur(14px);
-  border-bottom:1px solid #ffffff18;padding:13px 5%;
-  display:flex;justify-content:space-between;align-items:center;gap:12px;
+@keyframes edge{to{filter:hue-rotate(360deg)}}
+.logo,.hero h1,h2{
+ background:linear-gradient(90deg,red,orange,yellow,lime,cyan,blue,violet,red);
+ background-size:400% 400%;
+ -webkit-background-clip:text;background-clip:text;
+ color:transparent;animation:rainbow 4s linear infinite;
 }
-.logo{
-  font-size:20px;font-weight:900;letter-spacing:2px;
-  background:linear-gradient(90deg,#00eaff,#ff00d4,#ffe600);
-  background-size:200%;color:transparent;background-clip:text;
-  animation:rgb 4s linear infinite;
+@keyframes rainbow{to{background-position:400% 50%}}
+.logo{font-size:32px;font-weight:900;letter-spacing:5px;filter:drop-shadow(0 0 8px cyan)}
+header{padding:25px 12px;text-align:center;border-bottom:1px solid #00eaff55}
+header p{color:#8da4b8}
+.light{
+ height:3px;margin-top:15px;
+ background:linear-gradient(90deg,transparent,cyan,white,magenta,blue,transparent);
+ box-shadow:0 0 15px cyan;animation:laser 2s linear infinite alternate;
 }
-nav{display:flex;gap:15px;flex-wrap:wrap}
-nav a{color:#cbd5e1;text-decoration:none;font-size:13px}
-nav a:hover{color:#00eaff}
-main{position:relative;z-index:1;max-width:1050px;margin:auto;padding:25px 16px 60px}
-.hero{text-align:center;padding:65px 15px 45px}
-.avatar{
-  width:115px;height:115px;border-radius:50%;object-fit:cover;
-  border:3px solid #00eaff;box-shadow:0 0 25px #00dfff88;
-  margin-bottom:18px;
+@keyframes laser{from{opacity:.3}to{opacity:1;filter:hue-rotate(360deg)}}
+.laserline{
+ position:fixed;top:0;left:-100%;height:2px;width:70%;z-index:5;
+ background:linear-gradient(90deg,transparent,cyan,white,magenta,transparent);
+ box-shadow:0 0 20px cyan;pointer-events:none;animation:scan 7s linear infinite;
 }
-.hero h1{font-size:clamp(32px,7vw,58px);font-weight:900}
-.gradient{
-  background:linear-gradient(90deg,#00eaff,#ff00d4,#ffe600);
-  color:transparent;background-clip:text;
+@keyframes scan{to{left:150%}}
+nav{display:flex;justify-content:center;flex-wrap:wrap;gap:10px;padding:18px}
+button{
+ border:1px solid cyan;background:#071522;color:white;
+ padding:12px 16px;border-radius:9px;cursor:pointer;
+ font-weight:bold;transition:.2s;
 }
-.hero p{color:var(--muted);margin-top:12px;line-height:1.7}
-.actions{display:flex;justify-content:center;gap:10px;flex-wrap:wrap;margin-top:22px}
-.btn{
-  border:0;border-radius:10px;padding:12px 18px;
-  color:white;background:#111b30;font-weight:bold;cursor:pointer;
+button:hover{background:cyan;color:black;box-shadow:0 0 20px cyan;transform:scale(1.04)}
+.container{max-width:950px;margin:auto;padding:18px}
+.card{
+ background:linear-gradient(145deg,#0a1420,#03070e);
+ border:1px solid #00eaff88;border-radius:16px;
+ padding:22px;margin-bottom:20px;
+ animation:rgbGlow 8s linear infinite;transition:.2s;
 }
-.btn.primary{background:linear-gradient(100deg,#007cff,#a000ff)}
-.btn:hover{transform:translateY(-2px);filter:brightness(1.2)}
-section{margin:25px 0;padding:22px;border-radius:17px;background:#0a1020dd}
-.section-title{font-size:22px;margin-bottom:17px}
-.muted{color:var(--muted);line-height:1.7}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:13px}
-.card{padding:17px;border-radius:13px;background:#101a2d}
-.card h3{margin-bottom:9px;color:#00eaff}
-.stat{font-size:25px;font-weight:900;margin-top:8px}
-.car-img{width:100%;border-radius:12px;margin-top:12px;max-height:360px;object-fit:cover}
-.music-box{display:flex;align-items:center;gap:15px;flex-wrap:wrap}
-.disc{
-  width:65px;height:65px;border-radius:50%;
-  background:radial-gradient(circle,#111 0 15%,#00eaff 17% 20%,#111 22% 45%,#a000ff 48% 52%,#111 55%);
-  box-shadow:0 0 20px #00eaff66;
+@keyframes rgbGlow{
+ 0%,100%{border-color:#00eaff;box-shadow:0 0 14px #00eaff22}
+ 25%{border-color:#a000ff;box-shadow:0 0 19px #a000ff44}
+ 50%{border-color:#ff00aa;box-shadow:0 0 19px #ff00aa44}
+ 75%{border-color:#00ff99;box-shadow:0 0 19px #00ff9944}
 }
-.disc.playing{animation:spin 3s linear infinite}
-@keyframes spin{to{transform:rotate(360deg)}}
-input,textarea{
-  width:100%;padding:12px;margin:7px 0;
-  background:#070c18;color:white;border:1px solid #293751;
-  border-radius:9px;outline:none;
-}
-input:focus,textarea:focus{border-color:#00eaff}
-.gallery img{width:100%;height:170px;object-fit:cover;border-radius:10px}
-.gallery-item{position:relative}
-.gallery-item button{margin-top:6px}
-footer{text-align:center;padding:25px;color:#77839a}
-.modal{
-  position:fixed;inset:0;background:#000c;z-index:20;
-  display:none;align-items:center;justify-content:center;padding:18px;
-}
-.modal.show{display:flex}
-.modal-box{width:min(420px,100%);padding:23px;border-radius:17px;background:#0b1222}
-.close{float:right;background:none;border:0;color:white;font-size:24px;cursor:pointer}
+h2{margin-bottom:16px}
+.hero{text-align:center;padding:48px 15px}
+.hero h1{font-size:38px;margin-bottom:15px}
+.hero p{color:#aab9c9;line-height:1.8}
 .hidden{display:none!important}
-#toast{
-  position:fixed;bottom:20px;left:50%;transform:translateX(-50%);
-  background:#13243c;padding:12px 18px;border-radius:10px;
-  display:none;z-index:30;border:1px solid #00eaff;
+input,textarea{
+ width:100%;padding:13px;margin:8px 0;background:#020812;color:white;
+ border:1px solid #00eaff55;border-radius:8px;outline:none;
+}
+input:focus,textarea:focus{border-color:cyan;box-shadow:0 0 12px cyan}
+.primary{background:#00d9ee;color:#001018;border:none}
+.center{text-align:center}
+.avatar{
+ width:100px;height:100px;border-radius:50%;object-fit:cover;
+ border:2px solid cyan;box-shadow:0 0 20px cyan;
+}
+.gallery{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+.gallery img{
+ width:100%;height:160px;object-fit:cover;
+ border-radius:10px;border:1px solid #00eaff55;
+}
+.small{font-size:12px;color:#8299aa;margin-top:10px}
+footer{text-align:center;color:#62788b;padding:25px;border-top:1px solid #00eaff33}
+.sparkle{
+ position:fixed;pointer-events:none;color:white;z-index:900;
+ text-shadow:0 0 8px cyan,0 0 15px white;
+ animation:twinkle 2s ease-in-out forwards;
+}
+@keyframes twinkle{
+ 0%,100%{opacity:0;transform:scale(.2)}
+ 50%{opacity:1;transform:scale(1.5) rotate(180deg)}
+}
+.music-btn{
+ position:fixed;right:20px;bottom:22px;z-index:1100;
+ border-radius:50%;width:58px;height:58px;font-size:23px;
+ background:#061522;border:2px solid cyan;
+ box-shadow:0 0 18px cyan;animation:musicGlow 2s infinite alternate;
+}
+@keyframes musicGlow{to{transform:scale(1.1);box-shadow:0 0 28px magenta}}
+.music-btn.playing{background:#00d9ee;color:black}
+.music-status{
+ position:fixed;right:20px;bottom:90px;z-index:1100;
+ background:#071522;border:1px solid cyan;color:white;
+ padding:8px 12px;border-radius:9px;font-size:12px;
+ max-width:260px;display:none;overflow-wrap:anywhere;
+}
+.music-status.show{display:block}
+.lightning-bolt{
+ position:fixed;z-index:950;top:0;height:72vh;width:38vw;
+ pointer-events:none;filter:drop-shadow(0 0 7px cyan) drop-shadow(0 0 18px #8b5cff);
+ animation:boltFlash .55s ease-out forwards;
+}
+.lightning-bolt polyline{
+ fill:none;stroke:#d9ffff;stroke-width:3.5;
+ stroke-linecap:round;stroke-linejoin:round;
+}
+@keyframes boltFlash{
+ 0%{opacity:0}8%{opacity:1}18%{opacity:.25}
+ 28%{opacity:1}55%{opacity:.85}100%{opacity:0}
+}
+.lightning-screen-flash{
+ position:fixed;inset:0;z-index:940;pointer-events:none;
+ background:#b9faff;animation:screenFlash .42s ease-out forwards;
+}
+@keyframes screenFlash{
+ 0%,100%{opacity:0}8%{opacity:.22}18%{opacity:0}29%{opacity:.12}45%{opacity:0}
 }
 @media(max-width:600px){
-  header{align-items:flex-start;flex-direction:column}
-  nav{gap:12px}
-  .hero{padding-top:40px}
-  section{padding:17px}
+ .hero{padding:35px 12px}
+ .hero h1{font-size:30px}
+ .logo{font-size:26px;letter-spacing:3px}
+ .card{padding:17px}
+ nav{gap:7px;padding:13px 8px}
+ nav button{padding:10px 11px;font-size:12px}
+ .lightning-bolt{width:58vw}
+}
+@media(prefers-reduced-motion:reduce){
+ body:before,.card,.logo,.hero h1,h2,.light,.laserline{animation:none!important}
 }
 </style>
 </head>
 
 <body>
-<canvas id="particles"></canvas>
-<div class="lightning" id="lightning"></div>
+<div class="laserline"></div>
 
 <header>
-  <div class="logo">LUAN PERSONAL VIP</div>
-  <nav>
-    <a href="#home">Trang chủ</a>
-    <a href="#about">Giới thiệu</a>
-    <a href="#music">Âm nhạc</a>
-    <a href="#gallery">Thư viện</a>
-    <a href="#dream">Ước mơ</a>
-  </nav>
+ <div class="logo">LUAN PERSONAL</div>
+ <div class="light"></div>
+ <p style="margin-top:12px;letter-spacing:4px">VIP RGB EXPERIENCE</p>
 </header>
 
-<main>
-  <div class="hero" id="home">
-    <img class="avatar" id="avatar"
-      src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=300"
-      alt="Ảnh đại diện">
-    <h1>WELCOME TO <span class="gradient">LUAN</span></h1>
-    <p>MY PERSONAL WEBSITE · MY LIFE · MY DREAM</p>
-    <div class="actions">
-      <button class="btn primary" onclick="openLogin()">Đăng nhập</button>
-      <button class="btn rgb" onclick="openProfile()">Hồ sơ của tôi</button>
-    </div>
-    <p id="welcomeText"></p>
-  </div>
+<nav>
+ <button onclick="show('home')">TRANG CHỦ</button>
+ <button onclick="show('about')">GIỚI THIỆU</button>
+ <button onclick="show('gallery')">THƯ VIỆN</button>
+ <button onclick="show('account')">TÀI KHOẢN</button>
+</nav>
 
-  <section id="about" class="rgb">
-    <h2 class="section-title">✦ GIỚI THIỆU</h2>
-    <div class="grid">
-      <div class="card">
-        <h3>Thông tin cá nhân</h3>
-        <p class="muted">Tên: <span id="displayName">Luân</span></p>
-        <p class="muted">Sở thích: Xe cộ, âm nhạc, công nghệ</p>
-        <p class="muted">Phong cách: Đơn giản nhưng khác biệt</p>
-      </div>
-      <div class="card">
-        <h3>PERSONAL VIP</h3>
-        <p class="muted">Một góc nhỏ lưu giữ hình ảnh, sở thích và những điều tao yêu thích.</p>
-        <div class="stat gradient">LUAN</div>
-      </div>
-    </div>
-  </section>
+<div class="container">
+<section id="home">
+ <div class="card hero">
+  <h1>WELCOME TO LUAN</h1>
+  <p>Chào mừng đến với thế giới riêng của tôi.</p>
+  <p>Đam mê công nghệ • Ô tô • Cuộc sống</p>
+  <br>
+  <button onclick="show('about')">KHÁM PHÁ NGAY</button>
+ </div>
+ <div class="card center">
+  <h2>MY DREAM CAR</h2>
+  <h1 style="color:cyan">HONDA CIVIC GEN 8</h1>
+  <p style="color:#91a6b8;margin-top:12px">DREAM IT. BUILD IT. DRIVE IT.</p>
+ </div>
+</section>
 
-  <section id="music" class="rgb">
-    <h2 class="section-title">♫ LUAN MUSIC PLAYER</h2>
-    <div class="music-box">
-      <div class="disc" id="disc"></div>
-      <div style="flex:1;min-width:180px">
-        <h3>Nhạc của Luân</h3>
-        <p class="muted" id="musicStatus">Nhấn phát để nghe nhạc</p>
-      </div>
-    </div>
-    <audio id="music" src="./nhac.mp3.mp3" preload="metadata"></audio>
-    <div class="actions">
-      <button class="btn primary" onclick="toggleMusic()" id="playBtn">▶ PHÁT NHẠC</button>
-      <button class="btn" onclick="stopMusic()">■ DỪNG</button>
-    </div>
-    <label class="muted">Âm lượng</label>
-    <input type="range" min="0" max="1" step="0.01" value="0.8"
-      oninput="music.volume=this.value">
-    <p class="muted">Lưu ý: File nhạc phải nằm cùng thư mục với index.html và có tên chính xác là nhac.mp3.mp3.</p>
-  </section>
+<section id="about" class="hidden">
+ <div class="card center">
+  <h2>GIỚI THIỆU</h2>
+  <img id="showAvatar" class="avatar" src="https://placehold.co/150x150/071522/00eaff?text=LUAN">
+  <h2 id="showName">LUAN</h2>
+  <p id="showBio">Welcome to my personal website.</p>
+  <br>
+  <p>Đam mê Honda Civic, công nghệ và sáng tạo.</p>
+ </div>
+ <div class="card">
+  <h2>CHỈNH SỬA HỒ SƠ</h2>
+  <input id="name" placeholder="Tên của bạn">
+  <textarea id="bio" placeholder="Giới thiệu bản thân"></textarea>
+  <input id="avatar" placeholder="Link ảnh đại diện">
+  <button class="primary" onclick="saveProfile()">LƯU HỒ SƠ</button>
+ </div>
+</section>
 
-  <section id="gallery" class="rgb">
-    <h2 class="section-title">▣ THƯ VIỆN ẢNH</h2>
-    <p class="muted">Thêm ảnh bằng đường dẫn ảnh trực tiếp.</p>
-    <input id="imageUrl" placeholder="Dán link ảnh vào đây...">
-    <button class="btn primary" onclick="addImage()">＋ THÊM ẢNH</button>
-    <div class="grid gallery" id="galleryList" style="margin-top:18px"></div>
-  </section>
+<section id="gallery" class="hidden">
+ <div class="card">
+  <h2>THƯ VIỆN ẢNH</h2>
+  <input id="photoURL" placeholder="Dán link hình ảnh">
+  <button onclick="addPhoto()">THÊM ẢNH</button>
+  <div class="gallery" id="photos" style="margin-top:20px"></div>
+ </div>
+</section>
 
-  <section id="dream" class="rgb">
-    <h2 class="section-title">🏁 MY DREAM CAR</h2>
-    <div class="card">
-      <h3>HONDA CIVIC GEN 8</h3>
-      <p class="muted">Một chiếc xe trong mơ. Cố gắng từng ngày để biến ước mơ thành hiện thực.</p>
-      <img class="car-img"
-        src="https://images.unsplash.com/photo-1552519507-da3b142c6e3d?w=1000"
-        alt="Xe thể thao">
-    </div>
-  </section>
-
-  <section class="rgb">
-    <h2 class="section-title">✉ LỜI NHẮN</h2>
-    <textarea id="message" rows="4" placeholder="Viết điều mày muốn lưu lại..."></textarea>
-    <button class="btn primary" onclick="saveMessage()">LƯU LỜI NHẮN</button>
-    <p id="savedMessage" class="muted" style="margin-top:12px"></p>
-  </section>
-</main>
-
-<footer>© 2026 LUAN PERSONAL VIP · DESIGNED FOR LUAN</footer>
-
-<div class="modal" id="loginModal">
-  <div class="modal-box rgb">
-    <button class="close" onclick="closeModal('loginModal')">×</button>
-    <h2>ĐĂNG NHẬP / ĐĂNG KÝ</h2>
-    <p class="muted">Tạo tài khoản demo trên thiết bị này.</p>
-    <input id="username" placeholder="Tên đăng nhập">
-    <input id="password" type="password" placeholder="Mật khẩu">
-    <button class="btn primary" style="width:100%" onclick="register()">ĐĂNG KÝ</button>
-    <button class="btn" style="width:100%;margin-top:8px" onclick="login()">ĐĂNG NHẬP</button>
-    <p class="muted" style="margin-top:12px;font-size:12px">
-      Đây là đăng nhập demo lưu trên trình duyệt, không phải hệ thống bảo mật máy chủ.
-    </p>
-  </div>
+<section id="account" class="hidden">
+ <div class="card" id="loginBox">
+  <h2>ĐĂNG NHẬP</h2>
+  <input id="loginUser" placeholder="Tên tài khoản">
+  <input id="loginPass" type="password" placeholder="Mật khẩu">
+  <button class="primary" onclick="login()">ĐĂNG NHẬP</button>
+  <p class="small">Chưa có tài khoản?</p>
+  <button onclick="register()">TẠO TÀI KHOẢN</button>
+  <p id="message" style="color:cyan;margin-top:15px"></p>
+ </div>
+ <div class="card hidden" id="userBox">
+  <h2>TÀI KHOẢN CỦA BẠN</h2>
+  <p id="welcome"></p>
+  <br>
+  <button onclick="logout()">ĐĂNG XUẤT</button>
+ </div>
+</section>
 </div>
 
-<div class="modal" id="profileModal">
-  <div class="modal-box rgb">
-    <button class="close" onclick="closeModal('profileModal')">×</button>
-    <h2>HỒ SƠ CÁ NHÂN</h2>
-    <input id="profileName" placeholder="Tên hiển thị">
-    <input id="profileAvatar" placeholder="Link ảnh đại diện">
-    <button class="btn primary" style="width:100%" onclick="saveProfile()">LƯU HỒ SƠ</button>
-  </div>
-</div>
+<footer>
+ <p>© 2026 LUAN PERSONAL</p>
+ <p class="small">DESIGNED WITH PASSION • VIP RGB EDITION</p>
+</footer>
 
-<div id="toast"></div>
+<audio id="music" preload="auto" playsinline webkit-playsinline>
+ <source src="https://lluanken20002-dev.github.io/luan-personal/nhac.mp3.mp3" type="audio/mpeg">
+</audio>
+
+<div class="music-status" id="musicStatus">Sẵn sàng phát nhạc</div>
+<button class="music-btn" id="musicBtn" type="button" aria-label="Phát nhạc">🎵</button>
 
 <script>
-const $ = id => document.getElementById(id);
-const music = $("music");
+const $=id=>document.getElementById(id);
 
-function toast(message){
-  $("toast").textContent=message;
-  $("toast").style.display="block";
-  setTimeout(()=>$("toast").style.display="none",2400);
+function show(id){
+ document.querySelectorAll('.container section').forEach(s=>s.classList.add('hidden'));
+ $(id).classList.remove('hidden');
 }
 
-function openLogin(){$("loginModal").classList.add("show")}
-function openProfile(){
-  $("profileName").value=localStorage.getItem("luanName")||"Luân";
-  $("profileAvatar").value=localStorage.getItem("luanAvatar")||"";
-  $("profileModal").classList.add("show");
+function getUsers(){
+ return JSON.parse(localStorage.getItem('luan_users')||'{}');
 }
-function closeModal(id){$(id).classList.remove("show")}
 
 function register(){
-  const u=$("username").value.trim();
-  const p=$("password").value;
-  if(!u||!p)return toast("Nhập đủ tên và mật khẩu nhé");
-  localStorage.setItem("luanUser",u);
-  localStorage.setItem("luanPass",p);
-  toast("Đăng ký thành công!");
+ let u=$('loginUser').value.trim();
+ let p=$('loginPass').value;
+ if(!u||!p){$('message').textContent='Nhập đầy đủ thông tin!';return}
+ let users=getUsers();
+ if(users[u]){$('message').textContent='Tài khoản đã tồn tại!';return}
+ users[u]={password:p};
+ localStorage.setItem('luan_users',JSON.stringify(users));
+ $('message').textContent='Tạo tài khoản thành công! Hãy đăng nhập.';
 }
+
 function login(){
-  const u=$("username").value.trim();
-  const p=$("password").value;
-  if(u===localStorage.getItem("luanUser")&&p===localStorage.getItem("luanPass")){
-    localStorage.setItem("luanLogged",u);
-    $("welcomeText").textContent="Xin chào "+u+"!";
-    closeModal("loginModal");
-    toast("Đăng nhập thành công!");
-  }else toast("Sai tài khoản hoặc mật khẩu");
+ let u=$('loginUser').value.trim();
+ let p=$('loginPass').value;
+ let users=getUsers();
+ if(users[u]&&users[u].password===p){
+  localStorage.setItem('luan_current',u);
+  updateAccount();
+ }else{$('message').textContent='Sai tài khoản hoặc mật khẩu!'}
+}
+
+function logout(){
+ localStorage.removeItem('luan_current');
+ updateAccount();
+}
+
+function updateAccount(){
+ let u=localStorage.getItem('luan_current');
+ $('loginBox').classList.toggle('hidden',!!u);
+ $('userBox').classList.toggle('hidden',!u);
+ $('welcome').textContent=u?'Xin chào '+u+'!':'';
 }
 
 function saveProfile(){
-  const name=$("profileName").value.trim()||"Luân";
-  const avatar=$("profileAvatar").value.trim();
-  localStorage.setItem("luanName",name);
-  if(avatar)localStorage.setItem("luanAvatar",avatar);
-  $("displayName").textContent=name;
-  if(avatar)$("avatar").src=avatar;
-  closeModal("profileModal");
-  toast("Đã lưu hồ sơ!");
+ let data={
+  name:$('name').value,
+  bio:$('bio').value,
+  avatar:$('avatar').value
+ };
+ localStorage.setItem('luan_profile',JSON.stringify(data));
+ loadProfile();
+ alert('Đã lưu hồ sơ!');
 }
 
-async function toggleMusic(){
-  try{
-    if(music.paused){
-      await music.play();
-      $("playBtn").textContent="Ⅱ TẠM DỪNG";
-      $("musicStatus").textContent="Đang phát nhạc...";
-      $("disc").classList.add("playing");
-    }else{
-      music.pause();
-      $("playBtn").textContent="▶ PHÁT NHẠC";
-      $("musicStatus").textContent="Đã tạm dừng";
-      $("disc").classList.remove("playing");
-    }
-  }catch(e){
-    toast("Không phát được nhạc. Kiểm tra file nhac.mp3.mp3 nhé!");
-  }
+function loadProfile(){
+ let d=JSON.parse(localStorage.getItem('luan_profile')||'{}');
+ $('name').value=d.name||'';
+ $('bio').value=d.bio||'';
+ $('avatar').value=d.avatar||'';
+ $('showName').textContent=d.name||'LUAN';
+ $('showBio').textContent=d.bio||'Welcome to my personal website.';
+ $('showAvatar').src=d.avatar||'https://placehold.co/150x150/071522/00eaff?text=LUAN';
 }
+
+function addPhoto(){
+ let url=$('photoURL').value.trim();
+ if(!url)return;
+ let photos=JSON.parse(localStorage.getItem('luan_photos')||'[]');
+ photos.push(url);
+ localStorage.setItem('luan_photos',JSON.stringify(photos));
+ $('photoURL').value='';
+ loadPhotos();
+}
+
+function loadPhotos(){
+ let photos=JSON.parse(localStorage.getItem('luan_photos')||'[]');
+ $('photos').innerHTML='';
+ photos.forEach((url,i)=>{
+  let box=document.createElement('div');
+  let img=document.createElement('img');
+  img.src=url;
+  img.onerror=()=>img.style.display='none';
+  let btn=document.createElement('button');
+  btn.textContent='XÓA';
+  btn.style.marginTop='5px';
+  btn.onclick=()=>{
+   photos.splice(i,1);
+   localStorage.setItem('luan_photos',JSON.stringify(photos));
+   loadPhotos();
+  };
+  box.append(img,btn);
+  $('photos').appendChild(box);
+ });
+}
+
+/* TRÌNH PHÁT NHẠC - TỐI ƯU CHO IPHONE */
+const music=$('music');
+const musicBtn=$('musicBtn');
+const musicStatus=$('musicStatus');
+
+music.volume=1;
+
+function showMusicStatus(message){
+ musicStatus.textContent=message;
+ musicStatus.classList.add('show');
+}
+
+musicBtn.addEventListener('click',async()=>{
+ if(!music.paused){
+  music.pause();
+  return;
+ }
+
+ showMusicStatus('Đang tải nhạc...');
+
+ try{
+  await music.play();
+  musicBtn.classList.add('playing');
+  musicBtn.textContent='Ⅱ';
+  showMusicStatus('♫ Đang phát nhạc');
+ }catch(error){
+  musicBtn.classList.remove('playing');
+  musicBtn.textContent='🎵';
+  showMusicStatus('Lỗi phát nhạc: '+error.name);
+  console.error('Music error:',error);
+ }
+});
+
+music.addEventListener('play',()=>{
+ musicBtn.classList.add('playing');
+ musicBtn.textContent='Ⅱ';
+ showMusicStatus('♫ Đang phát nhạc');
+});
+
+music.addEventListener('pause',()=>{
+ musicBtn.classList.remove('playing');
+ musicBtn.textContent='🎵';
+});
+
+music.addEventListener('ended',()=>{
+ musicBtn.classList.remove('playing');
+ musicBtn.textContent='🎵';
+ showMusicStatus('Đã phát xong');
+});
+
+music.addEventListener('error',()=>{
+ let code=music.error?music.error.code:'không rõ';
+ showMusicStatus('Không tải được file nhạc. Mã lỗi: '+code);
+});
+
 function stopMusic(){
-  music.pause();music.currentTime=0;
-  $("playBtn").textContent="▶ PHÁT NHẠC";
-  $("musicStatus").textContent="Đã dừng nhạc";
-  $("disc").classList.remove("playing");
-}
-music.addEventListener("ended",()=>{
-  $("playBtn").textContent="▶ PHÁT NHẠC";
-  $("musicStatus").textContent="Đã phát xong";
-  $("disc").classList.remove("playing");
-});
-music.addEventListener("error",()=>{
-  $("musicStatus").textContent="Không tìm thấy file nhạc";
-});
-
-function addImage(){
-  const url=$("imageUrl").value.trim();
-  if(!url)return toast("Dán link ảnh trước nhé");
-  try{new URL(url)}catch(e){return toast("Link ảnh không hợp lệ")}
-  const images=JSON.parse(localStorage.getItem("luanGallery")||"[]");
-  images.push(url);
-  localStorage.setItem("luanGallery",JSON.stringify(images));
-  $("imageUrl").value="";
-  renderGallery();
-  toast("Đã thêm ảnh!");
-}
-function renderGallery(){
-  const images=JSON.parse(localStorage.getItem("luanGallery")||"[]");
-  $("galleryList").innerHTML="";
-  images.forEach((url,index)=>{
-    const item=document.createElement("div");
-    item.className="card gallery-item";
-    const img=document.createElement("img");
-    img.src=url;img.alt="Ảnh thư viện";
-    const btn=document.createElement("button");
-    btn.className="btn";btn.textContent="Xóa ảnh";
-    btn.onclick=()=>{
-      images.splice(index,1);
-      localStorage.setItem("luanGallery",JSON.stringify(images));
-      renderGallery();
-    };
-    item.append(img,btn);
-    $("galleryList").append(item);
-  });
-}
-function saveMessage(){
-  localStorage.setItem("luanMessage",$("message").value);
-  $("savedMessage").textContent="Đã lưu: "+$("message").value;
-  toast("Đã lưu lời nhắn!");
+ music.pause();
+ music.currentTime=0;
 }
 
-function loadData(){
-  const name=localStorage.getItem("luanName")||"Luân";
-  $("displayName").textContent=name;
-  const avatar=localStorage.getItem("luanAvatar");
-  if(avatar)$("avatar").src=avatar;
-  const logged=localStorage.getItem("luanLogged");
-  if(logged)$("welcomeText").textContent="Xin chào "+logged+"!";
-  const msg=localStorage.getItem("luanMessage");
-  if(msg){$("message").value=msg;$("savedMessage").textContent="Đã lưu: "+msg}
-  renderGallery();
-}
-loadData();
+/* TIA SÉT */
+function createLightning(){
+ const svg=document.createElementNS('http://www.w3.org/2000/svg','svg');
+ svg.setAttribute('viewBox','0 0 300 600');
+ svg.classList.add('lightning-bolt');
+ svg.style.left=(Math.random()*78)+'vw';
+ const points=['150,0'];
+ let x=150;
+ for(let y=65;y<570;y+=65){
+  x=Math.max(35,Math.min(265,x+(Math.random()-.5)*145));
+  points.push(x+','+y);
+ }
+ const line=document.createElementNS('http://www.w3.org/2000/svg','polyline');
+ line.setAttribute('points',points.join(' '));
+ svg.appendChild(line);
+ document.body.appendChild(svg);
 
-/* Hiệu ứng hạt sáng */
-const canvas=$("particles");
-const ctx=canvas.getContext("2d");
-let dots=[];
-function resize(){
-  canvas.width=innerWidth*devicePixelRatio;
-  canvas.height=innerHeight*devicePixelRatio;
-  ctx.setTransform(devicePixelRatio,0,0,devicePixelRatio,0,0);
-  dots=Array.from({length:55},()=>({
-    x:Math.random()*innerWidth,y:Math.random()*innerHeight,
-    r:Math.random()*2+0.5,s:Math.random()*0.5+0.15
-  }));
+ const flash=document.createElement('div');
+ flash.className='lightning-screen-flash';
+ document.body.appendChild(flash);
+ setTimeout(()=>{svg.remove();flash.remove()},600);
 }
-function animate(){
-  ctx.clearRect(0,0,innerWidth,innerHeight);
-  dots.forEach(d=>{
-    d.y-=d.s;
-    if(d.y<0){d.y=innerHeight;d.x=Math.random()*innerWidth}
-    ctx.beginPath();ctx.arc(d.x,d.y,d.r,0,Math.PI*2);
-    ctx.fillStyle="rgba(0,220,255,.65)";ctx.fill();
-  });
-  requestAnimationFrame(animate);
-}
-addEventListener("resize",resize);
-resize();animate();
 
-/* Tia chớp ngẫu nhiên */
+function scheduleLightning(){
+ createLightning();
+ setTimeout(scheduleLightning,4200+Math.random()*5200);
+}
+setTimeout(scheduleLightning,2200);
+
+/* LẤP LÁNH */
 setInterval(()=>{
-  if(Math.random()>.55){
-    $("lightning").classList.remove("flash");
-    void $("lightning").offsetWidth;
-    $("lightning").classList.add("flash");
-  }
-},3500);
+ let s=document.createElement('div');
+ s.className='sparkle';
+ s.textContent=['✦','✧','✨','★'][Math.floor(Math.random()*4)];
+ s.style.left=Math.random()*98+'vw';
+ s.style.top=Math.random()*95+'vh';
+ s.style.fontSize=(10+Math.random()*14)+'px';
+ document.body.appendChild(s);
+ setTimeout(()=>s.remove(),2000);
+},500);
+
+loadProfile();
+loadPhotos();
+updateAccount();
 </script>
 </body>
 </html>
