@@ -239,6 +239,27 @@ nav button.active,nav button:hover{
 }
 #musicFiles{display:none}
 
+/* YOUTUBE */
+.youtube-card{
+ margin-top:20px;padding-top:18px;
+ border-top:1px solid #1a3447;
+}
+.youtube-button{
+ width:100%;padding:13px;border-radius:10px;
+ border:1px solid #ff365e;color:white;
+ background:linear-gradient(100deg,#5d1028,#a20e35);
+ box-shadow:0 0 16px #ff174455;
+ font-size:12px;font-weight:bold;
+}
+.youtube-frame{
+ display:none;margin-top:15px;
+ border:1px solid var(--cyan);border-radius:12px;
+ overflow:hidden;box-shadow:0 0 18px #00eaff33;
+}
+.youtube-frame iframe{
+ display:block;width:100%;height:220px;border:0;
+}
+
 /* SETTINGS */
 .setting-row{
  display:flex;justify-content:space-between;align-items:center;
@@ -258,9 +279,30 @@ footer{text-align:center;color:#61798e;font-size:10px;letter-spacing:2px;padding
  opacity:0;pointer-events:none;background:#102437;
  border:1px solid var(--cyan);color:white;
  border-radius:12px;padding:13px 20px;font-size:12px;
- transition:.3s;z-index:200;
+ transition:.3s;z-index:200
 }
 #toast.show{opacity:1;transform:translate(-50%,0)}
+
+/* FLOATING MUSIC NOTES */
+#musicNotes{
+ position:fixed;inset:0;z-index:40;
+ pointer-events:none;overflow:hidden;
+}
+.floating-note{
+ position:absolute;bottom:-45px;
+ font-size:25px;font-weight:bold;
+ opacity:0;
+ text-shadow:0 0 8px currentColor,0 0 20px currentColor;
+ animation:noteFly linear forwards;
+ will-change:transform,opacity;
+}
+@keyframes noteFly{
+ 0%{transform:translate3d(0,0,0) rotate(0deg) scale(.6);opacity:0}
+ 12%{opacity:.95}
+ 50%{transform:translate3d(35px,-55vh,0) rotate(150deg) scale(1.1);opacity:.85}
+ 100%{transform:translate3d(-25px,-115vh,0) rotate(330deg) scale(1.35);opacity:0}
+}
+
 @media(min-width:700px){
  #app{padding:25px}
  .stats{grid-template-columns:repeat(4,1fr)}
@@ -273,6 +315,7 @@ footer{text-align:center;color:#61798e;font-size:10px;letter-spacing:2px;padding
 <body class="scanlines">
 <div id="background"></div>
 <div id="particles"></div>
+<div id="musicNotes"></div>
 
 <!-- LOGIN -->
 <section id="login">
@@ -394,8 +437,34 @@ footer{text-align:center;color:#61798e;font-size:10px;letter-spacing:2px;padding
   <input id="musicFiles" type="file" accept="audio/*" multiple>
 
   <div class="playlist">
-   <h2>◈ PLAYLIST</h2>
+   <h2>◈ PLAYLIST MP3</h2>
    <div id="playlist"><p class="muted">Chưa có bài hát nào.</p></div>
+  </div>
+
+  <!-- YOUTUBE SONG -->
+  <div class="youtube-card">
+   <h2>♫ YOUTUBE MUSIC</h2>
+   <p style="text-align:center;font-size:14px;margin-bottom:8px">
+    ĐI TÌM LẠI CHÍNH ANH
+   </p>
+   <p class="muted" style="text-align:center;margin-bottom:15px">
+    Only T • Kaisoul • Alyboy • Trinh Py
+   </p>
+   <button class="youtube-button" onclick="playYoutube()">
+    ▶ PHÁT BÀI HÁT YOUTUBE
+   </button>
+   <div class="youtube-frame" id="youtubePlayer">
+    <iframe
+     src=""
+     title="Đi Tìm Lại Chính Anh"
+     allow="autoplay; encrypted-media; picture-in-picture"
+     referrerpolicy="strict-origin-when-cross-origin"
+     allowfullscreen>
+    </iframe>
+   </div>
+   <p class="muted" style="text-align:center;line-height:1.7;margin-top:12px">
+    Bài hát được phát trực tiếp từ YouTube. Cần kết nối Internet.
+   </p>
   </div>
  </div>
 </section>
@@ -430,6 +499,10 @@ footer{text-align:center;color:#61798e;font-size:10px;letter-spacing:2px;padding
    <input class="switch" type="checkbox" checked onchange="particlesOn=this.checked;makeParticles()">
   </div>
   <div class="setting-row">
+   <span>Nốt nhạc bay</span>
+   <input class="switch" id="notesSwitch" type="checkbox" checked onchange="notesOn=this.checked">
+  </div>
+  <div class="setting-row">
    <span>Âm thanh tự động</span>
    <span class="muted">Tắt mặc định</span>
   </div>
@@ -461,7 +534,6 @@ footer{text-align:center;color:#61798e;font-size:10px;letter-spacing:2px;padding
 
 <script>
 // ===== SECURITY / LOGIN =====
-// Mật khẩu mặc định: 20002
 let password=localStorage.getItem('luan_v8_password')||'20002';
 
 function login(){
@@ -576,6 +648,32 @@ function formatTime(t){
  return Math.floor(t/60)+':'+String(Math.floor(t%60)).padStart(2,'0');
 }
 
+// Dừng YouTube khi chuyển về MP3
+function stopYoutube(){
+ const box=document.getElementById('youtubePlayer');
+ const frame=box.querySelector('iframe');
+ frame.src='';
+ box.style.display='none';
+}
+
+// Phát bài YouTube đã chọn
+function playYoutube(){
+ audio.pause();
+ resetMusicUI();
+
+ const box=document.getElementById('youtubePlayer');
+ const frame=box.querySelector('iframe');
+
+ frame.src='https://www.youtube-nocookie.com/embed/qmAJLONDzgs?autoplay=1';
+ box.style.display='block';
+
+ document.getElementById('songName').textContent='ĐI TÌM LẠI CHÍNH ANH';
+ document.getElementById('songInfo').textContent='ONLY T • KAISOUL • ALYBOY • TRINH PY';
+
+ box.scrollIntoView({behavior:'smooth',block:'center'});
+ toast('ĐANG MỞ YOUTUBE MUSIC');
+}
+
 function renderPlaylist(){
  const box=document.getElementById('playlist');
  box.innerHTML='';
@@ -601,6 +699,10 @@ function renderPlaylist(){
 
 function loadSong(index,autoplay){
  if(!songs.length)return;
+
+ // Dừng video YouTube trước khi phát MP3
+ stopYoutube();
+
  currentIndex=(index+songs.length)%songs.length;
  audio.src=songs[currentIndex].url;
  document.getElementById('songName').textContent=songs[currentIndex].name;
@@ -684,6 +786,30 @@ document.getElementById('volume').addEventListener('input',e=>{
  document.getElementById('volumeText').textContent=Math.round(audio.volume*100)+'%';
 });
 audio.volume=.8;
+
+// ===== FLOATING MUSIC NOTES =====
+let notesOn=true;
+const noteSymbols=['♪','♫','♬','♩','♭','♮'];
+const noteColors=['#00eaff','#a855ff','#ff4bd8','#ffffff','#1675ff'];
+
+function createFloatingNote(){
+ if(!notesOn)return;
+
+ const container=document.getElementById('musicNotes');
+ const note=document.createElement('span');
+
+ note.className='floating-note';
+ note.textContent=noteSymbols[Math.floor(Math.random()*noteSymbols.length)];
+ note.style.left=Math.random()*100+'%';
+ note.style.color=noteColors[Math.floor(Math.random()*noteColors.length)];
+ note.style.fontSize=(17+Math.random()*23)+'px';
+ note.style.animationDuration=(6+Math.random()*5)+'s';
+
+ container.appendChild(note);
+
+ setTimeout(()=>note.remove(),12000);
+}
+setInterval(createFloatingNote,550);
 </script>
 </body>
 </html>
