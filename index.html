@@ -3,505 +3,687 @@
 <html lang="vi">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="theme-color" content="#02040a">
-<title>LUAN PERSONAL VIP ULTRA</title>
-<style>
-*{box-sizing:border-box;margin:0;padding:0}
-body{background:#02040a;color:white;font:16px Arial;min-height:100vh;overflow-x:hidden}
-body:before{content:"";position:fixed;inset:0;z-index:-2;background:radial-gradient(ellipse at 50% 0%,#003c5570,transparent 65%),radial-gradient(ellipse at 10% 90%,#41008055,transparent 50%),radial-gradient(ellipse at 90% 80%,#001c6655,transparent 50%);animation:neb 18s ease-in-out infinite alternate}
-@keyframes neb{to{filter:hue-rotate(220deg)}}
-body:after{content:"";position:fixed;inset:5px;z-index:1000;border:2px solid transparent;border-radius:13px;background:linear-gradient(135deg,red,orange,yellow,lime,cyan,blue,violet,red) border-box;-webkit-mask:linear-gradient(#fff 0 0) padding-box,linear-gradient(#fff 0 0);-webkit-mask-composite:xor;mask-composite:exclude;pointer-events:none;animation:hue 4s linear infinite}
-@keyframes hue{to{filter:hue-rotate(360deg)}}
-.logo,.hero h1,h2{background:linear-gradient(90deg,red,orange,yellow,lime,cyan,blue,violet,red);background-size:400%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:rainbow 4s linear infinite}
-@keyframes rainbow{to{background-position:400%}}
-.logo{font-size:32px;font-weight:900;letter-spacing:5px;filter:drop-shadow(0 0 8px cyan)}
-header{text-align:center;padding:25px 12px;border-bottom:1px solid #00eaff55}
-header p{color:#8da4b8}
-.light{height:3px;margin-top:15px;background:linear-gradient(90deg,transparent,cyan,white,magenta,blue,transparent);box-shadow:0 0 15px cyan;animation:hue 2s linear infinite alternate}
-.laserline{position:fixed;top:0;left:-100%;height:2px;width:70%;z-index:5;background:linear-gradient(90deg,transparent,cyan,white,magenta,transparent);box-shadow:0 0 20px cyan;pointer-events:none;animation:scan 7s linear infinite}
-@keyframes scan{to{left:150%}}
-nav{display:flex;justify-content:center;flex-wrap:wrap;gap:10px;padding:18px}
-button{border:1px solid cyan;background:#071522;color:white;padding:12px 16px;border-radius:9px;cursor:pointer;font-weight:bold;transition:.2s}
-button:hover{background:cyan;color:#000;box-shadow:0 0 20px cyan}
-.container{max-width:950px;margin:auto;padding:18px}
-.card{background:linear-gradient(145deg,#0a1420,#03070e);border:1px solid #00eaff88;border-radius:16px;padding:22px;margin-bottom:20px;animation:glow 8s linear infinite}
-@keyframes glow{0%,100%{border-color:#00eaff;box-shadow:0 0 14px #00eaff22}25%{border-color:#a000ff;box-shadow:0 0 19px #a000ff44}50%{border-color:#ff00aa;box-shadow:0 0 19px #ff00aa44}75%{border-color:#00ff99;box-shadow:0 0 19px #00ff9944}}
-h2{margin-bottom:16px}
-.hero{text-align:center;padding:48px 15px}
-.hero h1{font-size:38px;margin-bottom:15px}
-.hero p{color:#aab9c9;line-height:1.8}
-.hidden{display:none!important}
-input,textarea{width:100%;padding:13px;margin:8px 0;background:#020812;color:white;border:1px solid #00eaff55;border-radius:8px;outline:none}
-input:focus,textarea:focus{border-color:cyan;box-shadow:0 0 12px cyan}
-.primary{background:#00d9ee;color:#001018;border:0}
-.center{text-align:center}
-.avatar{width:100px;height:100px;border-radius:50%;object-fit:cover;border:2px solid cyan;box-shadow:0 0 20px cyan}
-.gallery{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
-.gallery img{width:100%;height:160px;object-fit:cover;border-radius:10px;border:1px solid #00eaff55}
-.small{font-size:12px;color:#8299aa;margin-top:10px}
-footer{text-align:center;color:#62788b;padding:25px;border-top:1px solid #00eaff33}
-.sparkle{position:fixed;pointer-events:none;color:white;z-index:900;text-shadow:0 0 8px cyan,0 0 15px white;animation:twinkle 2s forwards}
-@keyframes twinkle{0%,100%{opacity:0;transform:scale(.2)}50%{opacity:1;transform:scale(1.5) rotate(180deg)}}
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#03040a">
+<title>LUAN PERSONAL VIP ULTRA V8</title>
 
-/* LOADING VIP */
-#loader{position:fixed;inset:0;z-index:99999;background:#02040a;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:20px;transition:opacity .6s}
-.loader-logo{font-size:27px;font-weight:900;letter-spacing:4px;background:linear-gradient(90deg,cyan,magenta,blue,cyan);background-size:300%;-webkit-background-clip:text;color:transparent;animation:rainbow 2s linear infinite;text-align:center}
-.loader-ring{width:65px;height:65px;border:4px solid #17303c;border-top:4px solid cyan;border-right:4px solid magenta;border-radius:50%;animation:spin 1s linear infinite;box-shadow:0 0 20px cyan}
-@keyframes spin{to{transform:rotate(360deg)}}
-.load-bar{width:220px;height:6px;background:#172330;border-radius:10px;overflow:hidden}
-#loadProgress{height:100%;width:0;background:linear-gradient(90deg,cyan,magenta);box-shadow:0 0 15px cyan;transition:width .08s linear}
-#loadText,#loadPercent{color:#8da4b8;font-size:12px;letter-spacing:2px}
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+ --bg:#03040a;
+ --panel:#0a101c;
+ --cyan:#00eaff;
+ --blue:#1675ff;
+ --purple:#a855ff;
+ --text:#eafaff;
+ --muted:#8293a8;
+}
+body{
+ background:var(--bg);color:var(--text);
+ font-family:Arial,sans-serif;min-height:100vh;
+ overflow-x:hidden;
+}
+button,input{font:inherit}
+button{cursor:pointer}
+#background{
+ position:fixed;inset:0;z-index:-3;
+ background:
+ radial-gradient(ellipse at 10% 15%,#00394a55,transparent 40%),
+ radial-gradient(ellipse at 90% 80%,#45007844,transparent 40%),
+ #03040a;
+}
+#particles{position:fixed;inset:0;z-index:-2;pointer-events:none}
+.particle{
+ position:absolute;width:3px;height:3px;
+ background:var(--cyan);border-radius:50%;
+ box-shadow:0 0 10px var(--cyan);
+ animation:float linear infinite;
+}
+@keyframes float{
+ from{transform:translateY(105vh);opacity:0}
+ 15%{opacity:1}
+ to{transform:translateY(-10vh);opacity:0}
+}
+body.scanlines:after{
+ content:"";position:fixed;inset:0;z-index:50;
+ pointer-events:none;
+ background:linear-gradient(transparent 50%,#00eaff08 50%);
+ background-size:100% 4px;
+}
+.glow{text-shadow:0 0 10px var(--cyan),0 0 25px #007bff}
+.neon-border{border:1px solid #00eaff66;box-shadow:0 0 20px #00eaff12,inset 0 0 15px #00eaff08}
+
+/* LOGIN */
+#login{
+ position:fixed;inset:0;z-index:100;
+ display:flex;align-items:center;justify-content:center;
+ padding:20px;background:#03040a;
+}
+.login-box{
+ width:100%;max-width:390px;padding:35px 25px;
+ background:linear-gradient(145deg,#0d1928,#050811);
+ border:1px solid #00eaff77;border-radius:23px;
+ box-shadow:0 0 40px #00eaff22;
+ text-align:center;
+}
+.brand{font-size:37px;font-weight:1000;letter-spacing:5px;color:var(--cyan)}
+.version{font-size:11px;letter-spacing:5px;color:#a4b6cc;margin:10px 0 30px}
+.login-box input{
+ width:100%;padding:15px;margin:8px 0;
+ border-radius:10px;background:#030914;
+ border:1px solid #16485b;color:white;outline:none;
+}
+.login-box input:focus{border-color:var(--cyan)}
+.primary{
+ background:linear-gradient(100deg,#00bcd4,#176bff,#8b42ff);
+ color:white;border:0;border-radius:10px;padding:14px;
+ font-weight:bold;box-shadow:0 0 20px #00eaff44;
+ transition:.2s;
+}
+.primary:active{transform:scale(.96)}
+.login-box .primary{width:100%;margin-top:12px}
+#error{color:#ff5577;font-size:12px;margin-top:12px}
+.small-note{font-size:10px;color:#62758a;margin-top:25px;line-height:2}
+
+/* LOADING */
+#loading{
+ display:none;position:fixed;inset:0;z-index:90;
+ background:#03040a;align-items:center;justify-content:center;
+ flex-direction:column;padding:25px;
+}
+.loader-logo{font-size:35px;font-weight:1000;color:var(--cyan);letter-spacing:5px}
+.loading-track{width:85%;max-width:300px;height:5px;background:#152333;margin:25px;border-radius:10px;overflow:hidden}
+.loading-progress{height:100%;width:0;background:var(--cyan);box-shadow:0 0 15px var(--cyan);transition:width .1s}
+.loading-text{font-size:12px;color:#8ca4b9;letter-spacing:2px}
+
+/* MAIN */
+#app{display:none;max-width:1100px;margin:auto;padding:18px}
+.topbar{
+ display:flex;justify-content:space-between;align-items:center;
+ padding:14px 0;border-bottom:1px solid #173247;
+}
+.top-logo{font-size:19px;font-weight:1000;letter-spacing:2px;color:var(--cyan)}
+.top-right{display:flex;gap:9px;align-items:center}
+.icon-btn{
+ width:39px;height:39px;border-radius:10px;
+ color:var(--cyan);background:#0a1725;
+ border:1px solid #16485b;font-size:17px;
+}
+.online{font-size:10px;color:#00ffb0;letter-spacing:1px}
+nav{
+ display:flex;gap:8px;overflow-x:auto;padding:15px 0;
+ scrollbar-width:none;
+}
+nav button{
+ white-space:nowrap;padding:11px 17px;
+ border:1px solid #1b3b50;border-radius:10px;
+ background:#09121e;color:#8ea8ba;font-size:12px;
+}
+nav button.active,nav button:hover{
+ color:var(--cyan);border-color:var(--cyan);
+ box-shadow:0 0 15px #00eaff22;
+}
+.page{display:none;animation:appear .4s}
+.page.active{display:block}
+@keyframes appear{
+ from{opacity:0;transform:translateY(12px)}
+ to{opacity:1;transform:translateY(0)}
+}
+.hero{
+ position:relative;overflow:hidden;
+ text-align:center;padding:43px 15px;
+ border-radius:22px;margin:10px 0 20px;
+ background:linear-gradient(140deg,#091d2c,#101025,#080a16);
+ border:1px solid #00eaff55;
+}
+.hero:before{
+ content:"";position:absolute;width:250px;height:250px;
+ background:#00eaff18;filter:blur(65px);border-radius:50%;
+ top:-130px;left:50%;transform:translateX(-50%);
+}
+.hero>*{position:relative}
+.hero h1{
+ font-size:clamp(30px,8vw,58px);
+ color:var(--cyan);letter-spacing:4px;
+ text-shadow:0 0 20px #00eaff88;
+}
+.hero .sub{font-size:11px;letter-spacing:5px;color:#91a9bf;margin-top:12px}
+.avatar{
+ width:110px;height:110px;margin:25px auto 17px;
+ display:flex;align-items:center;justify-content:center;
+ border:2px solid var(--cyan);border-radius:50%;
+ background:radial-gradient(circle,#15374b,#07111d);
+ font-size:48px;box-shadow:0 0 30px #00eaff66;
+}
+.vip-tag{
+ display:inline-block;margin-top:14px;
+ padding:8px 17px;border-radius:30px;
+ color:var(--cyan);border:1px solid #00eaff66;
+ font-size:11px;letter-spacing:2px;
+}
+.card{
+ background:linear-gradient(145deg,#0b1522ee,#070b15ee);
+ border:1px solid #18364b;border-radius:17px;
+ padding:20px;margin:15px 0;
+ box-shadow:0 8px 30px #0005;
+}
+.card h2{font-size:14px;color:var(--cyan);letter-spacing:2px;margin-bottom:18px}
+.muted{color:var(--muted);font-size:12px}
+.clock{text-align:center}
+#clock{font-size:clamp(35px,10vw,55px);font-weight:bold;color:var(--cyan);text-shadow:0 0 18px #00eaff77}
+#date{color:#9cb1c3;font-size:13px;margin-top:10px}
+.stats{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+.stat{
+ background:#091321;border:1px solid #193a50;
+ padding:19px 10px;border-radius:13px;text-align:center;
+}
+.stat strong{display:block;color:var(--cyan);font-size:20px;margin-bottom:7px}
+.stat span{font-size:10px;color:#8195a8}
 
 /* MUSIC */
-.music-btn{position:fixed;right:18px;bottom:20px;z-index:2100;border-radius:50%;width:54px;height:54px;font-size:22px;background:#061522;border:2px solid cyan;box-shadow:0 0 18px cyan;animation:pulse 2s infinite alternate}
-.music-btn.playing{background:#00d9ee;color:#000}
-@keyframes pulse{to{transform:scale(1.08);box-shadow:0 0 28px magenta}}
-.music-status{position:fixed;right:18px;bottom:83px;z-index:2100;background:#071522;border:1px solid cyan;padding:8px 12px;border-radius:9px;font-size:12px;max-width:260px;display:none}
-.music-status.show{display:block}
+.music-disc{
+ width:120px;height:120px;margin:15px auto 20px;
+ border-radius:50%;position:relative;
+ background:repeating-radial-gradient(circle,#07101a 0 5px,#203d58 6px 8px,#06101c 9px 12px);
+ border:3px solid #00cfe9;
+ box-shadow:0 0 25px #00eaff55;
+}
+.music-disc:after{
+ content:"";position:absolute;width:24px;height:24px;
+ border-radius:50%;background:var(--cyan);
+ border:6px solid #0c1b2b;
+ top:50%;left:50%;transform:translate(-50%,-50%);
+}
+.music-disc.playing{animation:rotate 5s linear infinite}
+@keyframes rotate{to{transform:rotate(360deg)}}
+.song-name{text-align:center;font-weight:bold;font-size:16px;word-break:break-word}
+.song-info{text-align:center;font-size:11px;color:#849aaf;margin-top:8px}
+.visualizer{
+ height:45px;display:flex;align-items:center;justify-content:center;gap:4px;
+ margin:13px;
+}
+.visualizer span{
+ width:4px;height:8px;border-radius:5px;background:var(--cyan);
+ box-shadow:0 0 8px var(--cyan);
+ animation:wave .6s ease-in-out infinite alternate;
+ animation-play-state:paused;
+}
+.visualizer.on span{animation-play-state:running}
+.visualizer span:nth-child(2n){animation-delay:.2s}
+.visualizer span:nth-child(3n){animation-delay:.35s}
+@keyframes wave{to{height:38px}}
+#seek{width:100%;accent-color:var(--cyan);cursor:pointer}
+.time-row{display:flex;justify-content:space-between;color:#8195a8;font-size:11px;margin-top:8px}
+.music-controls{display:flex;justify-content:center;gap:12px;margin:20px 0}
+.music-controls button{
+ width:45px;height:45px;border-radius:50%;
+ background:#0a1b2b;color:var(--cyan);
+ border:1px solid #00eaff77;font-size:17px;
+}
+.music-controls .big{width:55px;height:55px;background:linear-gradient(120deg,#00bcd4,#176bff);color:white;font-size:21px}
+.volume-row{display:flex;align-items:center;gap:12px;color:#8da5b9;font-size:12px}
+.volume-row input{flex:1;accent-color:var(--cyan)}
+.playlist{margin-top:18px;border-top:1px solid #1a3447;padding-top:15px}
+.track{
+ display:flex;align-items:center;gap:12px;
+ padding:12px;border-radius:10px;margin-top:7px;
+ background:#091321;border:1px solid transparent;
+ cursor:pointer;font-size:12px;
+}
+.track.current{border-color:var(--cyan);color:var(--cyan)}
+.track .track-name{flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.add-music{
+ display:block;text-align:center;padding:13px;
+ border:1px dashed #00eaff66;color:var(--cyan);
+ border-radius:10px;margin-top:15px;font-size:12px;cursor:pointer;
+}
+#musicFiles{display:none}
 
-/* LIGHTNING */
-.lightning-bolt{position:fixed;z-index:950;top:0;height:72vh;width:38vw;pointer-events:none;filter:drop-shadow(0 0 7px cyan) drop-shadow(0 0 18px #8b5cff);animation:bolt .55s forwards}
-.lightning-bolt polyline{fill:none;stroke:#d9ffff;stroke-width:3.5;stroke-linecap:round;stroke-linejoin:round}
-@keyframes bolt{0%{opacity:0}8%,28%,55%{opacity:1}18%{opacity:.25}100%{opacity:0}}
-.lightning-screen-flash{position:fixed;inset:0;z-index:940;pointer-events:none;background:#b9faff;animation:flash .42s forwards}
-@keyframes flash{0%,100%{opacity:0}8%{opacity:.22}29%{opacity:.12}}
-.falling-note{position:fixed!important;top:-45px;left:0;z-index:2000!important;pointer-events:none!important;font-size:30px;font-weight:900;text-shadow:0 0 7px currentColor,0 0 16px currentColor;will-change:transform,opacity}
-
-/* CIVIC GEN 8 */
-.car-card{overflow:hidden;position:relative;text-align:center;background:radial-gradient(ellipse at 50% 80%,#063b5266,transparent 60%),linear-gradient(145deg,#080e1b,#02040a)}
-.car-heading{position:relative;z-index:2;font-size:25px;letter-spacing:3px}
-.car-stage{position:relative;width:100%;max-width:720px;margin:12px auto 0}
-.car-svg{width:100%;height:auto;filter:drop-shadow(0 0 13px #00dfff55);animation:carFloat 4s ease-in-out infinite}
-@keyframes carFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
-.car-floor{position:absolute;bottom:5%;left:13%;width:74%;height:13%;background:#00dfff33;filter:blur(24px);border-radius:50%}
-.car-caption{color:#a8bdce;letter-spacing:4px;font-size:12px;margin:12px 0}
-.car-tag{display:inline-block;color:#00eaff;border:1px solid #00eaff88;padding:8px 16px;border-radius:30px;font-size:11px;letter-spacing:2px;margin-top:8px}
-.car-specs{display:flex;justify-content:center;gap:10px;flex-wrap:wrap;margin-top:18px}
-.car-specs span{font-size:11px;color:#b9c9d8;border:1px solid #ffffff22;background:#ffffff08;padding:9px 12px;border-radius:8px}
-.car-specs b{color:#00eaff}
-@media(max-width:600px){.hero{padding:35px 12px}.hero h1{font-size:30px}.logo{font-size:26px;letter-spacing:3px}.card{padding:17px}nav{gap:7px;padding:13px 8px}nav button{padding:10px 11px;font-size:12px}.lightning-bolt{width:58vw}.car-heading{font-size:20px}.car-caption{font-size:10px;letter-spacing:2px}.car-specs{gap:6px}.car-specs span{font-size:10px;padding:8px}}
+/* SETTINGS */
+.setting-row{
+ display:flex;justify-content:space-between;align-items:center;
+ gap:12px;padding:15px 0;border-bottom:1px solid #1a2d40;
+ font-size:13px;
+}
+.switch{accent-color:var(--cyan);width:20px;height:20px}
+textarea{
+ width:100%;min-height:100px;padding:13px;
+ background:#040b15;color:white;border:1px solid #23465b;
+ border-radius:10px;resize:vertical;
+}
+.action{padding:10px 15px;border-radius:9px;border:1px solid #00eaff77;background:#0a1b2b;color:var(--cyan);font-size:12px}
+footer{text-align:center;color:#61798e;font-size:10px;letter-spacing:2px;padding:35px 10px}
+#toast{
+ position:fixed;bottom:25px;left:50%;transform:translate(-50%,20px);
+ opacity:0;pointer-events:none;background:#102437;
+ border:1px solid var(--cyan);color:white;
+ border-radius:12px;padding:13px 20px;font-size:12px;
+ transition:.3s;z-index:200;
+}
+#toast.show{opacity:1;transform:translate(-50%,0)}
+@media(min-width:700px){
+ #app{padding:25px}
+ .stats{grid-template-columns:repeat(4,1fr)}
+ .home-grid{display:grid;grid-template-columns:1fr 1fr;gap:15px}
+ .home-grid .card{margin:0 0 15px}
+}
 </style>
 </head>
-<body>
 
-<!-- MÀN HÌNH CHỜ -->
-<div id="loader">
- <div class="loader-logo">LUAN PERSONAL</div>
- <div class="loader-ring"></div>
- <p id="loadText">ĐANG KHỞI ĐỘNG VIP SYSTEM...</p>
- <div class="load-bar"><div id="loadProgress"></div></div>
- <div id="loadPercent">0%</div>
+<body class="scanlines">
+<div id="background"></div>
+<div id="particles"></div>
+
+<!-- LOGIN -->
+<section id="login">
+ <div class="login-box">
+  <div class="brand">LUAN</div>
+  <div class="version">PERSONAL VIP V8</div>
+  <p class="muted">WELCOME TO MY PRIVATE SYSTEM</p>
+  <input id="user" type="text" placeholder="Tên đăng nhập" value="LUAN">
+  <input id="pass" type="password" placeholder="Mật khẩu">
+  <button class="primary" onclick="login()">UNLOCK SYSTEM ⚡</button>
+  <div id="error"></div>
+  <div class="small-note">CYBER SECURITY SYSTEM<br>POWERED BY LUAN • 2026</div>
+ </div>
+</section>
+
+<!-- LOADING -->
+<section id="loading">
+ <div class="loader-logo">LUAN V8</div>
+ <div class="loading-track"><div class="loading-progress" id="loadProgress"></div></div>
+ <div class="loading-text" id="loadText">INITIALIZING SYSTEM...</div>
+</section>
+
+<!-- WEBSITE -->
+<main id="app">
+
+<div class="topbar">
+ <div class="top-logo">LUAN<span class="glow">.V8</span></div>
+ <div class="top-right">
+  <span class="online">● ONLINE</span>
+  <button class="icon-btn" onclick="toggleScan()" title="Hiệu ứng">✦</button>
+  <button class="icon-btn" onclick="logout()" title="Đăng xuất">↪</button>
+ </div>
 </div>
-
-<div class="laserline"></div>
-<header>
-<div class="logo">LUAN PERSONAL</div>
-<div class="light"></div>
-<p style="margin-top:12px;letter-spacing:4px">VIP RGB EXPERIENCE</p>
-</header>
 
 <nav>
-<button onclick="show('home')">TRANG CHỦ</button>
-<button onclick="show('about')">GIỚI THIỆU</button>
-<button onclick="show('gallery')">THƯ VIỆN</button>
-<button onclick="show('account')">TÀI KHOẢN</button>
+ <button class="active" data-page="home" onclick="go('home',this)">⌂ TRANG CHỦ</button>
+ <button data-page="music" onclick="go('music',this)">♫ ÂM NHẠC</button>
+ <button data-page="profile" onclick="go('profile',this)">♙ CÁ NHÂN</button>
+ <button data-page="settings" onclick="go('settings',this)">⚙ CÀI ĐẶT</button>
 </nav>
 
-<div class="container">
-<section id="home">
-<div class="card hero">
-<h1>WELCOME TO LUAN</h1>
-<p>Chào mừng đến với thế giới riêng của tôi.</p>
-<p>Đam mê công nghệ • Ô tô • Cuộc sống</p><br>
-<button onclick="show('about')">KHÁM PHÁ NGAY</button>
-</div>
+<!-- HOME -->
+<section id="home" class="page active">
+ <div class="hero">
+  <div class="avatar">👑</div>
+  <h1>LUAN</h1>
+  <div class="sub">PERSONAL DIGITAL WORLD</div>
+  <div class="vip-tag">✦ VIP ULTRA MEMBER ✦</div>
+ </div>
 
-<div class="card car-card">
-<h2 class="car-heading">MY DREAM CAR</h2>
-<div style="color:#00eaff;font-size:23px;font-weight:900;letter-spacing:3px;margin-top:5px">HONDA CIVIC GEN 8</div>
-<div class="car-stage">
-<div class="car-floor"></div>
-<svg class="car-svg" viewBox="0 0 760 390" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Minh họa Honda Civic Gen 8 màu đen thể thao">
-<defs>
-<linearGradient id="bodyPaint" x1="0" y1="0" x2=".8" y2="1"><stop stop-color="#687783"/><stop offset=".18" stop-color="#171f2a"/><stop offset=".48" stop-color="#05080d"/><stop offset=".72" stop-color="#202b38"/><stop offset="1" stop-color="#030509"/></linearGradient>
-<linearGradient id="glass" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#5deaff" stop-opacity=".65"/><stop offset=".4" stop-color="#102b3e"/><stop offset="1" stop-color="#020711"/></linearGradient>
-<linearGradient id="metal" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#aab9c7"/><stop offset=".3" stop-color="#293746"/><stop offset="1" stop-color="#080d13"/></linearGradient>
-<linearGradient id="lamp" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#fff"/><stop offset=".4" stop-color="#8af6ff"/><stop offset="1" stop-color="#00aaff"/></linearGradient>
-<filter id="glow"><feGaussianBlur stdDeviation="5" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
-</defs>
-<ellipse cx="375" cy="326" rx="290" ry="27" fill="#00cfff" opacity=".18" filter="url(#glow)"/>
-<path d="M75 257 L99 220 Q117 207 174 197 L231 142 Q258 112 309 105 L453 108 Q493 111 525 145 L592 205 L655 220 Q680 231 689 258 L680 291 Q667 308 634 310 L125 310 Q88 306 75 283Z" fill="url(#bodyPaint)" stroke="#536777" stroke-width="2"/>
-<path d="M218 193 L258 144 Q277 119 315 117 L443 120 Q478 124 503 153 L544 198Z" fill="#101a25" stroke="#7c9bad" stroke-width="2"/>
-<path d="M268 184 L292 143 Q304 129 326 128 L369 128 L365 185Z" fill="url(#glass)" stroke="#3c7a91" stroke-width="2"/>
-<path d="M380 128 L439 130 Q467 133 486 157 L514 190 L380 185Z" fill="url(#glass)" stroke="#3c7a91" stroke-width="2"/>
-<path d="M374 128 L375 190" stroke="#8599a8" stroke-width="3"/>
-<path d="M507 190 L534 187 L550 199 L542 208 L516 205Z" fill="#121c28" stroke="#78909e" stroke-width="2"/>
-<path d="M543 205 Q610 206 654 226 L680 252 L575 249 L524 218Z" fill="url(#bodyPaint)" stroke="#697b89" stroke-width="2"/>
-<path d="M580 223 Q627 218 662 238 L650 256 L576 250Z" fill="#07131c" stroke="#a9c4d2" stroke-width="2"/>
-<path d="M587 231 Q626 226 653 240 L644 247 L582 244Z" fill="url(#lamp)" filter="url(#glow)"/>
-<path d="M575 248 L681 252 Q694 264 680 291 L641 306 L551 299 L526 273Z" fill="url(#metal)" stroke="#617786" stroke-width="2"/>
-<path d="M575 270 L671 269 L651 291 L571 290Z" fill="#02070d" stroke="#00dfff" stroke-width="2"/>
-<path d="M591 279 L650 279" stroke="#8ff7ff" stroke-width="3" filter="url(#glow)"/>
-<path d="M578 258 L676 258 L667 269 L580 269Z" fill="#020408" stroke="#536c7b" stroke-width="1.5"/>
-<path d="M218 198 L208 277 M380 194 L383 294 M520 201 L541 284" fill="none" stroke="#71899a" stroke-opacity=".45" stroke-width="2"/>
-<path d="M402 221 L440 219 M468 220 L494 219" stroke="#a5bbc8" stroke-width="3" stroke-linecap="round"/>
-<path d="M100 230 L139 220 L151 239 L110 251Z" fill="#ff244d" stroke="#ff9baa" stroke-width="2"/>
-<path d="M170 133 L221 128 L233 136 L178 143Z" fill="#101720" stroke="#8aa0ad" stroke-width="2"/>
-<path d="M183 141 L188 161 M218 137 L222 158" stroke="#8498a5" stroke-width="3"/>
-<ellipse cx="195" cy="287" rx="61" ry="66" fill="#030509" stroke="#657988" stroke-width="3"/>
-<ellipse cx="195" cy="287" rx="43" ry="47" fill="#111c27" stroke="#9aaeba" stroke-width="3"/>
-<g stroke="#9eafbb" stroke-width="5"><path d="M195 244V330 M154 287H236 M166 257L224 317 M224 257L166 317"/></g>
-<ellipse cx="195" cy="287" rx="10" ry="11" fill="#8498a7"/>
-<ellipse cx="566" cy="287" rx="62" ry="66" fill="#020408" stroke="#657988" stroke-width="3"/>
-<ellipse cx="566" cy="287" rx="44" ry="47" fill="#111c27" stroke="#9aaeba" stroke-width="3"/>
-<g stroke="#aabac5" stroke-width="5"><path d="M566 244V330 M524 287H608 M536 257L596 317 M596 257L536 317"/></g>
-<ellipse cx="566" cy="287" rx="10" ry="11" fill="#8498a7"/>
-<path d="M128 278 Q131 222 195 220 Q258 220 263 278 M499 278 Q501 221 566 220 Q630 220 632 278" fill="none" stroke="#879aa8" stroke-width="4"/>
-<path d="M105 293 L126 309 L270 310 L282 300 M500 309 L628 310 L680 297" fill="none" stroke="#00dfff" stroke-width="3" filter="url(#glow)"/>
-<path d="M113 217 Q192 187 258 141 M264 116 Q356 92 454 118 M590 212 Q639 218 669 242" fill="none" stroke="#c3e8f6" stroke-opacity=".4" stroke-width="3"/>
-</svg>
-</div>
-<p class="car-caption">DREAM IT. BUILD IT. DRIVE IT.</p>
-<div class="car-tag">BLACK EDITION • SPORT STYLE</div>
-<div class="car-specs">
-<span><b>GEN 8</b> • CIVIC</span>
-<span><b>BLACK</b> • BODYKIT</span>
-<span><b>VIP</b> • RGB STYLE</span>
-</div>
-</div>
+ <div class="home-grid">
+  <div class="card clock">
+   <h2>◈ LIVE TIME</h2>
+   <div id="clock">00:00:00</div>
+   <div id="date">Đang cập nhật...</div>
+  </div>
+  <div class="card">
+   <h2>◈ SYSTEM STATUS</h2>
+   <div class="stats">
+    <div class="stat"><strong>V8</strong><span>VERSION</span></div>
+    <div class="stat"><strong>VIP</strong><span>MEMBER</span></div>
+   </div>
+  </div>
+ </div>
+
+ <div class="card">
+  <h2>✦ MY MOTTO</h2>
+  <p style="text-align:center;line-height:2;color:#b8c9d8">
+   "Không cần phải hoàn hảo.<br>
+   Chỉ cần mỗi ngày tốt hơn chính mình hôm qua."
+  </p>
+ </div>
+
+ <div class="card">
+  <h2>♫ QUICK MUSIC</h2>
+  <p class="muted" style="margin-bottom:15px">Thưởng thức âm nhạc của bạn.</p>
+  <button class="primary" onclick="go('music',document.querySelector('[data-page=music]'))">OPEN MUSIC PLAYER →</button>
+ </div>
 </section>
 
-<section id="about" class="hidden">
-<div class="card center">
-<h2>GIỚI THIỆU</h2>
-<img id="showAvatar" class="avatar" src="https://placehold.co/150x150/071522/00eaff?text=LUAN" alt="Avatar">
-<h2 id="showName">LUAN</h2>
-<p id="showBio">Welcome to my personal website.</p><br>
-<p>Đam mê Honda Civic, công nghệ và sáng tạo.</p>
-</div>
-<div class="card">
-<h2>CHỈNH SỬA HỒ SƠ</h2>
-<input id="name" placeholder="Tên của bạn">
-<textarea id="bio" placeholder="Giới thiệu bản thân"></textarea>
-<input id="avatar" placeholder="Link ảnh đại diện">
-<button class="primary" onclick="saveProfile()">LƯU HỒ SƠ</button>
-</div>
+<!-- MUSIC -->
+<section id="music" class="page">
+ <div class="card">
+  <h2>♫ LUAN MUSIC PLAYER V8</h2>
+  <div class="music-disc" id="disc"></div>
+  <div class="song-name" id="songName">CHƯA CÓ BÀI HÁT</div>
+  <div class="song-info" id="songInfo">CHỌN NHẠC MP3 ĐỂ BẮT ĐẦU</div>
+
+  <div class="visualizer" id="visualizer">
+   <span></span><span></span><span></span><span></span>
+   <span></span><span></span><span></span><span></span>
+   <span></span><span></span><span></span><span></span>
+   <span></span><span></span><span></span><span></span>
+   <span></span><span></span><span></span><span></span>
+   <span></span><span></span><span></span><span></span>
+  </div>
+
+  <audio id="audio" preload="metadata"></audio>
+  <input id="seek" type="range" min="0" max="100" value="0">
+  <div class="time-row">
+   <span id="current">0:00</span>
+   <span id="duration">0:00</span>
+  </div>
+
+  <div class="music-controls">
+   <button onclick="previousSong()">|◀</button>
+   <button class="big" id="playBtn" onclick="togglePlay()">▶</button>
+   <button onclick="nextSong()">▶|</button>
+   <button onclick="toggleShuffle()" id="shuffleBtn">⤨</button>
+  </div>
+
+  <div class="volume-row">
+   <span>🔊</span>
+   <input type="range" id="volume" min="0" max="1" step=".01" value=".8">
+   <span id="volumeText">80%</span>
+  </div>
+
+  <label class="add-music" for="musicFiles">＋ THÊM NHẠC MP3 TỪ ĐIỆN THOẠI</label>
+  <input id="musicFiles" type="file" accept="audio/*" multiple>
+
+  <div class="playlist">
+   <h2>◈ PLAYLIST</h2>
+   <div id="playlist"><p class="muted">Chưa có bài hát nào.</p></div>
+  </div>
+ </div>
 </section>
 
-<section id="gallery" class="hidden">
-<div class="card">
-<h2>THƯ VIỆN ẢNH</h2>
-<input id="photoURL" placeholder="Dán link hình ảnh">
-<button onclick="addPhoto()">THÊM ẢNH</button>
-<div class="gallery" id="photos" style="margin-top:20px"></div>
-</div>
+<!-- PROFILE -->
+<section id="profile" class="page">
+ <div class="card" style="text-align:center;padding:35px 15px">
+  <div class="avatar">👑</div>
+  <h1 class="glow" style="letter-spacing:4px">LUAN</h1>
+  <p class="muted" style="margin-top:10px">PERSONAL VIP ULTRA</p>
+  <div class="vip-tag">✦ V8 EDITION ✦</div>
+ </div>
+ <div class="card">
+  <h2>◈ PERSONAL INFORMATION</h2>
+  <div class="setting-row"><span>Nickname</span><strong>LUAN</strong></div>
+  <div class="setting-row"><span>Membership</span><strong style="color:var(--cyan)">VIP ULTRA</strong></div>
+  <div class="setting-row"><span>Website</span><strong>V8.0</strong></div>
+  <div class="setting-row"><span>Status</span><strong style="color:#00ffae">ONLINE</strong></div>
+ </div>
 </section>
 
-<section id="account" class="hidden">
-<div class="card" id="loginBox">
-<h2>ĐĂNG NHẬP</h2>
-<input id="loginUser" placeholder="Tên tài khoản" autocomplete="username">
-<input id="loginPass" type="password" placeholder="Mật khẩu" autocomplete="current-password">
-<button class="primary" onclick="login()">ĐĂNG NHẬP</button>
-<p class="small">Chưa có tài khoản?</p>
-<button onclick="showRegister()">TẠO TÀI KHOẢN MỚI</button>
-<p id="loginMessage" style="color:cyan;margin-top:15px"></p>
-</div>
-<div class="card hidden" id="registerBox">
-<h2>ĐĂNG KÝ TÀI KHOẢN</h2>
-<p style="color:#91a6b8;margin-bottom:10px">Tạo tài khoản mới để sử dụng website.</p>
-<input id="regUser" placeholder="Tên tài khoản mới" autocomplete="username">
-<input id="regPass" type="password" placeholder="Mật khẩu (ít nhất 6 ký tự)" autocomplete="new-password">
-<input id="regConfirm" type="password" placeholder="Nhập lại mật khẩu" autocomplete="new-password">
-<button class="primary" onclick="register()">ĐĂNG KÝ NGAY</button>
-<button onclick="showLogin()" style="margin-top:10px">QUAY LẠI ĐĂNG NHẬP</button>
-<p id="registerMessage" style="color:cyan;margin-top:15px"></p>
-</div>
-<div class="card hidden" id="userBox">
-<h2>TÀI KHOẢN CỦA BẠN</h2>
-<p id="welcome"></p><br>
-<button onclick="logout()">ĐĂNG XUẤT</button>
-</div>
+<!-- SETTINGS -->
+<section id="settings" class="page">
+ <div class="card">
+  <h2>⚙ DISPLAY SETTINGS</h2>
+  <div class="setting-row">
+   <span>Hiệu ứng scanline</span>
+   <input class="switch" type="checkbox" checked onchange="document.body.classList.toggle('scanlines',this.checked)">
+  </div>
+  <div class="setting-row">
+   <span>Hạt chuyển động</span>
+   <input class="switch" type="checkbox" checked onchange="particlesOn=this.checked;makeParticles()">
+  </div>
+  <div class="setting-row">
+   <span>Âm thanh tự động</span>
+   <span class="muted">Tắt mặc định</span>
+  </div>
+ </div>
+
+ <div class="card">
+  <h2>◈ CHANGE PASSWORD</h2>
+  <p class="muted" style="margin-bottom:12px">Đổi mật khẩu đăng nhập trên trình duyệt này.</p>
+  <input id="newPass" type="password" placeholder="Mật khẩu mới" style="width:100%;padding:13px;background:#040b15;color:white;border:1px solid #23465b;border-radius:10px">
+  <button class="primary" style="width:100%;margin-top:12px" onclick="changePassword()">SAVE PASSWORD</button>
+ </div>
+
+ <div class="card">
+  <h2>◈ SYSTEM INFORMATION</h2>
+  <div class="setting-row"><span>Website</span><span>LUAN PERSONAL</span></div>
+  <div class="setting-row"><span>Version</span><span>V8.0 ULTRA</span></div>
+  <div class="setting-row"><span>Platform</span><span>HTML / CSS / JS</span></div>
+  <button class="action" style="margin-top:15px" onclick="toast('LUAN PERSONAL V8 SYSTEM ONLINE')">CHECK SYSTEM</button>
+ </div>
 </section>
-</div>
 
 <footer>
-<p>© 2026 LUAN PERSONAL</p>
-<p class="small">DESIGNED WITH PASSION • VIP RGB EDITION</p>
+ LUAN PERSONAL VIP ULTRA V8<br>
+ <p style="margin-top:10px">DESIGNED WITH PASSION • © 2026</p>
 </footer>
+</main>
 
-<audio id="music" preload="auto" playsinline>
-<source src="https://lluanken20002-dev.github.io/luan-personal/nhac.mp3.mp3" type="audio/mpeg">
-</audio>
-<div class="music-status" id="musicStatus">Sẵn sàng phát nhạc</div>
-<button class="music-btn" id="musicBtn" type="button" aria-label="Phát nhạc">🎵</button>
+<div id="toast"></div>
 
 <script>
-/* LOADING 3 GIÂY */
-(function(){
-const loader=document.getElementById('loader');
-const bar=document.getElementById('loadProgress');
-const percent=document.getElementById('loadPercent');
-const label=document.getElementById('loadText');
-const start=Date.now();
-const duration=3000;
-const timer=setInterval(()=>{
-const p=Math.min(100,Math.floor((Date.now()-start)/duration*100));
-bar.style.width=p+'%';
-percent.textContent=p+'%';
-if(p>=100){
-clearInterval(timer);
-label.textContent='KHỞI ĐỘNG HOÀN TẤT';
-setTimeout(()=>{
-loader.style.opacity='0';
-setTimeout(()=>loader.remove(),600);
-},200);
-}
-},40);
-})();
-
-const $=id=>document.getElementById(id);
-
-function show(id){
-document.querySelectorAll('.container section').forEach(s=>s.classList.add('hidden'));
-$(id).classList.remove('hidden');
-}
-
-function getUsers(){
-try{return JSON.parse(localStorage.getItem('luan_users')||'{}')}
-catch(e){return {}}
-}
-
-function showRegister(){
-$('loginBox').classList.add('hidden');
-$('userBox').classList.add('hidden');
-$('registerBox').classList.remove('hidden');
-$('registerMessage').textContent='';
-$('regUser').value='';
-$('regPass').value='';
-$('regConfirm').value='';
-}
-
-function showLogin(){
-$('registerBox').classList.add('hidden');
-$('userBox').classList.add('hidden');
-$('loginBox').classList.remove('hidden');
-$('loginMessage').textContent='';
-}
-
-function register(){
-const u=$('regUser').value.trim();
-const p=$('regPass').value;
-const cf=$('regConfirm').value;
-if(!u||!p||!cf){$('registerMessage').textContent='Vui lòng nhập đầy đủ thông tin!';return}
-if(u.length<3){$('registerMessage').textContent='Tên tài khoản phải có ít nhất 3 ký tự!';return}
-if(p.length<6){$('registerMessage').textContent='Mật khẩu phải có ít nhất 6 ký tự!';return}
-if(p!==cf){$('registerMessage').textContent='Mật khẩu nhập lại không khớp!';return}
-const users=getUsers();
-if(users[u]){$('registerMessage').textContent='Tên tài khoản đã tồn tại!';return}
-users[u]={password:p};
-localStorage.setItem('luan_users',JSON.stringify(users));
-$('loginUser').value=u;
-$('loginPass').value='';
-$('registerBox').classList.add('hidden');
-$('loginBox').classList.remove('hidden');
-$('loginMessage').textContent='Đăng ký thành công! Hãy đăng nhập.';
-}
+// ===== SECURITY / LOGIN =====
+// Mật khẩu mặc định: 20002
+let password=localStorage.getItem('luan_v8_password')||'20002';
 
 function login(){
-const u=$('loginUser').value.trim();
-const p=$('loginPass').value;
-const users=getUsers();
-if(users[u]&&users[u].password===p){
-localStorage.setItem('luan_current',u);
-updateAccount();
-}else{$('loginMessage').textContent='Sai tài khoản hoặc mật khẩu!'}
+ const u=document.getElementById('user').value.trim().toUpperCase();
+ const p=document.getElementById('pass').value;
+ if(u!=='LUAN'||p!==password){
+  document.getElementById('error').textContent='SAI TÊN ĐĂNG NHẬP HOẶC MẬT KHẨU!';
+  return;
+ }
+ document.getElementById('login').style.display='none';
+ const loading=document.getElementById('loading');
+ loading.style.display='flex';
+ let value=0;
+ const bar=document.getElementById('loadProgress');
+ const txt=document.getElementById('loadText');
+ const timer=setInterval(()=>{
+  value+=2;
+  bar.style.width=value+'%';
+  txt.textContent=value<35?'INITIALIZING SYSTEM...':
+  value<70?'LOADING INTERFACE...':'WELCOME TO LUAN SYSTEM...';
+  if(value>=100){
+   clearInterval(timer);
+   loading.style.display='none';
+   document.getElementById('app').style.display='block';
+   toast('WELCOME TO LUAN PERSONAL V8');
+  }
+ },35);
 }
-
+document.getElementById('pass').addEventListener('keydown',e=>{
+ if(e.key==='Enter')login();
+});
 function logout(){
-localStorage.removeItem('luan_current');
-updateAccount();
+ document.getElementById('app').style.display='none';
+ document.getElementById('login').style.display='flex';
+ document.getElementById('pass').value='';
+ stopMusic();
+}
+function changePassword(){
+ const p=document.getElementById('newPass').value;
+ if(p.length<4){toast('Mật khẩu phải có ít nhất 4 ký tự');return}
+ password=p;
+ localStorage.setItem('luan_v8_password',p);
+ document.getElementById('newPass').value='';
+ toast('ĐÃ ĐỔI MẬT KHẨU');
 }
 
-function updateAccount(){
-const u=localStorage.getItem('luan_current');
-$('loginBox').classList.toggle('hidden',!!u);
-$('registerBox').classList.add('hidden');
-$('userBox').classList.toggle('hidden',!u);
-$('welcome').textContent=u?'Xin chào '+u+'!':'';
+// ===== NAVIGATION =====
+function go(id,button){
+ document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+ document.getElementById(id).classList.add('active');
+ document.querySelectorAll('nav button').forEach(b=>b.classList.remove('active'));
+ if(button)button.classList.add('active');
+ window.scrollTo({top:0,behavior:'smooth'});
 }
 
-function saveProfile(){
-const d={name:$('name').value,bio:$('bio').value,avatar:$('avatar').value};
-localStorage.setItem('luan_profile',JSON.stringify(d));
-loadProfile();
-alert('Đã lưu hồ sơ!');
+// ===== CLOCK =====
+function updateClock(){
+ const d=new Date();
+ document.getElementById('clock').textContent=d.toLocaleTimeString('vi-VN',{hour12:false});
+ document.getElementById('date').textContent=d.toLocaleDateString('vi-VN',{
+  weekday:'long',day:'2-digit',month:'long',year:'numeric'
+ });
+}
+updateClock();
+setInterval(updateClock,1000);
+
+// ===== PARTICLES =====
+let particlesOn=true;
+function makeParticles(){
+ const box=document.getElementById('particles');
+ box.innerHTML='';
+ if(!particlesOn)return;
+ for(let i=0;i<35;i++){
+  const el=document.createElement('i');
+  el.className='particle';
+  el.style.left=Math.random()*100+'%';
+  el.style.animationDuration=(5+Math.random()*10)+'s';
+  el.style.animationDelay=(-Math.random()*12)+'s';
+  box.appendChild(el);
+ }
+}
+makeParticles();
+
+function toggleScan(){
+ document.body.classList.toggle('scanlines');
+ toast('ĐÃ ĐỔI HIỆU ỨNG');
 }
 
-function loadProfile(){
-let d={};
-try{d=JSON.parse(localStorage.getItem('luan_profile')||'{}')}catch(e){}
-$('name').value=d.name||'';
-$('bio').value=d.bio||'';
-$('avatar').value=d.avatar||'';
-$('showName').textContent=d.name||'LUAN';
-$('showBio').textContent=d.bio||'Welcome to my personal website.';
-$('showAvatar').src=d.avatar||'https://placehold.co/150x150/071522/00eaff?text=LUAN';
+// ===== TOAST =====
+let toastTimer;
+function toast(msg){
+ const el=document.getElementById('toast');
+ el.textContent=msg;
+ el.classList.add('show');
+ clearTimeout(toastTimer);
+ toastTimer=setTimeout(()=>el.classList.remove('show'),2200);
 }
 
-function addPhoto(){
-const url=$('photoURL').value.trim();
-if(!url)return;
-let a=[];
-try{a=JSON.parse(localStorage.getItem('luan_photos')||'[]')}catch(e){}
-a.push(url);
-localStorage.setItem('luan_photos',JSON.stringify(a));
-$('photoURL').value='';
-loadPhotos();
+// ===== MUSIC PLAYER =====
+const audio=document.getElementById('audio');
+const disc=document.getElementById('disc');
+const playBtn=document.getElementById('playBtn');
+const visualizer=document.getElementById('visualizer');
+const seek=document.getElementById('seek');
+
+let songs=[];
+let currentIndex=0;
+let shuffle=false;
+
+function formatTime(t){
+ if(!isFinite(t))return '0:00';
+ return Math.floor(t/60)+':'+String(Math.floor(t%60)).padStart(2,'0');
 }
 
-function loadPhotos(){
-let a=[];
-try{a=JSON.parse(localStorage.getItem('luan_photos')||'[]')}catch(e){}
-$('photos').innerHTML='';
-a.forEach((url,i)=>{
-const box=document.createElement('div');
-const img=document.createElement('img');
-const b=document.createElement('button');
-img.src=url;
-img.alt='Ảnh thư viện';
-img.onerror=()=>img.style.display='none';
-b.textContent='XÓA';
-b.style.marginTop='5px';
-b.onclick=()=>{
-a.splice(i,1);
-localStorage.setItem('luan_photos',JSON.stringify(a));
-loadPhotos();
-};
-box.append(img,b);
-$('photos').appendChild(box);
+function renderPlaylist(){
+ const box=document.getElementById('playlist');
+ box.innerHTML='';
+ if(!songs.length){
+  box.innerHTML='<p class="muted">Chưa có bài hát nào.</p>';
+  return;
+ }
+ songs.forEach((song,i)=>{
+  const row=document.createElement('div');
+  row.className='track'+(i===currentIndex?' current':'');
+  const number=document.createElement('span');
+  number.textContent=String(i+1).padStart(2,'0');
+  const name=document.createElement('span');
+  name.className='track-name';
+  name.textContent=song.name;
+  const icon=document.createElement('span');
+  icon.textContent=i===currentIndex?'♫':'▶';
+  row.append(number,name,icon);
+  row.onclick=()=>loadSong(i,true);
+  box.appendChild(row);
+ });
+}
+
+function loadSong(index,autoplay){
+ if(!songs.length)return;
+ currentIndex=(index+songs.length)%songs.length;
+ audio.src=songs[currentIndex].url;
+ document.getElementById('songName').textContent=songs[currentIndex].name;
+ document.getElementById('songInfo').textContent='LUAN MUSIC PLAYER • TRACK '+(currentIndex+1);
+ seek.value=0;
+ document.getElementById('current').textContent='0:00';
+ renderPlaylist();
+ if(autoplay)playMusic();
+ else resetMusicUI();
+}
+
+function playMusic(){
+ if(!audio.src){toast('Hãy thêm nhạc MP3 trước');return}
+ audio.play().then(()=>{
+  playBtn.textContent='Ⅱ';
+  disc.classList.add('playing');
+  visualizer.classList.add('on');
+ }).catch(()=>toast('Không thể phát bài hát này'));
+}
+function resetMusicUI(){
+ playBtn.textContent='▶';
+ disc.classList.remove('playing');
+ visualizer.classList.remove('on');
+}
+function togglePlay(){
+ if(audio.paused)playMusic();
+ else{audio.pause();resetMusicUI()}
+}
+function stopMusic(){
+ audio.pause();
+ audio.currentTime=0;
+ resetMusicUI();
+}
+function nextSong(){
+ if(!songs.length)return;
+ let next=shuffle?Math.floor(Math.random()*songs.length):(currentIndex+1)%songs.length;
+ loadSong(next,true);
+}
+function previousSong(){
+ if(!songs.length)return;
+ if(audio.currentTime>3){audio.currentTime=0;return}
+ loadSong((currentIndex-1+songs.length)%songs.length,true);
+}
+function toggleShuffle(){
+ shuffle=!shuffle;
+ document.getElementById('shuffleBtn').style.color=shuffle?'#fff':'var(--cyan)';
+ toast(shuffle?'ĐÃ BẬT PHÁT NGẪU NHIÊN':'ĐÃ TẮT PHÁT NGẪU NHIÊN');
+}
+
+document.getElementById('musicFiles').addEventListener('change',e=>{
+ const files=Array.from(e.target.files||[]);
+ files.filter(f=>f.type.startsWith('audio/')).forEach(file=>{
+  songs.push({name:file.name,url:URL.createObjectURL(file)});
+ });
+ if(songs.length){
+  loadSong(0,false);
+  toast('ĐÃ THÊM '+files.length+' FILE');
+ }
+ e.target.value='';
 });
-}
 
-/* MUSIC PLAYER */
-const music=$('music');
-const musicBtn=$('musicBtn');
-const musicStatus=$('musicStatus');
-music.volume=1;
-
-function status(t){
-musicStatus.textContent=t;
-musicStatus.classList.add('show');
-}
-
-musicBtn.addEventListener('click',async()=>{
-if(!music.paused){music.pause();return}
-status('Đang tải nhạc...');
-try{
-await music.play();
-musicBtn.classList.add('playing');
-musicBtn.textContent='Ⅱ';
-status('♫ Đang phát nhạc');
-}catch(e){
-musicBtn.classList.remove('playing');
-musicBtn.textContent='🎵';
-status('Lỗi phát nhạc: '+e.name);
-}
+audio.addEventListener('loadedmetadata',()=>{
+ document.getElementById('duration').textContent=formatTime(audio.duration);
 });
-
-music.addEventListener('play',()=>{
-musicBtn.classList.add('playing');
-musicBtn.textContent='Ⅱ';
-status('♫ Đang phát nhạc');
+audio.addEventListener('timeupdate',()=>{
+ if(audio.duration)seek.value=audio.currentTime/audio.duration*100;
+ document.getElementById('current').textContent=formatTime(audio.currentTime);
 });
-music.addEventListener('pause',()=>{
-musicBtn.classList.remove('playing');
-musicBtn.textContent='🎵';
+audio.addEventListener('ended',()=>{
+ if(songs.length>1)nextSong();
+ else resetMusicUI();
 });
-music.addEventListener('ended',()=>{
-musicBtn.classList.remove('playing');
-musicBtn.textContent='🎵';
-status('Đã phát xong');
+audio.addEventListener('error',()=>{
+ resetMusicUI();
 });
-music.addEventListener('error',()=>{
-status('Không tải được file nhạc. Kiểm tra nhac.mp3.mp3');
+seek.addEventListener('input',()=>{
+ if(audio.duration)audio.currentTime=seek.value/100*audio.duration;
 });
-
-/* HIỆU ỨNG SÉT */
-function lightning(){
-const svg=document.createElementNS('http://www.w3.org/2000/svg','svg');
-svg.setAttribute('viewBox','0 0 300 600');
-svg.classList.add('lightning-bolt');
-svg.style.left=Math.random()*78+'vw';
-let pts=['150,0'],x=150;
-for(let y=65;y<570;y+=65){
-x=Math.max(35,Math.min(265,x+(Math.random()-.5)*145));
-pts.push(x+','+y);
-}
-const line=document.createElementNS('http://www.w3.org/2000/svg','polyline');
-line.setAttribute('points',pts.join(' '));
-svg.appendChild(line);
-document.body.appendChild(svg);
-const f=document.createElement('div');
-f.className='lightning-screen-flash';
-document.body.appendChild(f);
-setTimeout(()=>{svg.remove();f.remove()},600);
-}
-function scheduleLightning(){
-lightning();
-setTimeout(scheduleLightning,4200+Math.random()*5200);
-}
-setTimeout(scheduleLightning,2200);
-
-/* LẤP LÁNH */
-setInterval(()=>{
-const s=document.createElement('div');
-s.className='sparkle';
-s.textContent=['✦','✧','✨','★'][Math.floor(Math.random()*4)];
-s.style.left=Math.random()*98+'vw';
-s.style.top=Math.random()*95+'vh';
-s.style.fontSize=10+Math.random()*14+'px';
-document.body.appendChild(s);
-setTimeout(()=>s.remove(),2000);
-},500);
-
-/* NỐT NHẠC RƠI */
-(function(){
-const symbols=['♪','♫','♬','♩','𝄞'];
-const colors=['#00eaff','#ff00ff','#00ff99','#ffff00','#fff','#ff4444'];
-function drop(){
-const n=document.createElement('div');
-n.className='falling-note';
-n.textContent=symbols[Math.floor(Math.random()*symbols.length)];
-n.style.left=(3+Math.random()*92)+'vw';
-n.style.color=colors[Math.floor(Math.random()*colors.length)];
-document.body.appendChild(n);
-const dx=Math.random()*160-80;
-const dur=5000+Math.random()*2500;
-if(n.animate){
-const a=n.animate([
-{transform:'translate3d(0,0,0) rotate(0)',opacity:0},
-{transform:'translate3d('+(dx*.25)+'px,18vh,0) rotate(90deg)',opacity:1,offset:.18},
-{transform:'translate3d('+dx+'px,110vh,0) rotate(420deg)',opacity:0}
-],{duration:dur,easing:'linear',fill:'forwards'});
-a.onfinish=()=>n.remove();
-}else{
-n.style.transition='transform '+dur+'ms linear,opacity '+dur+'ms linear';
-requestAnimationFrame(()=>{
-n.style.transform='translate3d('+dx+'px,110vh,0) rotate(420deg)';
-n.style.opacity=0;
+document.getElementById('volume').addEventListener('input',e=>{
+ audio.volume=Number(e.target.value);
+ document.getElementById('volumeText').textContent=Math.round(audio.volume*100)+'%';
 });
-setTimeout(()=>n.remove(),dur+100);
-}
-}
-drop();
-setInterval(drop,650);
-})();
-
-loadProfile();
-loadPhotos();
-updateAccount();
+audio.volume=.8;
 </script>
 </body>
 </html>
