@@ -6,197 +6,83 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
 <meta name="theme-color" content="#03030b">
 <title>LUAN PERSONAL | GOD ULTRA MAX</title>
-
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
-:root{
- --cyan:#00f5ff;--pink:#ff00db;--purple:#8b5cff;
- --bg:#03030b;--glass:rgba(12,18,38,.78);
-}
-body{
- background:var(--bg);color:#fff;font-family:Arial,sans-serif;
- min-height:100vh;overflow-x:hidden;
-}
+:root{--c:#00f5ff;--p:#ff00dc;--v:#895cff}
+body{background:#03030b;color:white;font-family:Arial,sans-serif;min-height:100vh;overflow-x:hidden}
 button,input{font:inherit}
 button{cursor:pointer}
 #canvas{position:fixed;inset:0;width:100%;height:100%;z-index:-3}
-.bg{
- position:fixed;width:350px;height:350px;border-radius:50%;
- filter:blur(110px);opacity:.22;z-index:-2;
- animation:float 9s ease-in-out infinite alternate;
- pointer-events:none
-}
-.bg1{background:var(--cyan);top:-130px;left:-150px}
-.bg2{background:var(--pink);bottom:-150px;right:-150px;animation-delay:2s}
-.bg3{background:var(--purple);top:45%;left:40%;animation-delay:4s}
+.orb{position:fixed;width:350px;height:350px;border-radius:50%;filter:blur(110px);opacity:.2;z-index:-2;pointer-events:none;animation:float 8s infinite alternate}
+.o1{background:var(--c);top:-130px;left:-150px}
+.o2{background:var(--p);bottom:-150px;right:-150px;animation-delay:2s}
+.o3{background:var(--v);top:45%;left:40%;animation-delay:4s}
 @keyframes float{to{transform:translate(100px,100px) scale(1.3)}}
-#loader{
- position:fixed;inset:0;z-index:100;background:#03030b;
- display:flex;align-items:center;justify-content:center;
- flex-direction:column;transition:opacity .8s
-}
-.spin{
- width:65px;height:65px;border-radius:50%;
- border:3px solid #222;border-top-color:var(--cyan);
- border-right-color:var(--pink);animation:rotate 1s linear infinite;
- box-shadow:0 0 30px var(--cyan)
-}
+#loader{position:fixed;inset:0;z-index:100;background:#03030b;display:flex;align-items:center;justify-content:center;flex-direction:column;transition:.8s}
+.spin{width:65px;height:65px;border-radius:50%;border:3px solid #222;border-top-color:var(--c);border-right-color:var(--p);animation:rotate 1s linear infinite;box-shadow:0 0 30px var(--c)}
 @keyframes rotate{to{transform:rotate(360deg)}}
-.loadingText{margin-top:25px;color:var(--cyan);letter-spacing:5px;font-size:12px}
-header{
- width:100%;padding:18px 6%;display:flex;
- align-items:center;justify-content:space-between;
- border-bottom:1px solid #00eaff30;
- background:#050611b5;backdrop-filter:blur(18px);
- position:sticky;top:0;z-index:20
-}
-.brand{
- font-weight:1000;letter-spacing:3px;font-size:19px;
- background:linear-gradient(90deg,var(--cyan),white,var(--pink));
- background-clip:text;color:transparent
-}
-.headerRight{display:flex;gap:9px;align-items:center}
-.smallBtn{
- padding:10px 15px;border:1px solid var(--cyan);
- background:#00eaff12;color:var(--cyan);border-radius:25px;
- font-size:11px;font-weight:bold
-}
-main{width:min(94%,850px);margin:auto;padding:38px 0 50px}
-.logo{
- font-size:clamp(45px,12vw,85px);font-weight:1000;
- letter-spacing:8px;text-align:center;
- background:linear-gradient(90deg,var(--cyan),white,var(--pink),var(--cyan));
- background-size:300%;background-clip:text;color:transparent;
- animation:gradient 5s linear infinite;
- filter:drop-shadow(0 0 18px #00eaff66)
-}
+.loadingText{margin-top:25px;color:var(--c);letter-spacing:5px;font-size:12px}
+header{padding:17px 5%;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid #00eaff30;background:#050611bb;backdrop-filter:blur(18px);position:sticky;top:0;z-index:20}
+.brand{font-weight:1000;letter-spacing:3px;font-size:18px;background:linear-gradient(90deg,var(--c),white,var(--p));background-clip:text;color:transparent}
+.smallBtn{padding:10px 15px;border:1px solid var(--c);background:#00eaff12;color:var(--c);border-radius:25px;font-size:11px;font-weight:bold}
+main{width:min(94%,850px);margin:auto;padding:35px 0 50px}
+.logo{font-size:clamp(45px,12vw,85px);font-weight:1000;letter-spacing:8px;text-align:center;background:linear-gradient(90deg,var(--c),white,var(--p),var(--c));background-size:300%;background-clip:text;color:transparent;animation:gradient 5s linear infinite;filter:drop-shadow(0 0 18px #00eaff66)}
 @keyframes gradient{to{background-position:300%}}
 .subtitle{text-align:center;color:#888;letter-spacing:5px;font-size:10px;margin-top:8px}
-.online{
- display:table;margin:20px auto;padding:9px 18px;
- border:1px solid #00ff8855;border-radius:30px;
- color:#00ff9d;font-size:10px;letter-spacing:2px;
- background:#00ff880d
-}
-.panel{
- position:relative;padding:25px;margin:20px 0;
- background:linear-gradient(145deg,rgba(14,22,45,.88),rgba(7,8,20,.88));
- border:1px solid #00eaff44;border-radius:22px;
- box-shadow:0 0 30px #00eaff10,inset 0 0 25px #00eaff07;
- backdrop-filter:blur(18px);overflow:hidden;
- animation:appear .8s ease both
-}
-.panel:before{
- content:"";position:absolute;inset:-100%;
- background:linear-gradient(110deg,transparent 45%,#00eaff13 50%,transparent 55%);
- animation:shine 7s linear infinite;pointer-events:none
-}
+.online{display:table;margin:20px auto;padding:9px 18px;border:1px solid #00ff8855;border-radius:30px;color:#00ff9d;font-size:10px;letter-spacing:2px;background:#00ff880d}
+.panel{position:relative;padding:25px;margin:20px 0;background:linear-gradient(145deg,#0e162de8,#070814e8);border:1px solid #00eaff44;border-radius:22px;box-shadow:0 0 30px #00eaff10,inset 0 0 25px #00eaff07;backdrop-filter:blur(18px);overflow:hidden;animation:appear .8s ease both}
+.panel:before{content:"";position:absolute;inset:-100%;background:linear-gradient(110deg,transparent 45%,#00eaff13 50%,transparent 55%);animation:shine 7s linear infinite;pointer-events:none}
 @keyframes shine{to{transform:translateX(100%)}}
 @keyframes appear{from{opacity:0;transform:translateY(25px)}to{opacity:1;transform:none}}
-h2{font-size:13px;color:var(--cyan);letter-spacing:3px;margin-bottom:20px}
+h2{font-size:13px;color:var(--c);letter-spacing:3px;margin-bottom:20px}
 .center{text-align:center}
 .hidden{display:none!important}
 
-/* AUTH */
-.authWrap{
- width:min(100%,440px);margin:35px auto;
- padding:28px 24px;border:1px solid #00eaff66;
- border-radius:25px;background:rgba(8,13,29,.88);
- box-shadow:0 0 35px #00eaff20,0 0 90px #ff00db0c;
- position:relative;overflow:hidden
-}
-.authTitle{
- text-align:center;font-size:25px;font-weight:900;
- letter-spacing:3px;color:white;margin-bottom:8px
-}
+/* LOGIN */
+.authWrap{width:min(100%,440px);margin:35px auto;padding:28px 24px;border:1px solid #00eaff66;border-radius:25px;background:#080d1de8;box-shadow:0 0 35px #00eaff20,0 0 90px #ff00db0c}
+.authTitle{text-align:center;font-size:25px;font-weight:900;letter-spacing:3px;margin-bottom:8px}
 .authSub{text-align:center;color:#888;font-size:11px;margin-bottom:24px}
 .tabs{display:flex;gap:8px;margin-bottom:22px}
-.tab{
- flex:1;padding:12px;border:1px solid #333;
- color:#888;background:#101321;border-radius:12px;font-weight:bold;
- font-size:12px
-}
-.tab.active{
- color:var(--cyan);border-color:var(--cyan);
- background:#00eaff12;box-shadow:0 0 15px #00eaff22
-}
+.tab{flex:1;padding:12px;border:1px solid #333;color:#888;background:#101321;border-radius:12px;font-weight:bold;font-size:12px}
+.tab.active{color:var(--c);border-color:var(--c);background:#00eaff12;box-shadow:0 0 15px #00eaff22}
 .field{margin:14px 0}
 .field label{display:block;color:#aaa;font-size:11px;margin-bottom:8px}
-.field input{
- width:100%;padding:15px;color:white;
- background:#050a18;border:1px solid #28354b;
- border-radius:12px;outline:none;font-size:14px
-}
-.field input:focus{border-color:var(--cyan);box-shadow:0 0 15px #00eaff22}
-.primary{
- width:100%;padding:15px;border:0;border-radius:12px;
- background:linear-gradient(90deg,#00d9ff,#8b5cff,#ff00d4);
- color:white;font-weight:900;letter-spacing:2px;
- margin-top:12px;box-shadow:0 0 20px #00eaff30;
- transition:.3s
-}
+.field input{width:100%;padding:15px;color:white;background:#050a18;border:1px solid #28354b;border-radius:12px;outline:none;font-size:14px}
+.field input:focus{border-color:var(--c);box-shadow:0 0 15px #00eaff22}
+.primary{width:100%;padding:15px;border:0;border-radius:12px;background:linear-gradient(90deg,#00d9ff,#8b5cff,#ff00d4);color:white;font-weight:900;letter-spacing:2px;margin-top:12px;box-shadow:0 0 20px #00eaff30;transition:.3s}
 .primary:active{transform:scale(.97)}
-.google{
- width:100%;padding:14px;margin-top:12px;
- border-radius:12px;background:#fff;color:#111;
- border:0;font-weight:bold
-}
+.google{width:100%;padding:14px;margin-top:12px;border-radius:12px;background:white;color:#111;border:0;font-weight:bold}
 .divider{display:flex;align-items:center;gap:12px;color:#666;font-size:10px;margin:18px 0}
 .divider:before,.divider:after{content:"";height:1px;background:#333;flex:1}
-.message{text-align:center;font-size:12px;line-height:1.6;margin-top:15px;color:#ffbd66}
+.message{text-align:center;font-size:12px;line-height:1.7;margin-top:15px;color:#ffbd66;overflow-wrap:anywhere}
 .authNote{color:#666;text-align:center;font-size:10px;line-height:1.7;margin-top:18px}
+.linkBtn{display:block;margin:17px auto 0;background:none;border:0;color:var(--c);font-size:11px}
 
-/* PROFILE */
-.avatar{
- width:105px;height:105px;border-radius:50%;
- display:grid;place-items:center;margin:0 auto 18px;
- font-size:43px;border:2px solid var(--cyan);
- background:linear-gradient(135deg,#102b3b,#290d35);
- box-shadow:0 0 25px var(--cyan),0 0 55px #ff00d455;
- animation:pulse 3s infinite
-}
-@keyframes pulse{50%{box-shadow:0 0 40px var(--pink),0 0 70px var(--cyan)}}
+/* MEMBER */
+.avatar{width:105px;height:105px;border-radius:50%;display:grid;place-items:center;margin:0 auto 18px;font-size:43px;border:2px solid var(--c);background:linear-gradient(135deg,#102b3b,#290d35);box-shadow:0 0 25px var(--c),0 0 55px #ff00d455;animation:pulse 3s infinite}
+@keyframes pulse{50%{box-shadow:0 0 40px var(--p),0 0 70px var(--c)}}
 .username{font-size:26px;font-weight:900;letter-spacing:3px}
 .email{font-size:12px;color:#999;margin-top:10px;word-break:break-word}
-.memberTag{
- display:inline-block;padding:8px 16px;margin-top:14px;
- border:1px solid #00ff8880;border-radius:30px;
- color:#00ff9d;font-size:10px;letter-spacing:2px
-}
-.clock{text-align:center;font-size:38px;font-weight:900;letter-spacing:4px;text-shadow:0 0 20px var(--cyan)}
+.memberTag{display:inline-block;padding:8px 16px;margin-top:14px;border:1px solid #00ff8880;border-radius:30px;color:#00ff9d;font-size:10px;letter-spacing:2px}
+.clock{text-align:center;font-size:38px;font-weight:900;letter-spacing:4px;text-shadow:0 0 20px var(--c)}
 .date{text-align:center;color:#999;font-size:12px;margin-top:10px}
 .music{text-align:center}
-.visualizer{height:50px;display:flex;justify-content:center;align-items:center;gap:5px;margin:15px}
-.bar{width:5px;height:10px;background:var(--cyan);border-radius:5px;box-shadow:0 0 10px var(--cyan);animation:wave .7s infinite alternate}
+.visualizer{height:50px;display:flex;justify-content:center;align-items:center;gap:5px;margin:15px;opacity:.3;transition:.3s}
+.bar{width:5px;height:10px;background:var(--c);border-radius:5px;box-shadow:0 0 10px var(--c);animation:wave .7s infinite alternate}
 .bar:nth-child(2n){animation-delay:.2s}
 .bar:nth-child(3n){animation-delay:.4s}
-@keyframes wave{to{height:43px;background:var(--pink)}}
+@keyframes wave{to{height:43px;background:var(--p)}}
 #songName{font-size:12px;color:#ddd;margin:10px;word-break:break-all}
-.choose,.control{
- display:inline-block;padding:12px 17px;border-radius:25px;
- border:1px solid var(--cyan);background:#00eaff12;
- color:var(--cyan);font-size:11px;font-weight:bold;margin:5px
-}
+.choose,.control{display:inline-block;padding:12px 17px;border-radius:25px;border:1px solid var(--c);background:#00eaff12;color:var(--c);font-size:11px;font-weight:bold;margin:5px}
 input[type=file]{display:none}
 audio{width:100%;margin-top:15px}
 .info{color:#aaa;font-size:12px;line-height:2.3}
-.info span{color:var(--cyan)}
+.info span{color:var(--c)}
 footer{text-align:center;color:#666;font-size:10px;letter-spacing:3px;padding:30px 5px}
-.toast{
- position:fixed;bottom:25px;left:50%;transform:translateX(-50%);
- background:#101a2d;border:1px solid var(--cyan);padding:13px 20px;
- border-radius:15px;z-index:90;font-size:12px;
- box-shadow:0 0 20px #00eaff44;max-width:90%;text-align:center
-}
-@media(max-width:500px){
- header{padding:15px 4%}
- .brand{font-size:15px}
- .smallBtn{padding:9px 11px;font-size:10px}
- main{padding-top:25px}
- .panel{padding:20px}
-}
+.toast{position:fixed;bottom:25px;left:50%;transform:translateX(-50%);background:#101a2d;border:1px solid var(--c);padding:13px 20px;border-radius:15px;z-index:90;font-size:12px;box-shadow:0 0 20px #00eaff44;max-width:90%;text-align:center}
+@media(max-width:500px){header{padding:15px 4%}.brand{font-size:14px}.smallBtn{padding:9px 11px;font-size:10px}main{padding-top:25px}.panel{padding:20px}.clock{font-size:30px}}
 </style>
 </head>
 
@@ -206,11 +92,11 @@ footer{text-align:center;color:#666;font-size:10px;letter-spacing:3px;padding:30
  <div class="loadingText">LUAN GOD SYSTEM</div>
 </div>
 <canvas id="canvas"></canvas>
-<div class="bg bg1"></div><div class="bg bg2"></div><div class="bg bg3"></div>
+<div class="orb o1"></div><div class="orb o2"></div><div class="orb o3"></div>
 
 <header>
  <div class="brand">⚡ LUAN PERSONAL</div>
- <div class="headerRight">
+ <div>
   <button class="smallBtn" id="headerLogin">LOGIN</button>
   <button class="smallBtn hidden" id="headerLogout">LOGOUT</button>
  </div>
@@ -223,16 +109,13 @@ footer{text-align:center;color:#666;font-size:10px;letter-spacing:3px;padding:30
   <div class="online">● SYSTEM ONLINE · GOD ULTRA MAX</div>
  </div>
 
- <!-- LOGIN / REGISTER -->
  <section id="authSection" class="authWrap">
   <div class="authTitle">WELCOME BACK</div>
   <div class="authSub">ENTER THE LUAN DIGITAL WORLD</div>
-
   <div class="tabs">
    <button class="tab active" id="loginTab">ĐĂNG NHẬP</button>
    <button class="tab" id="registerTab">ĐĂNG KÝ</button>
   </div>
-
   <form id="authForm">
    <div class="field">
     <label>EMAIL</label>
@@ -240,33 +123,24 @@ footer{text-align:center;color:#666;font-size:10px;letter-spacing:3px;padding:30
    </div>
    <div class="field">
     <label>MẬT KHẨU</label>
-    <input id="password" type="password" placeholder="Nhập mật khẩu" required minlength="6" autocomplete="current-password">
+    <input id="password" type="password" placeholder="Nhập mật khẩu (ít nhất 6 ký tự)" required minlength="6" autocomplete="current-password">
    </div>
    <button class="primary" id="submitBtn" type="submit">ĐĂNG NHẬP ⚡</button>
   </form>
-
   <div class="divider">HOẶC</div>
   <button class="google" id="googleBtn">🌐 TIẾP TỤC VỚI GOOGLE</button>
-  <button id="forgotBtn" style="display:block;margin:17px auto 0;background:none;border:0;color:#00eaff;font-size:11px">
-   Quên mật khẩu?
-  </button>
+  <button class="linkBtn" id="forgotBtn">Quên mật khẩu?</button>
   <div class="message" id="authMessage"></div>
-  <div class="authNote">
-   Tài khoản được xác thực bằng Supabase Auth.<br>
-   Không chia sẻ mật khẩu của bạn với bất kỳ ai.
-  </div>
+  <div class="authNote">Xác thực bằng Supabase Auth.<br>Mật khẩu không được lưu trực tiếp trong website.</div>
  </section>
 
- <!-- PRIVATE WEBSITE -->
  <div id="privateContent" class="hidden">
   <section class="panel center">
    <div class="avatar">⚡</div>
    <div class="username">LUAN PERSONAL</div>
    <div class="email" id="userEmail"></div>
    <div class="memberTag">✦ VERIFIED MEMBER ✦</div>
-   <p style="color:#999;font-size:12px;margin-top:17px">
-    Chào mừng bạn đến với thế giới của Luan.
-   </p>
+   <p style="color:#999;font-size:12px;margin-top:17px">Chào mừng bạn đến với thế giới của Luan.</p>
   </section>
 
   <section class="panel">
@@ -278,12 +152,9 @@ footer{text-align:center;color:#666;font-size:10px;letter-spacing:3px;padding:30
   <section class="panel music">
    <h2>♫ PREMIUM MUSIC PLAYER</h2>
    <div class="visualizer" id="visualizer">
-    <span class="bar"></span><span class="bar"></span>
-    <span class="bar"></span><span class="bar"></span>
-    <span class="bar"></span><span class="bar"></span>
-    <span class="bar"></span><span class="bar"></span>
-    <span class="bar"></span><span class="bar"></span>
-    <span class="bar"></span><span class="bar"></span>
+    <span class="bar"></span><span class="bar"></span><span class="bar"></span><span class="bar"></span>
+    <span class="bar"></span><span class="bar"></span><span class="bar"></span><span class="bar"></span>
+    <span class="bar"></span><span class="bar"></span><span class="bar"></span><span class="bar"></span>
    </div>
    <div id="songName">Chưa chọn bài nhạc</div>
    <label class="choose" for="musicFile">＋ CHỌN NHẠC MP3</label>
@@ -306,7 +177,6 @@ footer{text-align:center;color:#666;font-size:10px;letter-spacing:3px;padding:30
     STATUS: <span>PROTECTED</span>
    </div>
   </section>
-
   <button class="primary" id="logoutMain">ĐĂNG XUẤT TÀI KHOẢN</button>
  </div>
 </main>
@@ -315,43 +185,27 @@ footer{text-align:center;color:#666;font-size:10px;letter-spacing:3px;padding:30
 <div id="toast" class="toast hidden"></div>
 
 <script>
-// ==========================================
-// 1. SUPABASE CONFIGURATION
-// Thay 2 giá trị bên dưới bằng thông tin dự án
-// Supabase -> Project Settings -> API
-// ==========================================
-const SUPABASE_URL = "DAN_PROJECT_URL_CUA_BAN";
-const SUPABASE_ANON_KEY = "DAN_ANON_PUBLIC_KEY_CUA_BAN";
+// ===================================
+// SUPABASE - THÔNG TIN ĐÃ ĐIỀN SẴN
+// ===================================
+const SUPABASE_URL = "https://vejnqqlrnmtbpocgcbsb.supabase.co";
+const SUPABASE_ANON_KEY = "sb_publishable_YgVrA4tddlG-6uYAn15sqw_S_q5uqrQ";
 
-let db = null;
-let configured = false;
-
-try {
- if(window.supabase &&
-    SUPABASE_URL.startsWith("https://") &&
-    SUPABASE_ANON_KEY.length > 20 &&
-    !SUPABASE_URL.includes("DAN_") &&
-    !SUPABASE_ANON_KEY.includes("DAN_")){
-   db = window.supabase.createClient(
-    SUPABASE_URL,SUPABASE_ANON_KEY
-   );
-   configured = true;
- }
-}catch(e){console.error(e)}
+const db = window.supabase.createClient(
+ SUPABASE_URL,
+ SUPABASE_ANON_KEY
+);
 
 const $ = id => document.getElementById(id);
 let mode = "login";
-let currentUser = null;
+let musicURL = null;
 
-function toast(message){
- $("toast").textContent=message;
+function toast(msg){
+ $("toast").textContent=msg;
  $("toast").classList.remove("hidden");
  setTimeout(()=>$("toast").classList.add("hidden"),3500);
 }
-
-function showMessage(message){
- $("authMessage").textContent=message;
-}
+function message(msg){$("authMessage").textContent=msg}
 
 function setMode(next){
  mode=next;
@@ -360,24 +214,19 @@ function setMode(next){
  $("submitBtn").textContent=mode==="login"?"ĐĂNG NHẬP ⚡":"TẠO TÀI KHOẢN ✦";
  $("password").autocomplete=mode==="login"?"current-password":"new-password";
  $("forgotBtn").style.display=mode==="login"?"block":"none";
- $("authTitle")?.remove();
- showMessage("");
+ message("");
 }
-
 $("loginTab").onclick=()=>setMode("login");
 $("registerTab").onclick=()=>setMode("register");
 
 function showPrivate(user){
- currentUser=user;
  $("authSection").classList.add("hidden");
  $("privateContent").classList.remove("hidden");
  $("headerLogin").classList.add("hidden");
  $("headerLogout").classList.remove("hidden");
  $("userEmail").textContent=user.email||"Thành viên";
 }
-
 function showLogin(){
- currentUser=null;
  $("privateContent").classList.add("hidden");
  $("authSection").classList.remove("hidden");
  $("headerLogin").classList.remove("hidden");
@@ -387,41 +236,33 @@ function showLogin(){
 
 $("authForm").addEventListener("submit",async e=>{
  e.preventDefault();
- if(!configured){
-  showMessage("Chưa kết nối Supabase. Hãy điền Project URL và Anon Public Key trong code.");
-  return;
- }
  const email=$("email").value.trim();
  const password=$("password").value;
  const btn=$("submitBtn");
  btn.disabled=true;
  btn.textContent="ĐANG XỬ LÝ...";
-
+ message("");
  try{
   if(mode==="register"){
    const {data,error}=await db.auth.signUp({
     email,password,
-    options:{
-     emailRedirectTo:location.origin
-    }
+    options:{emailRedirectTo:location.origin}
    });
    if(error)throw error;
    if(data.session){
-    toast("Đăng ký thành công!");
     showPrivate(data.user);
+    toast("Đăng ký thành công!");
    }else{
-    showMessage("Đăng ký thành công! Hãy kiểm tra email để xác nhận tài khoản.");
+    message("Đăng ký thành công! Kiểm tra email để xác nhận tài khoản trước khi đăng nhập.");
    }
   }else{
-   const {data,error}=await db.auth.signInWithPassword({
-    email,password
-   });
+   const {data,error}=await db.auth.signInWithPassword({email,password});
    if(error)throw error;
-   toast("Đăng nhập thành công!");
    showPrivate(data.user);
+   toast("Đăng nhập thành công!");
   }
- }catch(error){
-  showMessage(error.message||"Có lỗi xảy ra.");
+ }catch(err){
+  message(err.message||"Có lỗi xảy ra.");
  }finally{
   btn.disabled=false;
   btn.textContent=mode==="login"?"ĐĂNG NHẬP ⚡":"TẠO TÀI KHOẢN ✦";
@@ -429,37 +270,29 @@ $("authForm").addEventListener("submit",async e=>{
 });
 
 $("googleBtn").onclick=async()=>{
- if(!configured){
-  showMessage("Hãy kết nối Supabase trước khi sử dụng Google.");
-  return;
- }
+ message("");
  try{
   const {error}=await db.auth.signInWithOAuth({
    provider:"google",
    options:{redirectTo:location.origin}
   });
   if(error)throw error;
- }catch(e){showMessage(e.message)}
+ }catch(err){message(err.message)}
 };
 
 $("forgotBtn").onclick=async()=>{
- if(!configured){
-  showMessage("Hãy kết nối Supabase trước.");
-  return;
- }
  const email=$("email").value.trim();
- if(!email){showMessage("Nhập email trước để khôi phục mật khẩu.");return}
+ if(!email){message("Hãy nhập email trước.");return}
  try{
   const {error}=await db.auth.resetPasswordForEmail(email,{
    redirectTo:location.origin
   });
   if(error)throw error;
-  showMessage("Đã gửi email khôi phục mật khẩu. Hãy kiểm tra hộp thư.");
- }catch(e){showMessage(e.message)}
+  message("Đã gửi email khôi phục. Hãy kiểm tra hộp thư.");
+ }catch(err){message(err.message)}
 };
 
 async function logout(){
- if(!configured)return;
  const {error}=await db.auth.signOut();
  if(error){toast(error.message);return}
  showLogin();
@@ -467,31 +300,26 @@ async function logout(){
 }
 $("headerLogout").onclick=logout;
 $("logoutMain").onclick=logout;
-$("headerLogin").onclick=()=>{
- $("authSection").scrollIntoView({behavior:"smooth"});
-};
+$("headerLogin").onclick=()=>$("authSection").scrollIntoView({behavior:"smooth"});
 
 async function initAuth(){
- if(!configured){
+ try{
+  const {data,error}=await db.auth.getSession();
+  if(error)throw error;
+  if(data.session)showPrivate(data.session.user);
+  else showLogin();
+  db.auth.onAuthStateChange((event,session)=>{
+   if(session)showPrivate(session.user);
+   else if(event==="SIGNED_OUT")showLogin();
+  });
+ }catch(err){
   showLogin();
-  showMessage("Website chưa kết nối Supabase. Điền thông tin dự án ở đầu phần JavaScript.");
-  return;
+  message("Lỗi kết nối Supabase: "+err.message);
  }
- const {data,error}=await db.auth.getSession();
- if(error){showLogin();return}
- if(data.session)showPrivate(data.session.user);
- else showLogin();
-
- db.auth.onAuthStateChange((event,session)=>{
-  if(session)showPrivate(session.user);
-  else if(event==="SIGNED_OUT")showLogin();
- });
 }
 initAuth();
 
-// ==========================================
-// 2. CLOCK
-// ==========================================
+// CLOCK
 function updateClock(){
  const d=new Date();
  $("clock").textContent=d.toLocaleTimeString("vi-VN",{hour12:false});
@@ -501,15 +329,10 @@ function updateClock(){
 }
 updateClock();
 setInterval(updateClock,1000);
+$("device").textContent=/iPhone|iPad|Android/i.test(navigator.userAgent)?"MOBILE DEVICE":"DESKTOP DEVICE";
 
-$("device").textContent=/iPhone|iPad|Android/i.test(navigator.userAgent)
- ?"MOBILE DEVICE":"DESKTOP DEVICE";
-
-// ==========================================
-// 3. MUSIC PLAYER
-// ==========================================
+// MUSIC
 const audio=$("audio");
-let musicURL=null;
 $("musicFile").addEventListener("change",()=>{
  const f=$("musicFile").files[0];
  if(!f)return;
@@ -517,7 +340,7 @@ $("musicFile").addEventListener("change",()=>{
  musicURL=URL.createObjectURL(f);
  audio.src=musicURL;
  $("songName").textContent="♫ "+f.name;
- audio.play().catch(()=>toast("Nhấn PLAY để bắt đầu phát nhạc."));
+ audio.play().catch(()=>toast("Nhấn PLAY để phát nhạc."));
 });
 $("play").onclick=()=>audio.play().catch(()=>toast("Chọn bài nhạc trước nhé."));
 $("pause").onclick=()=>audio.pause();
@@ -525,21 +348,22 @@ $("stop").onclick=()=>{audio.pause();audio.currentTime=0};
 audio.addEventListener("play",()=>$("visualizer").style.opacity="1");
 audio.addEventListener("pause",()=>$("visualizer").style.opacity=".3");
 
-// ==========================================
-// 4. NEON PARTICLES
-// ==========================================
+// NEON PARTICLES
 const canvas=$("canvas");
 const ctx=canvas.getContext("2d");
 let w,h,particles=[];
 function resize(){
- w=canvas.width=innerWidth*devicePixelRatio;
- h=canvas.height=innerHeight*devicePixelRatio;
- ctx.setTransform(devicePixelRatio,0,0,devicePixelRatio,0,0);
+ const dpr=Math.min(devicePixelRatio||1,2);
+ canvas.width=innerWidth*dpr;
+ canvas.height=innerHeight*dpr;
+ canvas.style.width=innerWidth+"px";
+ canvas.style.height=innerHeight+"px";
+ ctx.setTransform(dpr,0,0,dpr,0,0);
  w=innerWidth;h=innerHeight;
  particles=Array.from({length:Math.min(120,Math.floor(w/5))},()=>({
   x:Math.random()*w,y:Math.random()*h,
   r:Math.random()*2+.5,s:Math.random()*.65+.1,
-  alpha:Math.random()*.8+.1,
+  a:Math.random()*.8+.1,
   color:Math.random()>.5?"0,245,255":"255,0,219"
  }));
 }
@@ -551,19 +375,18 @@ function animate(){
   if(p.y<0){p.y=h;p.x=Math.random()*w}
   ctx.beginPath();
   ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
-  ctx.fillStyle=`rgba(${p.color},${p.alpha})`;
+  ctx.fillStyle=`rgba(${p.color},${p.a})`;
   ctx.shadowBlur=12;
   ctx.shadowColor=`rgb(${p.color})`;
   ctx.fill();
  }
  requestAnimationFrame(animate);
 }
-resize();animate();
+resize();
+animate();
 addEventListener("resize",resize);
 
-// ==========================================
-// 5. LOADING SCREEN
-// ==========================================
+// LOADING
 window.addEventListener("load",()=>{
  setTimeout(()=>{
   $("loader").style.opacity="0";
