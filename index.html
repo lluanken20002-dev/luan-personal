@@ -3,396 +3,358 @@
 <html lang="vi">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
-<meta name="theme-color" content="#03030b">
-<title>LUAN PERSONAL | GOD ULTRA MAX</title>
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#03040a">
+<title>LUAN PERSONAL GOD MODE</title>
 <style>
-*{margin:0;padding:0;box-sizing:border-box}
-:root{--c:#00f5ff;--p:#ff00dc;--v:#895cff}
-body{background:#03030b;color:white;font-family:Arial,sans-serif;min-height:100vh;overflow-x:hidden}
-button,input{font:inherit}
-button{cursor:pointer}
-#canvas{position:fixed;inset:0;width:100%;height:100%;z-index:-3}
-.orb{position:fixed;width:350px;height:350px;border-radius:50%;filter:blur(110px);opacity:.2;z-index:-2;pointer-events:none;animation:float 8s infinite alternate}
-.o1{background:var(--c);top:-130px;left:-150px}
-.o2{background:var(--p);bottom:-150px;right:-150px;animation-delay:2s}
-.o3{background:var(--v);top:45%;left:40%;animation-delay:4s}
-@keyframes float{to{transform:translate(100px,100px) scale(1.3)}}
-#loader{position:fixed;inset:0;z-index:100;background:#03030b;display:flex;align-items:center;justify-content:center;flex-direction:column;transition:.8s}
-.spin{width:65px;height:65px;border-radius:50%;border:3px solid #222;border-top-color:var(--c);border-right-color:var(--p);animation:rotate 1s linear infinite;box-shadow:0 0 30px var(--c)}
-@keyframes rotate{to{transform:rotate(360deg)}}
-.loadingText{margin-top:25px;color:var(--c);letter-spacing:5px;font-size:12px}
-header{padding:17px 5%;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid #00eaff30;background:#050611bb;backdrop-filter:blur(18px);position:sticky;top:0;z-index:20}
-.brand{font-weight:1000;letter-spacing:3px;font-size:18px;background:linear-gradient(90deg,var(--c),white,var(--p));background-clip:text;color:transparent}
-.smallBtn{padding:10px 15px;border:1px solid var(--c);background:#00eaff12;color:var(--c);border-radius:25px;font-size:11px;font-weight:bold}
-main{width:min(94%,850px);margin:auto;padding:35px 0 50px}
-.logo{font-size:clamp(45px,12vw,85px);font-weight:1000;letter-spacing:8px;text-align:center;background:linear-gradient(90deg,var(--c),white,var(--p),var(--c));background-size:300%;background-clip:text;color:transparent;animation:gradient 5s linear infinite;filter:drop-shadow(0 0 18px #00eaff66)}
-@keyframes gradient{to{background-position:300%}}
-.subtitle{text-align:center;color:#888;letter-spacing:5px;font-size:10px;margin-top:8px}
-.online{display:table;margin:20px auto;padding:9px 18px;border:1px solid #00ff8855;border-radius:30px;color:#00ff9d;font-size:10px;letter-spacing:2px;background:#00ff880d}
-.panel{position:relative;padding:25px;margin:20px 0;background:linear-gradient(145deg,#0e162de8,#070814e8);border:1px solid #00eaff44;border-radius:22px;box-shadow:0 0 30px #00eaff10,inset 0 0 25px #00eaff07;backdrop-filter:blur(18px);overflow:hidden;animation:appear .8s ease both}
-.panel:before{content:"";position:absolute;inset:-100%;background:linear-gradient(110deg,transparent 45%,#00eaff13 50%,transparent 55%);animation:shine 7s linear infinite;pointer-events:none}
-@keyframes shine{to{transform:translateX(100%)}}
-@keyframes appear{from{opacity:0;transform:translateY(25px)}to{opacity:1;transform:none}}
-h2{font-size:13px;color:var(--c);letter-spacing:3px;margin-bottom:20px}
-.center{text-align:center}
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#03040a;--panel:#0b1020;--cyan:#00eaff;--pink:#ff00cc}
+body{background:var(--bg);color:#fff;font-family:Arial,sans-serif;min-height:100vh;overflow-x:hidden}
+body:before{content:"";position:fixed;inset:-50%;z-index:-2;background:conic-gradient(from 0deg,#ff003c,#ff8800,#eeff00,#00ff88,#00d9ff,#4141ff,#cc00ff,#ff003c);animation:spin 18s linear infinite;opacity:.13;filter:blur(100px)}
+@keyframes spin{to{transform:rotate(360deg)}}
+@keyframes rainbow{0%{filter:hue-rotate(0deg)}100%{filter:hue-rotate(360deg)}}
+@keyframes pulse{50%{box-shadow:0 0 28px #00eaff88}}
+@keyframes float{50%{transform:translateY(-7px)}}
+@keyframes shine{to{background-position:250% center}}
+*{scrollbar-width:thin;scrollbar-color:#00eaff #080b15}
+header{position:sticky;top:0;z-index:10;background:#050711eF;backdrop-filter:blur(18px);border-bottom:1px solid #ffffff15;padding:15px}
+.logo{font-size:22px;font-weight:900;letter-spacing:3px;background:linear-gradient(90deg,red,orange,yellow,lime,cyan,blue,violet,red);background-size:300%;color:transparent;background-clip:text;animation:shine 5s linear infinite}
+.top{display:flex;align-items:center;justify-content:space-between;gap:10px;max-width:1100px;margin:auto}
+.clock{text-align:right;font-size:12px;color:#a9c6d5;line-height:1.6}
+.wrap{max-width:1100px;margin:auto;padding:20px}
+.hero{text-align:center;padding:30px 10px 25px}
+.hero h1{font-size:clamp(28px,7vw,52px);font-weight:1000;letter-spacing:3px;text-shadow:0 0 25px #00eaff66}
+.gradient{background:linear-gradient(90deg,#00eaff,#ff00c8,#ffe600,#00eaff);background-size:300%;animation:shine 5s linear infinite;background-clip:text;color:transparent}
+.hero p{color:#9bb1c9;margin-top:10px;font-size:13px;letter-spacing:2px}
+.rgb{height:3px;border-radius:10px;background:linear-gradient(90deg,red,orange,yellow,lime,cyan,blue,violet,red);background-size:300%;animation:shine 4s linear infinite;box-shadow:0 0 15px #00eaff;margin:12px 0}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:13px}
+.card{background:linear-gradient(145deg,#10182a,#080c17);border:1px solid #ffffff16;border-radius:17px;padding:17px;box-shadow:0 8px 30px #0008;position:relative;overflow:hidden}
+.card:after{content:"";position:absolute;top:0;left:0;width:100%;height:1px;background:linear-gradient(90deg,transparent,#00eaff,transparent)}
+.card h3{font-size:14px;color:#00eaff;margin-bottom:13px;letter-spacing:1px}
+.big{font-size:25px;font-weight:900}
+.muted{font-size:12px;color:#91a4bc;margin-top:7px}
+nav{display:flex;gap:8px;overflow-x:auto;padding:13px 0;position:sticky;top:61px;z-index:8;background:#03040aeF}
+nav button,.btn{border:1px solid #00eaff55;background:#0b1525;color:#fff;border-radius:10px;padding:11px 14px;white-space:nowrap;cursor:pointer;font-weight:bold}
+nav button.active,.btn.primary{background:#00cce8;color:#001016;box-shadow:0 0 18px #00eaff66}
+button:hover{filter:brightness(1.3)}
+button:active{transform:scale(.97)}
+.page{display:none;animation:fade .3s}
+.page.active{display:block}
+@keyframes fade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+input,textarea,select{width:100%;padding:12px;background:#060b16;color:white;border:1px solid #263b55;border-radius:9px;margin:7px 0 12px;outline:none}
+input:focus,textarea:focus{border-color:#00eaff;box-shadow:0 0 12px #00eaff33}
+textarea{min-height:100px;resize:vertical}
+.btn{margin:4px 3px 4px 0}
+.row{display:flex;gap:9px;flex-wrap:wrap;align-items:center}
+.row input{flex:1;min-width:100px}
+.music{border:1px solid #00eaff66;animation:pulse 3s infinite}
+.music audio{width:100%;margin-top:12px}
+.progress{height:5px;background:#26334b;border-radius:10px;margin:12px 0;overflow:hidden}
+.progress div{height:100%;width:0;background:linear-gradient(90deg,cyan,magenta);transition:width .3s}
+.item{padding:12px;border:1px solid #ffffff15;border-radius:10px;margin:8px 0;background:#0a1220;display:flex;justify-content:space-between;gap:8px;align-items:center;overflow-wrap:anywhere}
+.item.done{text-decoration:line-through;opacity:.45}
+#particles{position:fixed;inset:0;pointer-events:none;z-index:-1}
+footer{text-align:center;color:#536a85;font-size:11px;padding:35px 0}
+#timer{font-size:48px;font-weight:900;text-align:center;color:#00eaff;text-shadow:0 0 20px #00eaff77;padding:20px}
+.avatar{width:85px;height:85px;border-radius:50%;border:3px solid #00eaff;display:grid;place-items:center;font-size:38px;margin:0 auto 14px;background:#101b30;box-shadow:0 0 25px #00eaff55}
 .hidden{display:none!important}
-
-/* LOGIN */
-.authWrap{width:min(100%,440px);margin:35px auto;padding:28px 24px;border:1px solid #00eaff66;border-radius:25px;background:#080d1de8;box-shadow:0 0 35px #00eaff20,0 0 90px #ff00db0c}
-.authTitle{text-align:center;font-size:25px;font-weight:900;letter-spacing:3px;margin-bottom:8px}
-.authSub{text-align:center;color:#888;font-size:11px;margin-bottom:24px}
-.tabs{display:flex;gap:8px;margin-bottom:22px}
-.tab{flex:1;padding:12px;border:1px solid #333;color:#888;background:#101321;border-radius:12px;font-weight:bold;font-size:12px}
-.tab.active{color:var(--c);border-color:var(--c);background:#00eaff12;box-shadow:0 0 15px #00eaff22}
-.field{margin:14px 0}
-.field label{display:block;color:#aaa;font-size:11px;margin-bottom:8px}
-.field input{width:100%;padding:15px;color:white;background:#050a18;border:1px solid #28354b;border-radius:12px;outline:none;font-size:14px}
-.field input:focus{border-color:var(--c);box-shadow:0 0 15px #00eaff22}
-.primary{width:100%;padding:15px;border:0;border-radius:12px;background:linear-gradient(90deg,#00d9ff,#8b5cff,#ff00d4);color:white;font-weight:900;letter-spacing:2px;margin-top:12px;box-shadow:0 0 20px #00eaff30;transition:.3s}
-.primary:active{transform:scale(.97)}
-.google{width:100%;padding:14px;margin-top:12px;border-radius:12px;background:white;color:#111;border:0;font-weight:bold}
-.divider{display:flex;align-items:center;gap:12px;color:#666;font-size:10px;margin:18px 0}
-.divider:before,.divider:after{content:"";height:1px;background:#333;flex:1}
-.message{text-align:center;font-size:12px;line-height:1.7;margin-top:15px;color:#ffbd66;overflow-wrap:anywhere}
-.authNote{color:#666;text-align:center;font-size:10px;line-height:1.7;margin-top:18px}
-.linkBtn{display:block;margin:17px auto 0;background:none;border:0;color:var(--c);font-size:11px}
-
-/* MEMBER */
-.avatar{width:105px;height:105px;border-radius:50%;display:grid;place-items:center;margin:0 auto 18px;font-size:43px;border:2px solid var(--c);background:linear-gradient(135deg,#102b3b,#290d35);box-shadow:0 0 25px var(--c),0 0 55px #ff00d455;animation:pulse 3s infinite}
-@keyframes pulse{50%{box-shadow:0 0 40px var(--p),0 0 70px var(--c)}}
-.username{font-size:26px;font-weight:900;letter-spacing:3px}
-.email{font-size:12px;color:#999;margin-top:10px;word-break:break-word}
-.memberTag{display:inline-block;padding:8px 16px;margin-top:14px;border:1px solid #00ff8880;border-radius:30px;color:#00ff9d;font-size:10px;letter-spacing:2px}
-.clock{text-align:center;font-size:38px;font-weight:900;letter-spacing:4px;text-shadow:0 0 20px var(--c)}
-.date{text-align:center;color:#999;font-size:12px;margin-top:10px}
-.music{text-align:center}
-.visualizer{height:50px;display:flex;justify-content:center;align-items:center;gap:5px;margin:15px;opacity:.3;transition:.3s}
-.bar{width:5px;height:10px;background:var(--c);border-radius:5px;box-shadow:0 0 10px var(--c);animation:wave .7s infinite alternate}
-.bar:nth-child(2n){animation-delay:.2s}
-.bar:nth-child(3n){animation-delay:.4s}
-@keyframes wave{to{height:43px;background:var(--p)}}
-#songName{font-size:12px;color:#ddd;margin:10px;word-break:break-all}
-.choose,.control{display:inline-block;padding:12px 17px;border-radius:25px;border:1px solid var(--c);background:#00eaff12;color:var(--c);font-size:11px;font-weight:bold;margin:5px}
-input[type=file]{display:none}
-audio{width:100%;margin-top:15px}
-.info{color:#aaa;font-size:12px;line-height:2.3}
-.info span{color:var(--c)}
-footer{text-align:center;color:#666;font-size:10px;letter-spacing:3px;padding:30px 5px}
-.toast{position:fixed;bottom:25px;left:50%;transform:translateX(-50%);background:#101a2d;border:1px solid var(--c);padding:13px 20px;border-radius:15px;z-index:90;font-size:12px;box-shadow:0 0 20px #00eaff44;max-width:90%;text-align:center}
-@media(max-width:500px){header{padding:15px 4%}.brand{font-size:14px}.smallBtn{padding:9px 11px;font-size:10px}main{padding-top:25px}.panel{padding:20px}.clock{font-size:30px}}
+@media(max-width:700px){.grid{grid-template-columns:repeat(2,1fr)}.wrap{padding:13px}.card{padding:14px}.top{align-items:center}}
+@media(max-width:390px){.grid{grid-template-columns:1fr}}
 </style>
 </head>
-
 <body>
-<div id="loader">
- <div class="spin"></div>
- <div class="loadingText">LUAN GOD SYSTEM</div>
-</div>
-<canvas id="canvas"></canvas>
-<div class="orb o1"></div><div class="orb o2"></div><div class="orb o3"></div>
-
+<canvas id="particles"></canvas>
 <header>
- <div class="brand">⚡ LUAN PERSONAL</div>
- <div>
-  <button class="smallBtn" id="headerLogin">LOGIN</button>
-  <button class="smallBtn hidden" id="headerLogout">LOGOUT</button>
- </div>
+<div class="top">
+<div class="logo">LUAN PERSONAL</div>
+<div class="clock"><div id="time">00:00:00</div><div id="date"></div></div>
+</div>
 </header>
 
-<main>
- <div class="center">
-  <div class="logo">LUAN</div>
-  <div class="subtitle">PERSONAL DIGITAL UNIVERSE</div>
-  <div class="online">● SYSTEM ONLINE · GOD ULTRA MAX</div>
- </div>
+<main class="wrap">
+<section class="hero">
+<h1 class="gradient">GOD MODE</h1>
+<p>WELCOME TO MY PERSONAL UNIVERSE</p>
+<div class="rgb"></div>
+</section>
 
- <section id="authSection" class="authWrap">
-  <div class="authTitle">WELCOME BACK</div>
-  <div class="authSub">ENTER THE LUAN DIGITAL WORLD</div>
-  <div class="tabs">
-   <button class="tab active" id="loginTab">ĐĂNG NHẬP</button>
-   <button class="tab" id="registerTab">ĐĂNG KÝ</button>
-  </div>
-  <form id="authForm">
-   <div class="field">
-    <label>EMAIL</label>
-    <input id="email" type="email" placeholder="Nhập email của bạn" required autocomplete="email">
-   </div>
-   <div class="field">
-    <label>MẬT KHẨU</label>
-    <input id="password" type="password" placeholder="Nhập mật khẩu (ít nhất 6 ký tự)" required minlength="6" autocomplete="current-password">
-   </div>
-   <button class="primary" id="submitBtn" type="submit">ĐĂNG NHẬP ⚡</button>
-  </form>
-  <div class="divider">HOẶC</div>
-  <button class="google" id="googleBtn">🌐 TIẾP TỤC VỚI GOOGLE</button>
-  <button class="linkBtn" id="forgotBtn">Quên mật khẩu?</button>
-  <div class="message" id="authMessage"></div>
-  <div class="authNote">Xác thực bằng Supabase Auth.<br>Mật khẩu không được lưu trực tiếp trong website.</div>
- </section>
+<nav>
+<button class="active" onclick="tab('home',this)">⌂ Trang chủ</button>
+<button onclick="tab('profile',this)">♙ Cá nhân</button>
+<button onclick="tab('notes',this)">▤ Ghi chú</button>
+<button onclick="tab('tasks',this)">✓ Công việc</button>
+<button onclick="tab('tools',this)">⚙ Công cụ</button>
+<button onclick="tab('settings',this)">☷ Cài đặt</button>
+</nav>
 
- <div id="privateContent" class="hidden">
-  <section class="panel center">
-   <div class="avatar">⚡</div>
-   <div class="username">LUAN PERSONAL</div>
-   <div class="email" id="userEmail"></div>
-   <div class="memberTag">✦ VERIFIED MEMBER ✦</div>
-   <p style="color:#999;font-size:12px;margin-top:17px">Chào mừng bạn đến với thế giới của Luan.</p>
-  </section>
+<section id="home" class="page active">
+<div class="grid">
+<div class="card"><h3>◷ THỜI GIAN</h3><div class="big" id="homeTime">00:00:00</div><div class="muted" id="homeDate">Đang cập nhật</div></div>
+<div class="card"><h3>✦ HỆ THỐNG</h3><div class="big gradient">ONLINE</div><div class="muted">LUAN PERSONAL GOD MODE</div></div>
+<div class="card"><h3>✓ NHIỆM VỤ</h3><div class="big" id="taskCount">0</div><div class="muted">Công việc đã hoàn thành</div></div>
+</div>
+<div class="rgb"></div>
+<div class="card music">
+<h3>♫ MUSIC PLAYER — XOMU</h3>
+<div class="big gradient">LANTERNS</div>
+<div class="muted">Xomu - Lanterns - Diversity</div>
+<audio id="audio" controls preload="metadata">
+<source src="https://vejnqqlrnmtbpocgcbsb.supabase.co/storage/v1/object/public/MUSIC/Xomu%20-%20Lanterns%20-%20Diversity.mp3" type="audio/mpeg">
+</audio>
+<div class="row">
+<button class="btn primary" onclick="playMusic()">▶ PHÁT NHẠC</button>
+<button class="btn" onclick="pauseMusic()">Ⅱ TẠM DỪNG</button>
+<button class="btn" onclick="document.getElementById('musicFile').click()">＋ CHỌN MP3</button>
+<input id="musicFile" type="file" accept="audio/*" class="hidden" onchange="loadMusic(this)">
+</div>
+<div class="muted" id="musicStatus">Bấm phát nhạc để bắt đầu.</div>
+</div>
+<div class="grid" style="margin-top:13px">
+<div class="card"><h3>✧ HIỆU ỨNG</h3><div class="big gradient">7 COLORS</div><div class="muted">RGB chuyển động liên tục</div></div>
+<div class="card"><h3>⚡ PHIÊN BẢN</h3><div class="big">ULTRA</div><div class="muted">Personal edition</div></div>
+<div class="card"><h3>♡ TRẠNG THÁI</h3><div class="big" style="color:#00ffad">ACTIVE</div><div class="muted">Sẵn sàng hoạt động</div></div>
+</div>
+</section>
 
-  <section class="panel">
-   <h2>✦ LIVE CLOCK</h2>
-   <div class="clock" id="clock">00:00:00</div>
-   <div class="date" id="date"></div>
-  </section>
+<section id="profile" class="page">
+<div class="card" style="text-align:center">
+<div class="avatar">👑</div>
+<h2 class="gradient">LUAN</h2>
+<p class="muted">PERSONAL PROFILE</p>
+<div class="rgb"></div>
+<label>Tên hiển thị</label><input id="profileName" placeholder="Nhập tên của bạn">
+<label>Giới thiệu bản thân</label><textarea id="bio" placeholder="Viết vài dòng giới thiệu..."></textarea>
+<label>Sở thích</label><input id="hobby" placeholder="Ví dụ: Ô tô, âm nhạc...">
+<button class="btn primary" onclick="saveProfile()">LƯU HỒ SƠ</button>
+</div>
+</section>
 
-  <section class="panel music">
-   <h2>♫ PREMIUM MUSIC PLAYER</h2>
-   <div class="visualizer" id="visualizer">
-    <span class="bar"></span><span class="bar"></span><span class="bar"></span><span class="bar"></span>
-    <span class="bar"></span><span class="bar"></span><span class="bar"></span><span class="bar"></span>
-    <span class="bar"></span><span class="bar"></span><span class="bar"></span><span class="bar"></span>
-   </div>
-   <div id="songName">Chưa chọn bài nhạc</div>
-   <label class="choose" for="musicFile">＋ CHỌN NHẠC MP3</label>
-   <input type="file" id="musicFile" accept="audio/*">
-   <audio id="audio" controls preload="metadata"></audio>
-   <div>
-    <button class="control" id="play">▶ PLAY</button>
-    <button class="control" id="pause">Ⅱ PAUSE</button>
-    <button class="control" id="stop">■ STOP</button>
-   </div>
-  </section>
+<section id="notes" class="page">
+<div class="card">
+<h3>▤ SỔ GHI CHÚ</h3>
+<input id="noteTitle" placeholder="Tiêu đề ghi chú">
+<textarea id="noteText" placeholder="Nội dung ghi chú..."></textarea>
+<button class="btn primary" onclick="addNote()">＋ LƯU GHI CHÚ</button>
+<div id="noteList"></div>
+</div>
+</section>
 
-  <section class="panel">
-   <h2>✦ SYSTEM INFORMATION</h2>
-   <div class="info">
-    SYSTEM: <span>GOD ULTRA MAX</span><br>
-    SECURITY: <span>SUPABASE AUTH</span><br>
-    INTERFACE: <span>NEON CYBERPUNK</span><br>
-    DEVICE: <span id="device">DETECTING...</span><br>
-    STATUS: <span>PROTECTED</span>
-   </div>
-  </section>
-  <button class="primary" id="logoutMain">ĐĂNG XUẤT TÀI KHOẢN</button>
- </div>
+<section id="tasks" class="page">
+<div class="card">
+<h3>✓ QUẢN LÝ CÔNG VIỆC</h3>
+<input id="taskInput" placeholder="Nhập công việc cần làm...">
+<button class="btn primary" onclick="addTask()">＋ THÊM CÔNG VIỆC</button>
+<div id="taskList"></div>
+</div>
+</section>
+
+<section id="tools" class="page">
+<div class="grid">
+<div class="card">
+<h3>⏱ POMODORO TIMER</h3>
+<div id="timer">25:00</div>
+<div class="row">
+<button class="btn primary" onclick="startTimer()">▶ BẮT ĐẦU</button>
+<button class="btn" onclick="stopTimer()">Ⅱ DỪNG</button>
+<button class="btn" onclick="resetTimer()">↻ RESET</button>
+</div>
+<p class="muted">Tập trung làm việc trong 25 phút.</p>
+</div>
+<div class="card">
+<h3>▣ MÁY TÍNH</h3>
+<input id="calc" placeholder="Ví dụ: 25*4+10">
+<div class="row">
+<button class="btn primary" onclick="calculate()">= KẾT QUẢ</button>
+<button class="btn" onclick="document.getElementById('calc').value=''">C</button>
+</div>
+<div class="big gradient" id="calcResult">0</div>
+</div>
+</div>
+<div class="card" style="margin-top:13px">
+<h3>✦ ĐỒNG HỒ THẾ GIỚI</h3>
+<div class="big" id="worldClock">--:--:--</div>
+<p class="muted">Giờ Việt Nam (UTC+7)</p>
+</div>
+</section>
+
+<section id="settings" class="page">
+<div class="card">
+<h3>⚙ CÀI ĐẶT HỆ THỐNG</h3>
+<label>Hiệu ứng RGB</label>
+<button class="btn primary" onclick="toggleRGB()">BẬT / TẮT RGB</button>
+<label>Hiệu ứng hạt sáng</label>
+<button class="btn primary" onclick="toggleParticles()">BẬT / TẮT HẠT</button>
+<label>Âm lượng nhạc</label>
+<input type="range" min="0" max="100" value="70" oninput="audio.volume=this.value/100">
+<label>Đổi tiêu đề website</label>
+<input id="siteTitle" placeholder="LUAN PERSONAL">
+<button class="btn primary" onclick="changeTitle()">LƯU TIÊU ĐỀ</button>
+<button class="btn" onclick="exportData()">SAO LƯU DỮ LIỆU</button>
+<button class="btn" onclick="clearData()">XÓA DỮ LIỆU ĐÃ LƯU</button>
+<p class="muted">Dữ liệu ghi chú, hồ sơ và công việc được lưu trên trình duyệt hiện tại.</p>
+</div>
+</section>
+
+<div class="rgb"></div>
+<footer>© 2026 LUAN PERSONAL • GOD MODE • ALL RIGHTS RESERVED</footer>
 </main>
 
-<footer>© 2026 LUAN PERSONAL · GOD ULTRA MAX</footer>
-<div id="toast" class="toast hidden"></div>
+<script>
+const $=id=>document.getElementById(id);
+const get=(k,d)=>{try{return JSON.parse(localStorage.getItem(k))??d}catch{return d}};
+const put=(k,v)=>localStorage.setItem(k,JSON.stringify(v));
+
+function tab(id,btn){
+document.querySelectorAll('.page').forEach(x=>x.classList.remove('active'));
+$(id).classList.add('active');
+document.querySelectorAll('nav button').forEach(x=>x.classList.remove('active'));
+btn.classList.add('active');
+}
+
+function updateClock(){
+const d=new Date();
+const t=d.toLocaleTimeString('vi-VN');
+const date=d.toLocaleDateString('vi-VN',{weekday:'long',day:'2-digit',month:'2-digit',year:'numeric'});
+$('time').textContent=t;$('homeTime').textContent=t;
+$('date').textContent=date;$('homeDate').textContent=date;
+$('worldClock').textContent=t;
+}
+setInterval(updateClock,1000);updateClock();
+
+const audio=$('audio');
+function playMusic(){
+audio.play().then(()=>{$('musicStatus').textContent='Đang phát nhạc ♫'}).catch(()=>{$('musicStatus').textContent='Không tải được MP3. Hãy chọn file MP3 từ điện thoại.'});
+}
+function pauseMusic(){audio.pause();$('musicStatus').textContent='Đã tạm dừng nhạc';}
+audio.addEventListener('error',()=>{$('musicStatus').textContent='Không tìm thấy file MP3 trên máy chủ. Hãy chọn file MP3.'});
+audio.addEventListener('ended',()=>{$('musicStatus').textContent='Đã phát xong bài nhạc';});
+function loadMusic(input){
+if(input.files&&input.files[0]){
+const url=URL.createObjectURL(input.files[0]);
+audio.src=url;playMusic();
+$('musicStatus').textContent='Đang phát: '+input.files[0].name;
+}
+}
+
+let notes=get('luan_notes',[]);
+function renderNotes(){
+$('noteList').innerHTML='';
+notes.forEach((n,i)=>{
+const el=document.createElement('div');el.className='item';
+const box=document.createElement('div');
+const strong=document.createElement('b');strong.textContent=n.title;
+const p=document.createElement('p');p.className='muted';p.textContent=n.text;
+box.append(strong,p);
+const del=document.createElement('button');del.className='btn';del.textContent='XÓA';
+del.onclick=()=>{notes.splice(i,1);put('luan_notes',notes);renderNotes()};
+el.append(box,del);$('noteList').append(el);
+});
+}
+function addNote(){
+const title=$('noteTitle').value.trim(),text=$('noteText').value.trim();
+if(!title&&!text)return alert('Nhập nội dung ghi chú!');
+notes.unshift({title:title||'Ghi chú',text});
+put('luan_notes',notes);$('noteTitle').value='';$('noteText').value='';renderNotes();
+}
+
+let tasks=get('luan_tasks',[]);
+function renderTasks(){
+$('taskList').innerHTML='';
+let done=0;
+tasks.forEach((t,i)=>{
+if(t.done)done++;
+const el=document.createElement('div');el.className='item'+(t.done?' done':'');
+const label=document.createElement('label');label.style.display='flex';label.style.gap='9px';label.style.alignItems='center';
+const cb=document.createElement('input');cb.type='checkbox';cb.checked=t.done;cb.style.width='auto';cb.style.margin='0';
+cb.onchange=()=>{tasks[i].done=cb.checked;put('luan_tasks',tasks);renderTasks()};
+const span=document.createElement('span');span.textContent=t.text;
+label.append(cb,span);
+const del=document.createElement('button');del.className='btn';del.textContent='×';
+del.onclick=()=>{tasks.splice(i,1);put('luan_tasks',tasks);renderTasks()};
+el.append(label,del);$('taskList').append(el);
+});
+$('taskCount').textContent=done+'/'+tasks.length;
+}
+function addTask(){
+const v=$('taskInput').value.trim();if(!v)return;
+tasks.unshift({text:v,done:false});put('luan_tasks',tasks);$('taskInput').value='';renderTasks();
+}
+
+let profile=get('luan_profile',{name:'LUAN',bio:'',hobby:''});
+function loadProfile(){
+$('profileName').value=profile.name||'';
+$('bio').value=profile.bio||'';
+$('hobby').value=profile.hobby||'';
+}
+function saveProfile(){
+profile={name:$('profileName').value,bio:$('bio').value,hobby:$('hobby').value};
+put('luan_profile',profile);alert('Đã lưu hồ sơ!');
+}
+
+let remaining=1500,timerId=null;
+function drawTimer(){
+$('timer').textContent=String(Math.floor(remaining/60)).padStart(2,'0')+':'+String(remaining%60).padStart(2,'0');
+}
+function startTimer(){
+if(timerId)return;
+timerId=setInterval(()=>{
+if(remaining>0){remaining--;drawTimer()}
+else{clearInterval(timerId);timerId=null;alert('Hoàn thành Pomodoro!');}
+},1000);
+}
+function stopTimer(){clearInterval(timerId);timerId=null;}
+function resetTimer(){stopTimer();remaining=1500;drawTimer();}
+function calculate(){
+const v=$('calc').value.trim();
+if(!/^[0-9+\-*/().%\s]+$/.test(v)){return $('calcResult').textContent='Không hợp lệ'}
+try{
+const result=Function('"use strict";return ('+v+')')();
+$('calcResult').textContent=Number.isFinite(result)?String(result):'Lỗi';
+}catch{$('calcResult').textContent='Lỗi'}
+}
+
+let rgbOn=true,particlesOn=true;
+function toggleRGB(){rgbOn=!rgbOn;document.querySelectorAll('.rgb,.logo,.gradient').forEach(x=>x.style.animationPlayState=rgbOn?'running':'paused');}
+function toggleParticles(){particlesOn=!particlesOn;}
+
+function changeTitle(){
+const v=$('siteTitle').value.trim();
+if(v){document.title=v;$('logo').textContent=v}
+}
+
+function exportData(){
+const data={notes,tasks,profile};
+const blob=new Blob([JSON.stringify(data,null,2)],{type:'application/json'});
+const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='luan-personal-backup.json';a.click();URL.revokeObjectURL(a.href);
+}
+function clearData(){
+if(!confirm('Xóa toàn bộ ghi chú, công việc và hồ sơ đã lưu?'))return;
+localStorage.removeItem('luan_notes');localStorage.removeItem('luan_tasks');localStorage.removeItem('luan_profile');
+notes=[];tasks=[];profile={name:'LUAN',bio:'',hobby:''};renderNotes();renderTasks();loadProfile();
+}
+
+renderNotes();renderTasks();loadProfile();drawTimer();
+</script>
 
 <script>
-// ===================================
-// SUPABASE - THÔNG TIN ĐÃ ĐIỀN SẴN
-// ===================================
-const SUPABASE_URL = "https://vejnqqlrnmtbpocgcbsb.supabase.co";
-const SUPABASE_ANON_KEY = "sb_publishable_YgVrA4tddlG-6uYAn15sqw_S_q5uqrQ";
-
-const db = window.supabase.createClient(
- SUPABASE_URL,
- SUPABASE_ANON_KEY
-);
-
-const $ = id => document.getElementById(id);
-let mode = "login";
-let musicURL = null;
-
-function toast(msg){
- $("toast").textContent=msg;
- $("toast").classList.remove("hidden");
- setTimeout(()=>$("toast").classList.add("hidden"),3500);
-}
-function message(msg){$("authMessage").textContent=msg}
-
-function setMode(next){
- mode=next;
- $("loginTab").classList.toggle("active",mode==="login");
- $("registerTab").classList.toggle("active",mode==="register");
- $("submitBtn").textContent=mode==="login"?"ĐĂNG NHẬP ⚡":"TẠO TÀI KHOẢN ✦";
- $("password").autocomplete=mode==="login"?"current-password":"new-password";
- $("forgotBtn").style.display=mode==="login"?"block":"none";
- message("");
-}
-$("loginTab").onclick=()=>setMode("login");
-$("registerTab").onclick=()=>setMode("register");
-
-function showPrivate(user){
- $("authSection").classList.add("hidden");
- $("privateContent").classList.remove("hidden");
- $("headerLogin").classList.add("hidden");
- $("headerLogout").classList.remove("hidden");
- $("userEmail").textContent=user.email||"Thành viên";
-}
-function showLogin(){
- $("privateContent").classList.add("hidden");
- $("authSection").classList.remove("hidden");
- $("headerLogin").classList.remove("hidden");
- $("headerLogout").classList.add("hidden");
- setMode("login");
-}
-
-$("authForm").addEventListener("submit",async e=>{
- e.preventDefault();
- const email=$("email").value.trim();
- const password=$("password").value;
- const btn=$("submitBtn");
- btn.disabled=true;
- btn.textContent="ĐANG XỬ LÝ...";
- message("");
- try{
-  if(mode==="register"){
-   const {data,error}=await db.auth.signUp({
-    email,password,
-    options:{emailRedirectTo:location.origin}
-   });
-   if(error)throw error;
-   if(data.session){
-    showPrivate(data.user);
-    toast("Đăng ký thành công!");
-   }else{
-    message("Đăng ký thành công! Kiểm tra email để xác nhận tài khoản trước khi đăng nhập.");
-   }
-  }else{
-   const {data,error}=await db.auth.signInWithPassword({email,password});
-   if(error)throw error;
-   showPrivate(data.user);
-   toast("Đăng nhập thành công!");
-  }
- }catch(err){
-  message(err.message||"Có lỗi xảy ra.");
- }finally{
-  btn.disabled=false;
-  btn.textContent=mode==="login"?"ĐĂNG NHẬP ⚡":"TẠO TÀI KHOẢN ✦";
- }
-});
-
-$("googleBtn").onclick=async()=>{
- message("");
- try{
-  const {error}=await db.auth.signInWithOAuth({
-   provider:"google",
-   options:{redirectTo:location.origin}
-  });
-  if(error)throw error;
- }catch(err){message(err.message)}
-};
-
-$("forgotBtn").onclick=async()=>{
- const email=$("email").value.trim();
- if(!email){message("Hãy nhập email trước.");return}
- try{
-  const {error}=await db.auth.resetPasswordForEmail(email,{
-   redirectTo:location.origin
-  });
-  if(error)throw error;
-  message("Đã gửi email khôi phục. Hãy kiểm tra hộp thư.");
- }catch(err){message(err.message)}
-};
-
-async function logout(){
- const {error}=await db.auth.signOut();
- if(error){toast(error.message);return}
- showLogin();
- toast("Đã đăng xuất!");
-}
-$("headerLogout").onclick=logout;
-$("logoutMain").onclick=logout;
-$("headerLogin").onclick=()=>$("authSection").scrollIntoView({behavior:"smooth"});
-
-async function initAuth(){
- try{
-  const {data,error}=await db.auth.getSession();
-  if(error)throw error;
-  if(data.session)showPrivate(data.session.user);
-  else showLogin();
-  db.auth.onAuthStateChange((event,session)=>{
-   if(session)showPrivate(session.user);
-   else if(event==="SIGNED_OUT")showLogin();
-  });
- }catch(err){
-  showLogin();
-  message("Lỗi kết nối Supabase: "+err.message);
- }
-}
-initAuth();
-
-// CLOCK
-function updateClock(){
- const d=new Date();
- $("clock").textContent=d.toLocaleTimeString("vi-VN",{hour12:false});
- $("date").textContent=d.toLocaleDateString("vi-VN",{
-  weekday:"long",day:"2-digit",month:"long",year:"numeric"
- });
-}
-updateClock();
-setInterval(updateClock,1000);
-$("device").textContent=/iPhone|iPad|Android/i.test(navigator.userAgent)?"MOBILE DEVICE":"DESKTOP DEVICE";
-
-// MUSIC
-const audio=$("audio");
-$("musicFile").addEventListener("change",()=>{
- const f=$("musicFile").files[0];
- if(!f)return;
- if(musicURL)URL.revokeObjectURL(musicURL);
- musicURL=URL.createObjectURL(f);
- audio.src=musicURL;
- $("songName").textContent="♫ "+f.name;
- audio.play().catch(()=>toast("Nhấn PLAY để phát nhạc."));
-});
-$("play").onclick=()=>audio.play().catch(()=>toast("Chọn bài nhạc trước nhé."));
-$("pause").onclick=()=>audio.pause();
-$("stop").onclick=()=>{audio.pause();audio.currentTime=0};
-audio.addEventListener("play",()=>$("visualizer").style.opacity="1");
-audio.addEventListener("pause",()=>$("visualizer").style.opacity=".3");
-
-// NEON PARTICLES
-const canvas=$("canvas");
-const ctx=canvas.getContext("2d");
-let w,h,particles=[];
+const canvas=document.getElementById('particles'),ctx=canvas.getContext('2d');
+let W,H,stars=[];
 function resize(){
- const dpr=Math.min(devicePixelRatio||1,2);
- canvas.width=innerWidth*dpr;
- canvas.height=innerHeight*dpr;
- canvas.style.width=innerWidth+"px";
- canvas.style.height=innerHeight+"px";
- ctx.setTransform(dpr,0,0,dpr,0,0);
- w=innerWidth;h=innerHeight;
- particles=Array.from({length:Math.min(120,Math.floor(w/5))},()=>({
-  x:Math.random()*w,y:Math.random()*h,
-  r:Math.random()*2+.5,s:Math.random()*.65+.1,
-  a:Math.random()*.8+.1,
-  color:Math.random()>.5?"0,245,255":"255,0,219"
- }));
+W=canvas.width=innerWidth;H=canvas.height=innerHeight;
+stars=Array.from({length:Math.min(100,Math.floor(W/7))},()=>({x:Math.random()*W,y:Math.random()*H,r:Math.random()*1.8+.3,s:Math.random()*.5+.15,h:Math.random()*360}));
 }
 function animate(){
- ctx.clearRect(0,0,w,h);
- for(const p of particles){
-  p.y-=p.s;
-  p.x+=Math.sin(p.y*.01)*.25;
-  if(p.y<0){p.y=h;p.x=Math.random()*w}
-  ctx.beginPath();
-  ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
-  ctx.fillStyle=`rgba(${p.color},${p.a})`;
-  ctx.shadowBlur=12;
-  ctx.shadowColor=`rgb(${p.color})`;
-  ctx.fill();
- }
- requestAnimationFrame(animate);
-}
-resize();
-animate();
-addEventListener("resize",resize);
-
-// LOADING
-window.addEventListener("load",()=>{
- setTimeout(()=>{
-  $("loader").style.opacity="0";
-  setTimeout(()=>$("loader").remove(),850);
- },900);
+ctx.clearRect(0,0,W,H);
+if(particlesOn){
+stars.forEach(p=>{
+p.y-=p.s;if(p.y<0){p.y=H;p.x=Math.random()*W}
+ctx.beginPath();ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
+ctx.fillStyle=`hsla(${p.h},100%,70%,.75)`;ctx.fill();
 });
+}
+requestAnimationFrame(animate);
+}
+addEventListener('resize',resize);resize();animate();
 </script>
 </body>
 </html>
