@@ -4,357 +4,362 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="theme-color" content="#03040a">
-<title>LUAN PERSONAL GOD MODE</title>
+<meta name="theme-color" content="#070817">
+<title>LUAN STORE VIP PRO MAX</title>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <style>
-*{box-sizing:border-box;margin:0;padding:0}
-:root{--bg:#03040a;--panel:#0b1020;--cyan:#00eaff;--pink:#ff00cc}
-body{background:var(--bg);color:#fff;font-family:Arial,sans-serif;min-height:100vh;overflow-x:hidden}
-body:before{content:"";position:fixed;inset:-50%;z-index:-2;background:conic-gradient(from 0deg,#ff003c,#ff8800,#eeff00,#00ff88,#00d9ff,#4141ff,#cc00ff,#ff003c);animation:spin 18s linear infinite;opacity:.13;filter:blur(100px)}
-@keyframes spin{to{transform:rotate(360deg)}}
-@keyframes rainbow{0%{filter:hue-rotate(0deg)}100%{filter:hue-rotate(360deg)}}
-@keyframes pulse{50%{box-shadow:0 0 28px #00eaff88}}
-@keyframes float{50%{transform:translateY(-7px)}}
-@keyframes shine{to{background-position:250% center}}
-*{scrollbar-width:thin;scrollbar-color:#00eaff #080b15}
-header{position:sticky;top:0;z-index:10;background:#050711eF;backdrop-filter:blur(18px);border-bottom:1px solid #ffffff15;padding:15px}
-.logo{font-size:22px;font-weight:900;letter-spacing:3px;background:linear-gradient(90deg,red,orange,yellow,lime,cyan,blue,violet,red);background-size:300%;color:transparent;background-clip:text;animation:shine 5s linear infinite}
-.top{display:flex;align-items:center;justify-content:space-between;gap:10px;max-width:1100px;margin:auto}
-.clock{text-align:right;font-size:12px;color:#a9c6d5;line-height:1.6}
-.wrap{max-width:1100px;margin:auto;padding:20px}
-.hero{text-align:center;padding:30px 10px 25px}
-.hero h1{font-size:clamp(28px,7vw,52px);font-weight:1000;letter-spacing:3px;text-shadow:0 0 25px #00eaff66}
-.gradient{background:linear-gradient(90deg,#00eaff,#ff00c8,#ffe600,#00eaff);background-size:300%;animation:shine 5s linear infinite;background-clip:text;color:transparent}
-.hero p{color:#9bb1c9;margin-top:10px;font-size:13px;letter-spacing:2px}
-.rgb{height:3px;border-radius:10px;background:linear-gradient(90deg,red,orange,yellow,lime,cyan,blue,violet,red);background-size:300%;animation:shine 4s linear infinite;box-shadow:0 0 15px #00eaff;margin:12px 0}
-.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:13px}
-.card{background:linear-gradient(145deg,#10182a,#080c17);border:1px solid #ffffff16;border-radius:17px;padding:17px;box-shadow:0 8px 30px #0008;position:relative;overflow:hidden}
-.card:after{content:"";position:absolute;top:0;left:0;width:100%;height:1px;background:linear-gradient(90deg,transparent,#00eaff,transparent)}
-.card h3{font-size:14px;color:#00eaff;margin-bottom:13px;letter-spacing:1px}
-.big{font-size:25px;font-weight:900}
-.muted{font-size:12px;color:#91a4bc;margin-top:7px}
-nav{display:flex;gap:8px;overflow-x:auto;padding:13px 0;position:sticky;top:61px;z-index:8;background:#03040aeF}
-nav button,.btn{border:1px solid #00eaff55;background:#0b1525;color:#fff;border-radius:10px;padding:11px 14px;white-space:nowrap;cursor:pointer;font-weight:bold}
-nav button.active,.btn.primary{background:#00cce8;color:#001016;box-shadow:0 0 18px #00eaff66}
-button:hover{filter:brightness(1.3)}
-button:active{transform:scale(.97)}
-.page{display:none;animation:fade .3s}
-.page.active{display:block}
-@keyframes fade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
-input,textarea,select{width:100%;padding:12px;background:#060b16;color:white;border:1px solid #263b55;border-radius:9px;margin:7px 0 12px;outline:none}
-input:focus,textarea:focus{border-color:#00eaff;box-shadow:0 0 12px #00eaff33}
-textarea{min-height:100px;resize:vertical}
-.btn{margin:4px 3px 4px 0}
-.row{display:flex;gap:9px;flex-wrap:wrap;align-items:center}
-.row input{flex:1;min-width:100px}
-.music{border:1px solid #00eaff66;animation:pulse 3s infinite}
-.music audio{width:100%;margin-top:12px}
-.progress{height:5px;background:#26334b;border-radius:10px;margin:12px 0;overflow:hidden}
-.progress div{height:100%;width:0;background:linear-gradient(90deg,cyan,magenta);transition:width .3s}
-.item{padding:12px;border:1px solid #ffffff15;border-radius:10px;margin:8px 0;background:#0a1220;display:flex;justify-content:space-between;gap:8px;align-items:center;overflow-wrap:anywhere}
-.item.done{text-decoration:line-through;opacity:.45}
-#particles{position:fixed;inset:0;pointer-events:none;z-index:-1}
-footer{text-align:center;color:#536a85;font-size:11px;padding:35px 0}
-#timer{font-size:48px;font-weight:900;text-align:center;color:#00eaff;text-shadow:0 0 20px #00eaff77;padding:20px}
-.avatar{width:85px;height:85px;border-radius:50%;border:3px solid #00eaff;display:grid;place-items:center;font-size:38px;margin:0 auto 14px;background:#101b30;box-shadow:0 0 25px #00eaff55}
+*{box-sizing:border-box}
+:root{--bg:#070817;--panel:#10152b;--blue:#00d9ff;--purple:#a855f7;--text:#f4f7ff}
+body{margin:0;background:radial-gradient(ellipse at top,#171b42,#070817 65%);color:var(--text);font-family:Arial,sans-serif;min-height:100vh}
+button,input,textarea{font:inherit}
+button{cursor:pointer;border:0}
+header{padding:18px 16px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid #ffffff17;position:sticky;top:0;background:#090b1bed;backdrop-filter:blur(15px);z-index:5}
+.logo{font-weight:1000;font-size:20px;background:linear-gradient(90deg,#00eaff,#a855f7,#ff40b8);background-clip:text;color:transparent}
+.tag{font-size:10px;color:#00eaff;border:1px solid #00d9ff66;border-radius:20px;padding:5px 9px}
+main{max-width:1050px;margin:auto;padding:20px 14px 70px}
+.hero{text-align:center;padding:40px 10px 30px}
+.hero h1{font-size:clamp(30px,8vw,52px);margin:10px 0;background:linear-gradient(90deg,#00eaff,#a855f7,#ff46b8);background-clip:text;color:transparent}
+.hero p,.muted{color:#9ba6c8;line-height:1.6}
+.glow{box-shadow:0 0 25px #00d9ff18,0 0 45px #a855f710}
+.panel{background:#10152bd9;border:1px solid #ffffff18;border-radius:17px;padding:17px;margin:15px 0}
+h2{font-size:18px;margin:0 0 14px}
+input,textarea{width:100%;padding:13px;background:#080c20;border:1px solid #29365c;border-radius:10px;color:white;outline:none;margin:6px 0}
+input:focus,textarea:focus{border-color:var(--blue)}
+.btn{background:linear-gradient(100deg,#00bfe9,#7854ef);color:white;padding:12px 16px;border-radius:10px;font-weight:bold}
+.btn2{background:#202947;color:white;padding:10px 13px;border-radius:9px}
+.danger{background:#54243a;color:#ffb6c9}
+.small{font-size:12px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:13px}
+.product{background:linear-gradient(145deg,#151d3b,#0c1024);border:1px solid #34416a;border-radius:16px;padding:17px;position:relative}
+.product h3{margin:8px 0}
+.price{font-size:25px;font-weight:900;color:#00eaff;margin:13px 0}
+.pill{font-size:10px;color:#00eaff;background:#00d9ff15;border-radius:20px;padding:6px 9px;display:inline-block}
+.row{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap}
 .hidden{display:none!important}
-@media(max-width:700px){.grid{grid-template-columns:repeat(2,1fr)}.wrap{padding:13px}.card{padding:14px}.top{align-items:center}}
-@media(max-width:390px){.grid{grid-template-columns:1fr}}
+.tabs{display:flex;gap:8px;overflow:auto;margin:16px 0}
+.tabs button{white-space:nowrap;background:#151d37;color:#cbd5f5;padding:11px 14px;border-radius:9px}
+.tabs button.active{background:linear-gradient(100deg,#007fae,#7547d8);color:white}
+table{width:100%;border-collapse:collapse;font-size:12px}
+td,th{padding:11px 7px;border-bottom:1px solid #ffffff18;text-align:left}
+.tablewrap{overflow:auto}
+.status{color:#ffd36e}
+footer{text-align:center;color:#65708f;padding:25px;font-size:12px}
+#notice{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:#172344;border:1px solid #00d9ff;color:white;padding:12px 18px;border-radius:12px;z-index:20;display:none;max-width:90%;text-align:center}
+.auth{max-width:430px;margin:20px auto}
+hr{border:0;border-top:1px solid #ffffff18;margin:17px 0}
 </style>
 </head>
 <body>
-<canvas id="particles"></canvas>
+
 <header>
-<div class="top">
-<div class="logo">LUAN PERSONAL</div>
-<div class="clock"><div id="time">00:00:00</div><div id="date"></div></div>
-</div>
+ <div class="logo">LUAN STORE ✦</div>
+ <span class="tag">VIP PRO MAX</span>
 </header>
 
-<main class="wrap">
+<main>
 <section class="hero">
-<h1 class="gradient">GOD MODE</h1>
-<p>WELCOME TO MY PERSONAL UNIVERSE</p>
-<div class="rgb"></div>
+ <span class="pill">✦ PREMIUM DIGITAL STORE</span>
+ <h1>LUAN STORE</h1>
+ <p>Mua sắm dịch vụ VPN nhanh chóng · An toàn · Tiện lợi</p>
+ <div class="row" style="justify-content:center">
+  <span class="tag">SECURE SYSTEM</span>
+  <span class="tag">ONLINE STORE</span>
+  <span class="tag">24/7</span>
+ </div>
 </section>
 
-<nav>
-<button class="active" onclick="tab('home',this)">⌂ Trang chủ</button>
-<button onclick="tab('profile',this)">♙ Cá nhân</button>
-<button onclick="tab('notes',this)">▤ Ghi chú</button>
-<button onclick="tab('tasks',this)">✓ Công việc</button>
-<button onclick="tab('tools',this)">⚙ Công cụ</button>
-<button onclick="tab('settings',this)">☷ Cài đặt</button>
-</nav>
-
-<section id="home" class="page active">
-<div class="grid">
-<div class="card"><h3>◷ THỜI GIAN</h3><div class="big" id="homeTime">00:00:00</div><div class="muted" id="homeDate">Đang cập nhật</div></div>
-<div class="card"><h3>✦ HỆ THỐNG</h3><div class="big gradient">ONLINE</div><div class="muted">LUAN PERSONAL GOD MODE</div></div>
-<div class="card"><h3>✓ NHIỆM VỤ</h3><div class="big" id="taskCount">0</div><div class="muted">Công việc đã hoàn thành</div></div>
-</div>
-<div class="rgb"></div>
-<div class="card music">
-<h3>♫ MUSIC PLAYER — XOMU</h3>
-<div class="big gradient">LANTERNS</div>
-<div class="muted">Xomu - Lanterns - Diversity</div>
-<audio id="audio" controls preload="metadata">
-<source src="https://vejnqqlrnmtbpocgcbsb.supabase.co/storage/v1/object/public/MUSIC/Xomu%20-%20Lanterns%20-%20Diversity.mp3" type="audio/mpeg">
-</audio>
-<div class="row">
-<button class="btn primary" onclick="playMusic()">▶ PHÁT NHẠC</button>
-<button class="btn" onclick="pauseMusic()">Ⅱ TẠM DỪNG</button>
-<button class="btn" onclick="document.getElementById('musicFile').click()">＋ CHỌN MP3</button>
-<input id="musicFile" type="file" accept="audio/*" class="hidden" onchange="loadMusic(this)">
-</div>
-<div class="muted" id="musicStatus">Bấm phát nhạc để bắt đầu.</div>
-</div>
-<div class="grid" style="margin-top:13px">
-<div class="card"><h3>✧ HIỆU ỨNG</h3><div class="big gradient">7 COLORS</div><div class="muted">RGB chuyển động liên tục</div></div>
-<div class="card"><h3>⚡ PHIÊN BẢN</h3><div class="big">ULTRA</div><div class="muted">Personal edition</div></div>
-<div class="card"><h3>♡ TRẠNG THÁI</h3><div class="big" style="color:#00ffad">ACTIVE</div><div class="muted">Sẵn sàng hoạt động</div></div>
-</div>
+<section id="authBox" class="panel auth glow">
+ <h2>✦ TÀI KHOẢN</h2>
+ <input id="email" type="email" placeholder="Địa chỉ Email">
+ <input id="password" type="password" placeholder="Mật khẩu">
+ <div class="row">
+  <button class="btn" onclick="signIn()">ĐĂNG NHẬP</button>
+  <button class="btn2" onclick="signUp()">ĐĂNG KÝ</button>
+ </div>
+ <p class="muted small">Đăng ký tài khoản để đặt hàng và theo dõi đơn hàng.</p>
+ <button class="btn2 small" onclick="resetPassword()">Quên mật khẩu?</button>
 </section>
 
-<section id="profile" class="page">
-<div class="card" style="text-align:center">
-<div class="avatar">👑</div>
-<h2 class="gradient">LUAN</h2>
-<p class="muted">PERSONAL PROFILE</p>
-<div class="rgb"></div>
-<label>Tên hiển thị</label><input id="profileName" placeholder="Nhập tên của bạn">
-<label>Giới thiệu bản thân</label><textarea id="bio" placeholder="Viết vài dòng giới thiệu..."></textarea>
-<label>Sở thích</label><input id="hobby" placeholder="Ví dụ: Ô tô, âm nhạc...">
-<button class="btn primary" onclick="saveProfile()">LƯU HỒ SƠ</button>
-</div>
+<section id="account" class="panel hidden">
+ <div class="row">
+  <div>
+   <span class="pill">ACCOUNT</span>
+   <h2 id="userEmail">Tài khoản</h2>
+   <span class="muted small" id="userRole">Thành viên</span>
+  </div>
+  <button class="btn2 danger" onclick="signOut()">ĐĂNG XUẤT</button>
+ </div>
 </section>
 
-<section id="notes" class="page">
-<div class="card">
-<h3>▤ SỔ GHI CHÚ</h3>
-<input id="noteTitle" placeholder="Tiêu đề ghi chú">
-<textarea id="noteText" placeholder="Nội dung ghi chú..."></textarea>
-<button class="btn primary" onclick="addNote()">＋ LƯU GHI CHÚ</button>
-<div id="noteList"></div>
+<div class="tabs">
+ <button class="active" onclick="showTab('shop',this)">✦ Cửa hàng</button>
+ <button onclick="showTab('orders',this)">▤ Đơn hàng</button>
+ <button id="adminTab" class="hidden" onclick="showTab('admin',this)">⚙ Admin</button>
 </div>
+
+<section id="shop">
+ <div class="row">
+  <h2>✦ SẢN PHẨM VPN</h2>
+  <span class="muted small" id="productCount"></span>
+ </div>
+ <div id="products" class="grid">
+  <div class="panel">Đang tải sản phẩm...</div>
+ </div>
 </section>
 
-<section id="tasks" class="page">
-<div class="card">
-<h3>✓ QUẢN LÝ CÔNG VIỆC</h3>
-<input id="taskInput" placeholder="Nhập công việc cần làm...">
-<button class="btn primary" onclick="addTask()">＋ THÊM CÔNG VIỆC</button>
-<div id="taskList"></div>
-</div>
+<section id="orders" class="hidden">
+ <div class="panel">
+  <h2>▤ LỊCH SỬ ĐƠN HÀNG</h2>
+  <div id="orderList" class="muted">Đăng nhập để xem đơn hàng.</div>
+ </div>
 </section>
 
-<section id="tools" class="page">
-<div class="grid">
-<div class="card">
-<h3>⏱ POMODORO TIMER</h3>
-<div id="timer">25:00</div>
-<div class="row">
-<button class="btn primary" onclick="startTimer()">▶ BẮT ĐẦU</button>
-<button class="btn" onclick="stopTimer()">Ⅱ DỪNG</button>
-<button class="btn" onclick="resetTimer()">↻ RESET</button>
-</div>
-<p class="muted">Tập trung làm việc trong 25 phút.</p>
-</div>
-<div class="card">
-<h3>▣ MÁY TÍNH</h3>
-<input id="calc" placeholder="Ví dụ: 25*4+10">
-<div class="row">
-<button class="btn primary" onclick="calculate()">= KẾT QUẢ</button>
-<button class="btn" onclick="document.getElementById('calc').value=''">C</button>
-</div>
-<div class="big gradient" id="calcResult">0</div>
-</div>
-</div>
-<div class="card" style="margin-top:13px">
-<h3>✦ ĐỒNG HỒ THẾ GIỚI</h3>
-<div class="big" id="worldClock">--:--:--</div>
-<p class="muted">Giờ Việt Nam (UTC+7)</p>
-</div>
-</section>
+<section id="admin" class="hidden">
+ <div class="panel glow">
+  <div class="row">
+   <h2>⚡ ADMIN CONTROL</h2>
+   <span class="pill">ADMIN ONLY</span>
+  </div>
+  <div class="grid">
+   <div class="product"><span class="muted">Tổng đơn</span><h2 id="statOrders">0</h2></div>
+   <div class="product"><span class="muted">Chờ xử lý</span><h2 id="statPending">0</h2></div>
+   <div class="product"><span class="muted">Sản phẩm</span><h2 id="statProducts">0</h2></div>
+  </div>
+ </div>
 
-<section id="settings" class="page">
-<div class="card">
-<h3>⚙ CÀI ĐẶT HỆ THỐNG</h3>
-<label>Hiệu ứng RGB</label>
-<button class="btn primary" onclick="toggleRGB()">BẬT / TẮT RGB</button>
-<label>Hiệu ứng hạt sáng</label>
-<button class="btn primary" onclick="toggleParticles()">BẬT / TẮT HẠT</button>
-<label>Âm lượng nhạc</label>
-<input type="range" min="0" max="100" value="70" oninput="audio.volume=this.value/100">
-<label>Đổi tiêu đề website</label>
-<input id="siteTitle" placeholder="LUAN PERSONAL">
-<button class="btn primary" onclick="changeTitle()">LƯU TIÊU ĐỀ</button>
-<button class="btn" onclick="exportData()">SAO LƯU DỮ LIỆU</button>
-<button class="btn" onclick="clearData()">XÓA DỮ LIỆU ĐÃ LƯU</button>
-<p class="muted">Dữ liệu ghi chú, hồ sơ và công việc được lưu trên trình duyệt hiện tại.</p>
-</div>
-</section>
+ <div class="panel">
+  <h2>＋ THÊM SẢN PHẨM</h2>
+  <input id="pName" placeholder="Tên sản phẩm">
+  <textarea id="pDesc" placeholder="Mô tả sản phẩm"></textarea>
+  <input id="pPrice" type="number" min="0" placeholder="Giá bán (VNĐ)">
+  <input id="pDuration" placeholder="Thời hạn (VD: 30 ngày)">
+  <button class="btn" onclick="addProduct()">THÊM SẢN PHẨM</button>
+ </div>
 
-<div class="rgb"></div>
-<footer>© 2026 LUAN PERSONAL • GOD MODE • ALL RIGHTS RESERVED</footer>
+ <div class="panel">
+  <h2>✦ QUẢN LÝ SẢN PHẨM</h2>
+  <div id="adminProducts"></div>
+ </div>
+
+ <div class="panel">
+  <h2>▤ QUẢN LÝ ĐƠN HÀNG</h2>
+  <div id="adminOrders" class="tablewrap"></div>
+ </div>
+</section>
 </main>
 
-<script>
-const $=id=>document.getElementById(id);
-const get=(k,d)=>{try{return JSON.parse(localStorage.getItem(k))??d}catch{return d}};
-const put=(k,v)=>localStorage.setItem(k,JSON.stringify(v));
-
-function tab(id,btn){
-document.querySelectorAll('.page').forEach(x=>x.classList.remove('active'));
-$(id).classList.add('active');
-document.querySelectorAll('nav button').forEach(x=>x.classList.remove('active'));
-btn.classList.add('active');
-}
-
-function updateClock(){
-const d=new Date();
-const t=d.toLocaleTimeString('vi-VN');
-const date=d.toLocaleDateString('vi-VN',{weekday:'long',day:'2-digit',month:'2-digit',year:'numeric'});
-$('time').textContent=t;$('homeTime').textContent=t;
-$('date').textContent=date;$('homeDate').textContent=date;
-$('worldClock').textContent=t;
-}
-setInterval(updateClock,1000);updateClock();
-
-const audio=$('audio');
-function playMusic(){
-audio.play().then(()=>{$('musicStatus').textContent='Đang phát nhạc ♫'}).catch(()=>{$('musicStatus').textContent='Không tải được MP3. Hãy chọn file MP3 từ điện thoại.'});
-}
-function pauseMusic(){audio.pause();$('musicStatus').textContent='Đã tạm dừng nhạc';}
-audio.addEventListener('error',()=>{$('musicStatus').textContent='Không tìm thấy file MP3 trên máy chủ. Hãy chọn file MP3.'});
-audio.addEventListener('ended',()=>{$('musicStatus').textContent='Đã phát xong bài nhạc';});
-function loadMusic(input){
-if(input.files&&input.files[0]){
-const url=URL.createObjectURL(input.files[0]);
-audio.src=url;playMusic();
-$('musicStatus').textContent='Đang phát: '+input.files[0].name;
-}
-}
-
-let notes=get('luan_notes',[]);
-function renderNotes(){
-$('noteList').innerHTML='';
-notes.forEach((n,i)=>{
-const el=document.createElement('div');el.className='item';
-const box=document.createElement('div');
-const strong=document.createElement('b');strong.textContent=n.title;
-const p=document.createElement('p');p.className='muted';p.textContent=n.text;
-box.append(strong,p);
-const del=document.createElement('button');del.className='btn';del.textContent='XÓA';
-del.onclick=()=>{notes.splice(i,1);put('luan_notes',notes);renderNotes()};
-el.append(box,del);$('noteList').append(el);
-});
-}
-function addNote(){
-const title=$('noteTitle').value.trim(),text=$('noteText').value.trim();
-if(!title&&!text)return alert('Nhập nội dung ghi chú!');
-notes.unshift({title:title||'Ghi chú',text});
-put('luan_notes',notes);$('noteTitle').value='';$('noteText').value='';renderNotes();
-}
-
-let tasks=get('luan_tasks',[]);
-function renderTasks(){
-$('taskList').innerHTML='';
-let done=0;
-tasks.forEach((t,i)=>{
-if(t.done)done++;
-const el=document.createElement('div');el.className='item'+(t.done?' done':'');
-const label=document.createElement('label');label.style.display='flex';label.style.gap='9px';label.style.alignItems='center';
-const cb=document.createElement('input');cb.type='checkbox';cb.checked=t.done;cb.style.width='auto';cb.style.margin='0';
-cb.onchange=()=>{tasks[i].done=cb.checked;put('luan_tasks',tasks);renderTasks()};
-const span=document.createElement('span');span.textContent=t.text;
-label.append(cb,span);
-const del=document.createElement('button');del.className='btn';del.textContent='×';
-del.onclick=()=>{tasks.splice(i,1);put('luan_tasks',tasks);renderTasks()};
-el.append(label,del);$('taskList').append(el);
-});
-$('taskCount').textContent=done+'/'+tasks.length;
-}
-function addTask(){
-const v=$('taskInput').value.trim();if(!v)return;
-tasks.unshift({text:v,done:false});put('luan_tasks',tasks);$('taskInput').value='';renderTasks();
-}
-
-let profile=get('luan_profile',{name:'LUAN',bio:'',hobby:''});
-function loadProfile(){
-$('profileName').value=profile.name||'';
-$('bio').value=profile.bio||'';
-$('hobby').value=profile.hobby||'';
-}
-function saveProfile(){
-profile={name:$('profileName').value,bio:$('bio').value,hobby:$('hobby').value};
-put('luan_profile',profile);alert('Đã lưu hồ sơ!');
-}
-
-let remaining=1500,timerId=null;
-function drawTimer(){
-$('timer').textContent=String(Math.floor(remaining/60)).padStart(2,'0')+':'+String(remaining%60).padStart(2,'0');
-}
-function startTimer(){
-if(timerId)return;
-timerId=setInterval(()=>{
-if(remaining>0){remaining--;drawTimer()}
-else{clearInterval(timerId);timerId=null;alert('Hoàn thành Pomodoro!');}
-},1000);
-}
-function stopTimer(){clearInterval(timerId);timerId=null;}
-function resetTimer(){stopTimer();remaining=1500;drawTimer();}
-function calculate(){
-const v=$('calc').value.trim();
-if(!/^[0-9+\-*/().%\s]+$/.test(v)){return $('calcResult').textContent='Không hợp lệ'}
-try{
-const result=Function('"use strict";return ('+v+')')();
-$('calcResult').textContent=Number.isFinite(result)?String(result):'Lỗi';
-}catch{$('calcResult').textContent='Lỗi'}
-}
-
-let rgbOn=true,particlesOn=true;
-function toggleRGB(){rgbOn=!rgbOn;document.querySelectorAll('.rgb,.logo,.gradient').forEach(x=>x.style.animationPlayState=rgbOn?'running':'paused');}
-function toggleParticles(){particlesOn=!particlesOn;}
-
-function changeTitle(){
-const v=$('siteTitle').value.trim();
-if(v){document.title=v;$('logo').textContent=v}
-}
-
-function exportData(){
-const data={notes,tasks,profile};
-const blob=new Blob([JSON.stringify(data,null,2)],{type:'application/json'});
-const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='luan-personal-backup.json';a.click();URL.revokeObjectURL(a.href);
-}
-function clearData(){
-if(!confirm('Xóa toàn bộ ghi chú, công việc và hồ sơ đã lưu?'))return;
-localStorage.removeItem('luan_notes');localStorage.removeItem('luan_tasks');localStorage.removeItem('luan_profile');
-notes=[];tasks=[];profile={name:'LUAN',bio:'',hobby:''};renderNotes();renderTasks();loadProfile();
-}
-
-renderNotes();renderTasks();loadProfile();drawTimer();
-</script>
+<footer>© 2026 LUAN STORE VIP PRO MAX · POWERED BY SUPABASE</footer>
+<div id="notice"></div>
 
 <script>
-const canvas=document.getElementById('particles'),ctx=canvas.getContext('2d');
-let W,H,stars=[];
-function resize(){
-W=canvas.width=innerWidth;H=canvas.height=innerHeight;
-stars=Array.from({length:Math.min(100,Math.floor(W/7))},()=>({x:Math.random()*W,y:Math.random()*H,r:Math.random()*1.8+.3,s:Math.random()*.5+.15,h:Math.random()*360}));
+const SUPABASE_URL="https://vejnqqlrnmtbpocgcbsb.supabase.co";
+const SUPABASE_KEY="sb_publishable_ns4mmTmUGeY-G0woSaYpDQ_9XRKotqf";
+
+const db=supabase.createClient(SUPABASE_URL,SUPABASE_KEY);
+let currentUser=null;
+let isAdmin=false;
+let productData=[];
+
+function notify(message){
+ const n=document.getElementById("notice");
+ n.textContent=message;
+ n.style.display="block";
+ setTimeout(()=>n.style.display="none",3000);
 }
-function animate(){
-ctx.clearRect(0,0,W,H);
-if(particlesOn){
-stars.forEach(p=>{
-p.y-=p.s;if(p.y<0){p.y=H;p.x=Math.random()*W}
-ctx.beginPath();ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
-ctx.fillStyle=`hsla(${p.h},100%,70%,.75)`;ctx.fill();
-});
+
+function money(value){
+ return Number(value||0).toLocaleString("vi-VN")+"đ";
 }
-requestAnimationFrame(animate);
+
+function escapeHTML(value){
+ return String(value??"").replace(/[&<>"']/g,c=>({
+ "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"
+ })[c]);
 }
-addEventListener('resize',resize);resize();animate();
+
+async function signUp(){
+ const email=document.getElementById("email").value.trim();
+ const password=document.getElementById("password").value;
+ if(!email||password.length<6)return notify("Nhập email và mật khẩu tối thiểu 6 ký tự.");
+ const {error}=await db.auth.signUp({email,password});
+ if(error)return notify(error.message);
+ notify("Đăng ký thành công. Kiểm tra email xác nhận nếu được yêu cầu.");
+}
+
+async function signIn(){
+ const email=document.getElementById("email").value.trim();
+ const password=document.getElementById("password").value;
+ const {error}=await db.auth.signInWithPassword({email,password});
+ if(error)return notify(error.message);
+ notify("Đăng nhập thành công!");
+ await refresh();
+}
+
+async function signOut(){
+ await db.auth.signOut();
+ currentUser=null;
+ isAdmin=false;
+ await refresh();
+ notify("Đã đăng xuất.");
+}
+
+async function resetPassword(){
+ const email=document.getElementById("email").value.trim();
+ if(!email)return notify("Nhập email trước.");
+ const {error}=await db.auth.resetPasswordForEmail(email);
+ notify(error?error.message:"Đã gửi yêu cầu khôi phục. Kiểm tra email.");
+}
+
+function showTab(name,button){
+ ["shop","orders","admin"].forEach(id=>
+ document.getElementById(id).classList.toggle("hidden",id!==name));
+ document.querySelectorAll(".tabs button").forEach(b=>b.classList.remove("active"));
+ button.classList.add("active");
+ if(name==="orders")loadOrders();
+ if(name==="admin"&&isAdmin)loadAdmin();
+}
+
+async function loadProducts(){
+ const {data,error}=await db.from("products")
+ .select("*").eq("active",true).order("created_at",{ascending:false});
+ if(error){
+  document.getElementById("products").innerHTML=
+  '<div class="panel">Chưa thiết lập cơ sở dữ liệu. Hãy chạy SQL cài đặt bên dưới.</div>';
+  return;
+ }
+ productData=data||[];
+ document.getElementById("productCount").textContent=productData.length+" sản phẩm";
+ document.getElementById("statProducts").textContent=productData.length;
+ document.getElementById("products").innerHTML=productData.length?
+ productData.map(p=>`
+ <article class="product glow">
+  <span class="pill">PREMIUM VPN</span>
+  <h3>${escapeHTML(p.name)}</h3>
+  <p class="muted small">${escapeHTML(p.description||"Dịch vụ VPN")}</p>
+  <div class="price">${money(p.price)}</div>
+  <p class="muted small">Thời hạn: ${escapeHTML(p.duration||"Theo gói")}</p>
+  <button class="btn" style="width:100%" onclick="buyProduct('${p.id}')">ĐẶT MUA NGAY</button>
+ </article>`).join(""):'<div class="panel">Chưa có sản phẩm nào.</div>';
+}
+
+async function buyProduct(id){
+ if(!currentUser)return notify("Vui lòng đăng nhập trước khi mua.");
+ const p=productData.find(x=>x.id===id);
+ if(!p)return notify("Không tìm thấy sản phẩm.");
+ if(!confirm("Xác nhận đặt "+p.name+" với giá "+money(p.price)+"?"))return;
+ const {error}=await db.from("orders").insert({
+  user_id:currentUser.id,
+  product_id:p.id,
+  product_name:p.name,
+  price:p.price,
+  duration:p.duration,
+  status:"pending"
+ });
+ if(error)return notify(error.message);
+ notify("Đặt hàng thành công! Đơn đang chờ xử lý.");
+ loadOrders();
+}
+
+async function loadOrders(){
+ const target=document.getElementById("orderList");
+ if(!currentUser){target.textContent="Bạn cần đăng nhập.";return;}
+ const {data,error}=await db.from("orders").select("*")
+ .eq("user_id",currentUser.id).order("created_at",{ascending:false});
+ if(error){target.textContent=error.message;return;}
+ if(!data.length){target.textContent="Bạn chưa có đơn hàng.";return;}
+ target.innerHTML=`<div class="tablewrap"><table>
+ <tr><th>Sản phẩm</th><th>Giá</th><th>Trạng thái</th></tr>
+ ${data.map(o=>`<tr>
+ <td>${escapeHTML(o.product_name)}</td>
+ <td>${money(o.price)}</td>
+ <td class="status">${escapeHTML(o.status)}</td>
+ </tr>`).join("")}</table></div>`;
+}
+
+async function addProduct(){
+ const name=document.getElementById("pName").value.trim();
+ const description=document.getElementById("pDesc").value.trim();
+ const price=Number(document.getElementById("pPrice").value);
+ const duration=document.getElementById("pDuration").value.trim();
+ if(!name||!price||price<0)return notify("Nhập tên và giá hợp lệ.");
+ const {error}=await db.from("products").insert({
+  name,description,price,duration,active:true
+ });
+ if(error)return notify(error.message);
+ notify("Đã thêm sản phẩm.");
+ await loadProducts();await loadAdmin();
+}
+
+async function deleteProduct(id){
+ if(!confirm("Ẩn sản phẩm này?"))return;
+ const {error}=await db.from("products").update({active:false}).eq("id",id);
+ if(error)return notify(error.message);
+ notify("Đã ẩn sản phẩm.");
+ await loadProducts();await loadAdmin();
+}
+
+async function changeOrder(id,status){
+ const {error}=await db.from("orders").update({status}).eq("id",id);
+ if(error)return notify(error.message);
+ notify("Đã cập nhật đơn hàng.");
+ loadAdmin();
+}
+
+async function loadAdmin(){
+ if(!isAdmin)return;
+ const [orders,products]=await Promise.all([
+  db.from("orders").select("*").order("created_at",{ascending:false}),
+  db.from("products").select("*").order("created_at",{ascending:false})
+ ]);
+ if(orders.error||products.error)return notify("Không tải được dữ liệu quản trị.");
+ const os=orders.data||[],ps=products.data||[];
+ document.getElementById("statOrders").textContent=os.length;
+ document.getElementById("statPending").textContent=os.filter(o=>o.status==="pending").length;
+ document.getElementById("statProducts").textContent=ps.filter(p=>p.active).length;
+
+ document.getElementById("adminProducts").innerHTML=ps.map(p=>`
+ <div class="row panel">
+ <div><b>${escapeHTML(p.name)}</b><p class="muted small">${money(p.price)} · ${p.active?"Đang bán":"Đã ẩn"}</p></div>
+ ${p.active?`<button class="btn2 danger" onclick="deleteProduct('${p.id}')">Ẩn</button>`:""}
+ </div>`).join("")||"Chưa có sản phẩm.";
+
+ document.getElementById("adminOrders").innerHTML=os.length?
+ `<table><tr><th>Sản phẩm</th><th>Giá</th><th>Trạng thái</th><th>Thao tác</th></tr>
+ ${os.map(o=>`<tr>
+ <td>${escapeHTML(o.product_name)}</td>
+ <td>${money(o.price)}</td>
+ <td>${escapeHTML(o.status)}</td>
+ <td>
+ <button class="btn2 small" onclick="changeOrder('${o.id}','paid')">Đã trả</button>
+ <button class="btn2 small" onclick="changeOrder('${o.id}','completed')">Hoàn tất</button>
+ <button class="btn2 small danger" onclick="changeOrder('${o.id}','cancelled')">Hủy</button>
+ </td></tr>`).join("")}</table>`:"Chưa có đơn hàng.";
+}
+
+async function refresh(){
+ const {data}=await db.auth.getSession();
+ currentUser=data.session?.user||null;
+ document.getElementById("authBox").classList.toggle("hidden",!!currentUser);
+ document.getElementById("account").classList.toggle("hidden",!currentUser);
+ document.getElementById("userEmail").textContent=currentUser?.email||"";
+ isAdmin=false;
+ if(currentUser){
+  const {data:profile}=await db.from("profiles").select("role")
+   .eq("id",currentUser.id).maybeSingle();
+  isAdmin=profile?.role==="admin";
+  document.getElementById("userRole").textContent=isAdmin?"ADMIN":"THÀNH VIÊN";
+ }
+ document.getElementById("adminTab").classList.toggle("hidden",!isAdmin);
+ if(!isAdmin&& !document.getElementById("admin").classList.contains("hidden")){
+  document.getElementById("admin").classList.add("hidden");
+  document.getElementById("shop").classList.remove("hidden");
+ }
+ await loadProducts();
+ if(isAdmin)await loadAdmin();
+}
+
+db.auth.onAuthStateChange(()=>{setTimeout(refresh,0)});
+refresh();
 </script>
 </body>
 </html>
